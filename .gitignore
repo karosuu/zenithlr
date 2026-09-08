@@ -1,0 +1,6 @@
+zenithlr/node_modules/
+zenithlr/.next/
+zenithlr/.env
+zenithlr/.env.local
+.DS_Store
+Thumbs.db
