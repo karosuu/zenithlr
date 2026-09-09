@@ -43,14 +43,19 @@ If `SMTP_HOST` / `SMTP_USER` / `SMTP_PASS` are missing, local `npm run dev` stil
 
 This app needs Node (cPanel **Setup Node.js App**), not PHP. Do not drop it into WordPress `public_html`.
 
+**Day-to-day updates:** push to `main`. GitHub Actions builds on Linux, uploads a coherent package over SSH, and restarts the app. Do not upload `.next` by hand.
+
+One-time setup (SSH deploy key + Actions secrets) and the emergency manual pack flow: [DEPLOY-TMDHOSTING.md](./DEPLOY-TMDHOSTING.md).
+
+First-time server setup (short):
+
 1. Backup WordPress (`public_html` + MySQL).
-2. Push this `zenithlr` folder to GitHub (never commit `.env` / `node_modules` / `.next` / `data/db.json`).
-3. Clone or upload into `/home/USER/zenithlr`.
+2. Push this repo to GitHub (never commit `.env` / `node_modules` / `.next` / `data/db.json`).
+3. Clone or upload into the Node app root (often `/home/USER/repositories/zenithlr/zenithlr`).
 4. Create a Node app: version **20.20.2**, production, startup file **`server.js`**, URL = your domain.
 5. Paste environment variables from `.env.example`.
-6. **Run NPM Install**, then `npm run build`, then Restart.
-
-Step-by-step (Spanish): [DEPLOY-TMDHOSTING.md](./DEPLOY-TMDHOSTING.md).
+6. **Run NPM Install**, then either wait for Actions to deploy or run `npm run build` + `npm run deploy:pack` once as plan B.
+7. Restart.
 
 ## What the team can edit
 

@@ -19,6 +19,8 @@
 
 # production
 /build
+/zenith-deploy.tar.gz
+/next-production.tar.gz
 
 # misc
 .DS_Store

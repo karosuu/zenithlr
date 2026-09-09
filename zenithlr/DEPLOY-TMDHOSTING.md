@@ -2,7 +2,7 @@
 
 Este sitio es **Next.js** (Node). No se copia encima de WordPress como un tema PHP.
 
-En cPanel el código debe vivir en una carpeta propia (por ejemplo `zenithlr`). **Setup Node.js App** apunta el dominio a esa app. GitHub solo guarda el código.
+En cPanel el código debe vivir en una carpeta propia (por ejemplo `zenithlr`). **Setup Node.js App** apunta el dominio a esa app. Los cambios del día a día se publican con **GitHub Actions** (push a `main`); no copies `.next` a mano.
 
 ## Antes de tocar el servidor
 
@@ -13,11 +13,11 @@ En cPanel el código debe vivir en una carpeta propia (por ejemplo `zenithlr`). 
 
 ## Qué subir a GitHub
 
-Sube **el contenido de esta carpeta** (`zenithlr`) como raíz del repositorio, para que en el servidor existan `package.json` y `server.js` en la raíz.
+Este monorepo tiene la app en la carpeta `zenithlr/`. En el servidor el Application root suele ser `repositories/zenithlr/zenithlr`.
 
-**Sí:** código, `data/db.example.json`, `public/` (sin fotos de listings), `server.js`, `.env.example`
+**Sí:** código, `data/db.example.json`, `public/` (sin fotos de listings), `server.js`, `.env.example`, `.github/workflows/`
 
-**No:** `data/db.json`, `node_modules`, `.next`, `.env`, `.env.local`, `SMTP_PASS`, contraseñas
+**No:** `data/db.json`, `node_modules`, `.next`, `.env`, `.env.local`, `zenith-deploy.tar.gz`, `SMTP_PASS`, contraseñas
 
 `data/db.json` es la base del sitio (textos, propiedades, reseñas). Vive **solo en el servidor y en tu PC**. GitHub guarda un semilla en `data/db.example.json`. Si `db.json` no existe, la app lo crea copiando el example.
 
@@ -84,25 +84,82 @@ Instalación nueva: si no hay `data/db.json`, cópialo una vez:
 cp data/db.example.json data/db.json
 ```
 
-## Actualizar después
+## Actualizar después (flujo normal)
 
-**Siempre** copia `db.json` antes del pull. El primer pull que quite ese archivo de Git **lo borra del disco**.
+**No subas `.next` a mano** ni mezcles File Manager con este flujo: eso vuelve a desincronizar CSS/JS y rompe el admin.
+
+### Publicar un cambio
+
+1. Commit y push a `main` (desde la raíz del repo, que incluye la carpeta `zenithlr/`).
+2. Espera el check verde de **Actions → Deploy to TMDHosting** (unos minutos).
+3. Listo: el workflow construye en Linux, sube un paquete coherente, hace `npm install` en el servidor y reinicia Passenger.
+
+Redeploy sin commits nuevos: en GitHub → **Actions** → **Deploy to TMDHosting** → **Run workflow**.
+
+El paquete **no** incluye `data/db.json` ni `public/uploads`. El workflow hace backup de `db.json` antes de extraer.
+
+### Setup una sola vez (SSH + secretos de GitHub)
+
+Guía corta con valores exactos para copiar/pegar: [SETUP-GITHUB-SECRETS.md](./SETUP-GITHUB-SECRETS.md).
+
+Hace falta para que Actions pueda entrar al servidor.
+
+1. Genera una clave **solo para deploy** (no uses tu clave personal):
 
 ```bash
-cp data/db.json data/db.json.bak
-git pull
-# si desapareció o se reescribió:
-cp data/db.json.bak data/db.json
+ssh-keygen -t ed25519 -C "github-actions-zenith" -f zenith-deploy -N ""
 ```
 
-Luego: `npm install` → `npm run build` (o sube `.next`) → Restart (`touch tmp/restart.txt`).
+2. En cPanel → **SSH Access**: importa `zenith-deploy.pub` (Import Key) y pulsa **Authorize**.
+3. En GitHub → repo → **Settings → Secrets and variables → Actions**, crea:
 
-No hagas `git checkout -- data/db.json` ni restaurar ese archivo desde GitHub.
+| Secret | Valor típico |
+|---|---|
+| `SSH_HOST` | host o IP del servidor |
+| `SSH_USERNAME` | `nicahost` |
+| `SSH_PRIVATE_KEY` | contenido completo de `zenith-deploy` (clave privada) |
+| `SSH_PORT` | `22` (u otro si TMDHosting usa puerto distinto) |
+| `DEPLOY_PATH` | `/home/nicahost/repositories/zenithlr/zenithlr` |
+| `NODEVENV` | ruta al `activate` del Node.js App, p. ej. `/home/nicahost/nodevenv/zenithlr/20/bin/activate` |
+
+Para confirmar `NODEVENV` por SSH:
+
+```bash
+ls /home/nicahost/nodevenv
+```
+
+Sin estos secretos, el build en Actions puede pasar pero fallará el paso de SSH.
+
+### Plan B (emergencia, sin Actions)
+
+Solo si GitHub Actions no puede desplegar:
+
+```bash
+cd zenithlr
+npm run build
+npm run deploy:pack
+```
+
+Sube **un solo** archivo `zenith-deploy.tar.gz` al servidor. Por SSH:
+
+```bash
+cd /home/nicahost/repositories/zenithlr/zenithlr
+cp -a data/db.json data/db.json.bak
+rm -rf .next
+tar -xzf /ruta/a/zenith-deploy.tar.gz
+source /home/nicahost/nodevenv/zenithlr/20/bin/activate   # ajusta si tu ruta difiere
+npm install --omit=dev
+mkdir -p tmp
+touch tmp/restart.txt
+```
+
+No hagas `git checkout -- data/db.json` ni restaures ese archivo desde GitHub.
 
 ## Si no arranca
 
 - Startup file = `server.js` (no `app.js`).
 - Node 20.x, modo Production.
-- `npm run build` terminó sin error.
+- El workflow (o `npm run build` local) terminó sin error.
 - Variables SMTP y `SESSION_SECRET` están en la app, no solo en un archivo local.
 - stderr de la app Node en cPanel.
+- En Actions, revisa el log del job fallido (secretos SSH / `DEPLOY_PATH` / `NODEVENV`).

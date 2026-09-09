@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build --webpack && node scripts/copy-css.js",
     "start": "node server.js",
-    "lint": "eslint"
+    "lint": "eslint",
+    "deploy:pack": "node scripts/pack-production.js"
   },
   "engines": {
     "node": ">=20.9.0"

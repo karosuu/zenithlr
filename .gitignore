@@ -4,5 +4,7 @@ zenithlr/.env
 zenithlr/.env.local
 zenithlr/data/db.json
 zenithlr/data/db.json.bak
+zenithlr/zenith-deploy.tar.gz
+zenithlr/next-production.tar.gz
 .DS_Store
 Thumbs.db

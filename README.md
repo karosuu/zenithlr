@@ -14,4 +14,6 @@ Team panel: http://localhost:3000/admin/login
 Email: `management@zenithlr.com`  
 Password: `zenith2026`
 
-See `zenithlr/README.md` for local setup and `zenithlr/DEPLOY-TMDHOSTING.md` to replace WordPress on TMDHosting.
+See `zenithlr/README.md` for local setup and `zenithlr/DEPLOY-TMDHOSTING.md` for TMDHosting.
+
+**Publish updates:** push to `main` (GitHub Actions builds and deploys). One-time SSH secrets are documented in `zenithlr/DEPLOY-TMDHOSTING.md`.
