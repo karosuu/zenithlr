@@ -39,16 +39,44 @@ jobs:
       - name: Pack production artifact
         run: npm run deploy:pack
 
+      # appleboy/scp-action (golang SSH) often dies on this host with
+      # "unexpected packet in response to channel open". OpenSSH + retries
+      # matches how cPanel SSH actually behaves.
       - name: Upload package to server
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: ${{ secrets.SSH_PORT }}
-          source: zenithlr/zenith-deploy.tar.gz
-          target: /tmp
-          strip_components: 1
+        working-directory: ${{ github.workspace }}
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SSH_PORT: ${{ secrets.SSH_PORT }}
+        run: |
+          set -euo pipefail
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          umask 077
+          printf '%s\n' "$SSH_PRIVATE_KEY" | sed 's/\r$//' > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          PORT="${SSH_PORT:-22}"
+
+          i=1
+          while [ "$i" -le 6 ]; do
+            echo "Upload attempt $i"
+            if scp -P "$PORT" -i ~/.ssh/deploy_key \
+              -o IdentitiesOnly=yes \
+              -o StrictHostKeyChecking=accept-new \
+              -o ConnectTimeout=30 \
+              -o ServerAliveInterval=15 \
+              zenithlr/zenith-deploy.tar.gz \
+              "${SSH_USERNAME}@${SSH_HOST}:/tmp/zenith-deploy.tar.gz"; then
+              echo "Upload succeeded on attempt $i"
+              exit 0
+            fi
+            echo "Upload attempt $i failed"
+            i=$((i + 1))
+            sleep $((i * 8))
+          done
+          echo "Upload failed after retries"
+          exit 1
 
       - name: Extract, install, and restart
         uses: appleboy/ssh-action@v1.2.0
