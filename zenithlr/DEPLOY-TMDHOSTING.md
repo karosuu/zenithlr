@@ -120,7 +120,7 @@ ssh-keygen -t ed25519 -C "github-actions-zenith" -f zenith-deploy -N ""
 | `SSH_PRIVATE_KEY` | contenido completo de `zenith-deploy` (clave privada) |
 | `SSH_PORT` | `22` (u otro si TMDHosting usa puerto distinto) |
 | `DEPLOY_PATH` | `/home/nicahost/repositories/zenithlr/zenithlr` |
-| `NODEVENV` | ruta al `activate` del Node.js App, p. ej. `/home/nicahost/nodevenv/zenithlr/20/bin/activate` |
+| `NODEVENV` | ruta al `activate`, p. ej. `/home/nicahost/nodevenv/repositories/zenithlr/zenithlr/20/bin/activate` |
 
 Para confirmar `NODEVENV` por SSH:
 
@@ -147,7 +147,7 @@ cd /home/nicahost/repositories/zenithlr/zenithlr
 cp -a data/db.json data/db.json.bak
 rm -rf .next
 tar -xzf /ruta/a/zenith-deploy.tar.gz
-source /home/nicahost/nodevenv/zenithlr/20/bin/activate   # ajusta si tu ruta difiere
+source /home/nicahost/nodevenv/repositories/zenithlr/zenithlr/20/bin/activate
 npm install --omit=dev
 mkdir -p tmp
 touch tmp/restart.txt

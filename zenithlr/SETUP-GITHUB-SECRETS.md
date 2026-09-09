@@ -78,20 +78,17 @@ nicahost
 ### 6) NODEVENV
 
 - **Name:** `NODEVENV`
-- **Secret:**
+- **Secret:** (ruta real en este servidor)
 
 ```text
-/home/nicahost/nodevenv/zenithlr/20/bin/activate
+/home/nicahost/nodevenv/repositories/zenithlr/zenithlr/20/bin/activate
 ```
 
-Si el deploy falla en este paso, por SSH en el servidor corre:
+Para confirmarla por SSH:
 
 ```bash
-ls /home/nicahost/nodevenv
-ls /home/nicahost/nodevenv/*/20/bin/activate
+find /home/nicahost/nodevenv -name activate
 ```
-
-y actualiza el secret con la ruta real del `activate`.
 
 ## Checklist
 
@@ -102,7 +99,7 @@ y actualiza el secret con la ruta real del `activate`.
 - [ ] GitHub: `SSH_PRIVATE_KEY` (privada completa)
 - [ ] GitHub: `SSH_PORT` = `22`
 - [ ] GitHub: `DEPLOY_PATH` = `/home/nicahost/repositories/zenithlr/zenithlr`
-- [ ] GitHub: `NODEVENV` = `/home/nicahost/nodevenv/zenithlr/20/bin/activate`
+- [ ] GitHub: `NODEVENV` = `/home/nicahost/nodevenv/repositories/zenithlr/zenithlr/20/bin/activate`
 
 ## Después
 

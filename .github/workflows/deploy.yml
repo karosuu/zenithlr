@@ -103,8 +103,11 @@ jobs:
               echo "Restored data/db.json from backup"
             fi
 
+            # CloudLinux activate references unset vars; nounset must be off while sourcing.
+            set +u
             # shellcheck source=/dev/null
             source "$NODEVENV"
+            set -u
             npm install --omit=dev
 
             mkdir -p tmp
