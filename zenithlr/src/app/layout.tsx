@@ -42,6 +42,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${outfit.variable} ${cormorant.variable} h-full antialiased`}
       data-scroll-behavior="smooth"
     >
+      <head>
+        {/* Stable CSS URL for TMDHosting when /_next/static/css hashes 404 after deploys */}
+        <link rel="stylesheet" href="/zenith.css" />
+      </head>
       <body className="min-h-full bg-paper text-ink">{children}</body>
     </html>
   );

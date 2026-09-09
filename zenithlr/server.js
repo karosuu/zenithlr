@@ -117,8 +117,20 @@ function sendDiskFile(file, res, cacheControl) {
   }
 }
 
+function requestPath(req) {
+  let raw = req.url || "";
+  try {
+    if (/^https?:\/\//i.test(raw)) {
+      raw = new URL(raw).pathname + (new URL(raw).search || "");
+    }
+  } catch {
+    /* keep raw */
+  }
+  return raw.split("?")[0];
+}
+
 function sendBuildStatic(req, res) {
-  const raw = (req.url || "").split("?")[0];
+  const raw = requestPath(req);
   if (!raw.startsWith("/_next/static/")) return false;
 
   let rel;
@@ -131,6 +143,15 @@ function sendBuildStatic(req, res) {
 
   const file = path.resolve(staticRoot, rel);
   if (!isInside(staticRoot, file)) return false;
+
+  // Always prefer disk for CSS so deploy hash mismatches cannot 404 the admin.
+  if (rel.startsWith("css/") || rel.endsWith(".css")) {
+    const cssFile =
+      resolveExistingFile(file) ||
+      resolveCssFallback(file) ||
+      resolveExistingFile(path.join(publicRoot, "zenith.css"));
+    if (cssFile && sendDiskFile(cssFile, res, "public, max-age=60")) return true;
+  }
 
   if (sendDiskFile(file, res, "public, max-age=31536000, immutable")) return true;
 
