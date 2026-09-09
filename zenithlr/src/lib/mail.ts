@@ -2,12 +2,26 @@ import nodemailer from "nodemailer";
 import type { Lead } from "./types";
 
 function subjectFor(lead: Lead) {
+  const es = lead.locale === "es";
+
   if (lead.type === "visit") {
-    return lead.listingSlug ? `Visit request: ${lead.listingSlug}` : "Visit request";
+    if (lead.listingSlug) {
+      return es
+        ? `Solicitud de visita: ${lead.listingSlug}`
+        : `Visit request: ${lead.listingSlug}`;
+    }
+    return es ? "Solicitud de visita" : "Visit request";
   }
-  if (lead.type === "sell-with-us") return "Sell with Zenith";
-  if (lead.type === "newsletter") return "Newsletter signup";
-  return "Website inquiry";
+
+  if (lead.type === "sell-with-us") {
+    return es ? "Vender con Zenith" : "Sell with Zenith";
+  }
+
+  if (lead.type === "newsletter") {
+    return es ? "Suscripción al boletín" : "Newsletter signup";
+  }
+
+  return es ? `Nuevo contacto: ${lead.name}` : `New contact: ${lead.name}`;
 }
 
 function textFor(lead: Lead) {

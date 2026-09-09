@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
+import { getSessionEmail } from "@/lib/auth";
 import { sendLeadEmail } from "@/lib/mail";
-import { addLead } from "@/lib/store";
+import { addLead, clearLeads } from "@/lib/store";
 import type { Lead } from "@/lib/types";
 
 const LEAD_TYPES: Lead["type"][] = ["contact", "visit", "sell-with-us", "newsletter"];
@@ -48,4 +49,12 @@ export async function POST(request: Request) {
   }
 
   return NextResponse.json({ ok: true, id: lead.id });
+}
+
+export async function DELETE() {
+  if (!(await getSessionEmail())) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+  await clearLeads();
+  return NextResponse.json({ ok: true });
 }

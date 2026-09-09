@@ -29,7 +29,7 @@ export default async function AdminHomePage() {
           <p className="text-[11px] tracking-[0.18em] uppercase text-sand-deep">Blog posts</p>
           <p className="font-serif mt-2 text-4xl">{posts.length}</p>
         </Link>
-        <Link href="/admin/pages" className="border border-sand-soft bg-cream p-6">
+        <Link href="/admin/leads" className="border border-sand-soft bg-cream p-6">
           <p className="text-[11px] tracking-[0.18em] uppercase text-sand-deep">Leads</p>
           <p className="font-serif mt-2 text-4xl">{db.leads.length}</p>
         </Link>

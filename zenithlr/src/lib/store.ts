@@ -218,6 +218,11 @@ export async function reorderReviews(ids: string[]) {
   return db.reviews;
 }
 
+export async function getAllLeads() {
+  const db = await readDb();
+  return db.leads;
+}
+
 export async function addLead(lead: Omit<Lead, "id" | "createdAt">) {
   const db = await readDb();
   const entry: Lead = {
@@ -228,6 +233,18 @@ export async function addLead(lead: Omit<Lead, "id" | "createdAt">) {
   db.leads.unshift(entry);
   await writeDb(db);
   return entry;
+}
+
+export async function deleteLead(id: string) {
+  const db = await readDb();
+  db.leads = db.leads.filter((lead) => lead.id !== id);
+  await writeDb(db);
+}
+
+export async function clearLeads() {
+  const db = await readDb();
+  db.leads = [];
+  await writeDb(db);
 }
 
 export function uniqueValues(listings: Listing[]) {
