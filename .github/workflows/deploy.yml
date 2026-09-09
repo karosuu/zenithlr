@@ -98,11 +98,11 @@ jobs:
               OLD_LOCK="$(sha256sum package-lock.json | awk '{print $1}')"
             fi
 
-            rm -rf .next
+            # Do NOT rm -rf .next before extract. On this host Passenger often keeps the
+            # old worker alive; wiping hashed chunks makes listing/admin JS return 500.
             tar -xzf /tmp/zenith-deploy.tar.gz
             rm -f /tmp/zenith-deploy.tar.gz
 
-            # Never let a pack overwrite live content
             if [ -f data/db.json.bak ] && [ ! -f data/db.json ]; then
               cp -a data/db.json.bak data/db.json
               echo "Restored data/db.json from backup"
@@ -130,12 +130,15 @@ jobs:
             mkdir -p tmp
             date -u +%Y-%m-%dT%H:%M:%SZ > tmp/restart.txt
             touch server.js
+            # Passenger restart hint used by some cPanel setups
+            touch tmp/restart.txt
 
-            # cPanel/CloudLinux: touch restart.txt alone often leaves the old Node worker alive
+            # Longer stop/start: short restarts often leave the old worker alive on TMDHosting
             if command -v cloudlinux-selector >/dev/null 2>&1; then
               cloudlinux-selector stop --json --interpreter nodejs --app-root "$DEPLOY_PATH" || true
-              sleep 2
+              sleep 5
               cloudlinux-selector start --json --interpreter nodejs --app-root "$DEPLOY_PATH" || true
+              sleep 2
               cloudlinux-selector restart --json --interpreter nodejs --app-root "$DEPLOY_PATH" || true
             fi
 
