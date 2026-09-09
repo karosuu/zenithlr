@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Outfit } from "next/font/google";
+import { ZENITH_CSS } from "@/lib/zenith-css-content";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -43,8 +44,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       data-scroll-behavior="smooth"
     >
       <head>
-        {/* Stable CSS via API route — TMDHosting/LiteSpeed often 404s public *.css */}
-        <link rel="stylesheet" href="/api/site-css" />
+        {/* Inline CSS: TMDHosting often fails to serve /_next/static/css and public *.css */}
+        <style
+          id="zenith-inline-css"
+          dangerouslySetInnerHTML={{ __html: ZENITH_CSS }}
+        />
       </head>
       <body className="min-h-full bg-paper text-ink">{children}</body>
     </html>
