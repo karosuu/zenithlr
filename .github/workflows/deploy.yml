@@ -93,6 +93,11 @@ jobs:
               echo "Backed up data/db.json"
             fi
 
+            OLD_LOCK=""
+            if [ -f package-lock.json ]; then
+              OLD_LOCK="$(sha256sum package-lock.json | awk '{print $1}')"
+            fi
+
             rm -rf .next
             tar -xzf /tmp/zenith-deploy.tar.gz
             rm -f /tmp/zenith-deploy.tar.gz
@@ -103,12 +108,24 @@ jobs:
               echo "Restored data/db.json from backup"
             fi
 
+            NEW_LOCK=""
+            if [ -f package-lock.json ]; then
+              NEW_LOCK="$(sha256sum package-lock.json | awk '{print $1}')"
+            fi
+
             # CloudLinux activate references unset vars; nounset must be off while sourcing.
             set +u
             # shellcheck source=/dev/null
             source "$NODEVENV"
             set -u
-            npm install --omit=dev
+
+            # Shared hosting often SIGABRTs npm install. Skip when lockfile is unchanged.
+            if [ ! -d node_modules ] || [ "$OLD_LOCK" != "$NEW_LOCK" ]; then
+              echo "Running npm install --omit=dev (lockfile changed or node_modules missing)"
+              npm install --omit=dev --no-audit --no-fund --maxsockets 1
+            else
+              echo "Skipping npm install (package-lock.json unchanged)"
+            fi
 
             mkdir -p tmp
             date -u +%Y-%m-%dT%H:%M:%SZ > tmp/restart.txt
