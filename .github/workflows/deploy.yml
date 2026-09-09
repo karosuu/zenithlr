@@ -78,97 +78,132 @@ jobs:
           echo "Upload failed after retries"
           exit 1
 
+      # Same host often cannot fork after SCP (CloudLinux nproc). A login SSH
+      # shell sources /etc/profile.d and burns the remaining process slots.
       - name: Extract, install, and restart
-        uses: appleboy/ssh-action@v1.2.0
+        working-directory: ${{ github.workspace }}
         env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SSH_PORT: ${{ secrets.SSH_PORT }}
           DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
           NODEVENV: ${{ secrets.NODEVENV }}
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: ${{ secrets.SSH_PORT }}
-          envs: DEPLOY_PATH,NODEVENV
-          script: |
-            set -euo pipefail
+        run: |
+          set -euo pipefail
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          umask 077
+          printf '%s\n' "$SSH_PRIVATE_KEY" | sed 's/\r$//' > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          PORT="${SSH_PORT:-22}"
 
-            if [ -z "${DEPLOY_PATH:-}" ]; then
-              echo "DEPLOY_PATH secret is empty"
-              exit 1
+          if [ -z "${DEPLOY_PATH:-}" ]; then
+            echo "DEPLOY_PATH secret is empty"
+            exit 1
+          fi
+          if [ -z "${NODEVENV:-}" ]; then
+            echo "NODEVENV secret is empty"
+            exit 1
+          fi
+
+          cat > /tmp/remote-deploy.sh <<'REMOTE'
+          set -euo pipefail
+
+          if [ ! -f /tmp/zenith-deploy.tar.gz ]; then
+            echo "Missing /tmp/zenith-deploy.tar.gz"
+            exit 1
+          fi
+          if [ ! -d "$DEPLOY_PATH" ]; then
+            echo "DEPLOY_PATH does not exist: $DEPLOY_PATH"
+            exit 1
+          fi
+          if [ ! -f "$NODEVENV" ]; then
+            echo "NODEVENV activate script not found: $NODEVENV"
+            exit 1
+          fi
+
+          cd "$DEPLOY_PATH"
+
+          mkdir -p data
+          if [ -f data/db.json ]; then
+            cp -a data/db.json data/db.json.bak
+            echo "Backed up data/db.json"
+          fi
+
+          rm -f /tmp/zenith-lock.prev
+          if [ -f package-lock.json ]; then
+            cp -a package-lock.json /tmp/zenith-lock.prev
+          fi
+
+          # Do NOT rm -rf .next before extract. On this host Passenger often keeps the
+          # old worker alive; wiping hashed chunks makes listing/admin JS return 500.
+          tar -xzf /tmp/zenith-deploy.tar.gz
+
+          if [ -f data/db.json.bak ] && [ ! -f data/db.json ]; then
+            cp -a data/db.json.bak data/db.json
+            echo "Restored data/db.json from backup"
+          fi
+
+          LOCK_CHANGED=1
+          if [ -d node_modules ] && [ -f /tmp/zenith-lock.prev ] && [ -f package-lock.json ] \
+            && cmp -s /tmp/zenith-lock.prev package-lock.json; then
+            LOCK_CHANGED=0
+          fi
+          rm -f /tmp/zenith-lock.prev
+
+          # CloudLinux activate references unset vars; nounset must be off while sourcing.
+          set +u
+          # shellcheck source=/dev/null
+          source "$NODEVENV"
+          set -u
+
+          # Shared hosting often SIGABRTs npm install. Skip when lockfile is unchanged.
+          if [ "$LOCK_CHANGED" -eq 1 ]; then
+            echo "Running npm install --omit=dev (lockfile changed or node_modules missing)"
+            npm install --omit=dev --no-audit --no-fund --maxsockets 1
+          else
+            echo "Skipping npm install (package-lock.json unchanged)"
+          fi
+
+          mkdir -p tmp
+          date -u +%Y-%m-%dT%H:%M:%SZ > tmp/restart.txt
+          touch server.js
+          touch tmp/restart.txt
+
+          if command -v cloudlinux-selector >/dev/null 2>&1; then
+            cloudlinux-selector stop --json --interpreter nodejs --app-root "$DEPLOY_PATH" || true
+            sleep 5
+            cloudlinux-selector start --json --interpreter nodejs --app-root "$DEPLOY_PATH" || true
+            sleep 2
+            cloudlinux-selector restart --json --interpreter nodejs --app-root "$DEPLOY_PATH" || true
+          fi
+
+          rm -f /tmp/zenith-deploy.tar.gz
+          echo "BUILD_ID=$(cat .next/BUILD_ID 2>/dev/null || echo missing)"
+          echo "Deploy complete at $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          REMOTE
+
+          echo "Waiting for CloudLinux process slots after SCP..."
+          sleep 20
+
+          i=1
+          while [ "$i" -le 6 ]; do
+            echo "Remote deploy attempt $i"
+            if ssh -p "$PORT" -i ~/.ssh/deploy_key \
+              -o IdentitiesOnly=yes \
+              -o StrictHostKeyChecking=accept-new \
+              -o ConnectTimeout=30 \
+              -o ServerAliveInterval=15 \
+              "${SSH_USERNAME}@${SSH_HOST}" \
+              "export DEPLOY_PATH=$(printf '%q' "$DEPLOY_PATH"); export NODEVENV=$(printf '%q' "$NODEVENV"); bash --noprofile --norc -s" \
+              < /tmp/remote-deploy.sh; then
+              echo "Remote deploy succeeded on attempt $i"
+              exit 0
             fi
-            if [ -z "${NODEVENV:-}" ]; then
-              echo "NODEVENV secret is empty"
-              exit 1
-            fi
-            if [ ! -f /tmp/zenith-deploy.tar.gz ]; then
-              echo "Missing /tmp/zenith-deploy.tar.gz"
-              exit 1
-            fi
-            if [ ! -d "$DEPLOY_PATH" ]; then
-              echo "DEPLOY_PATH does not exist: $DEPLOY_PATH"
-              exit 1
-            fi
-            if [ ! -f "$NODEVENV" ]; then
-              echo "NODEVENV activate script not found: $NODEVENV"
-              exit 1
-            fi
-
-            cd "$DEPLOY_PATH"
-
-            mkdir -p data
-            if [ -f data/db.json ]; then
-              cp -a data/db.json data/db.json.bak
-              echo "Backed up data/db.json"
-            fi
-
-            OLD_LOCK=""
-            if [ -f package-lock.json ]; then
-              OLD_LOCK="$(sha256sum package-lock.json | awk '{print $1}')"
-            fi
-
-            # Do NOT rm -rf .next before extract. On this host Passenger often keeps the
-            # old worker alive; wiping hashed chunks makes listing/admin JS return 500.
-            tar -xzf /tmp/zenith-deploy.tar.gz
-            rm -f /tmp/zenith-deploy.tar.gz
-
-            if [ -f data/db.json.bak ] && [ ! -f data/db.json ]; then
-              cp -a data/db.json.bak data/db.json
-              echo "Restored data/db.json from backup"
-            fi
-
-            NEW_LOCK=""
-            if [ -f package-lock.json ]; then
-              NEW_LOCK="$(sha256sum package-lock.json | awk '{print $1}')"
-            fi
-
-            # CloudLinux activate references unset vars; nounset must be off while sourcing.
-            set +u
-            # shellcheck source=/dev/null
-            source "$NODEVENV"
-            set -u
-
-            # Shared hosting often SIGABRTs npm install. Skip when lockfile is unchanged.
-            if [ ! -d node_modules ] || [ "$OLD_LOCK" != "$NEW_LOCK" ]; then
-              echo "Running npm install --omit=dev (lockfile changed or node_modules missing)"
-              npm install --omit=dev --no-audit --no-fund --maxsockets 1
-            else
-              echo "Skipping npm install (package-lock.json unchanged)"
-            fi
-
-            mkdir -p tmp
-            date -u +%Y-%m-%dT%H:%M:%SZ > tmp/restart.txt
-            touch server.js
-            # Passenger restart hint used by some cPanel setups
-            touch tmp/restart.txt
-
-            # Longer stop/start: short restarts often leave the old worker alive on TMDHosting
-            if command -v cloudlinux-selector >/dev/null 2>&1; then
-              cloudlinux-selector stop --json --interpreter nodejs --app-root "$DEPLOY_PATH" || true
-              sleep 5
-              cloudlinux-selector start --json --interpreter nodejs --app-root "$DEPLOY_PATH" || true
-              sleep 2
-              cloudlinux-selector restart --json --interpreter nodejs --app-root "$DEPLOY_PATH" || true
-            fi
-
-            echo "BUILD_ID=$(cat .next/BUILD_ID 2>/dev/null || echo missing)"
-            echo "Deploy complete at $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            echo "Remote deploy attempt $i failed"
+            i=$((i + 1))
+            sleep $((i * 12))
+          done
+          echo "Remote deploy failed after retries"
+          exit 1
