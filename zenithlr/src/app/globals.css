@@ -1,0 +1,151 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-sand: #dcc9a5;
+  --color-sand-soft: #e8dfd0;
+  --color-sand-deep: #a89070;
+  --color-gold: #b9842d;
+  --color-ink: #0d0d0d;
+  --color-paper: #faf7f2;
+  --color-cream: #ffffff;
+  --font-sans: var(--font-outfit);
+  --font-serif: var(--font-cormorant);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans), sans-serif;
+}
+
+::selection {
+  background: var(--color-sand);
+  color: var(--color-ink);
+}
+
+.font-serif {
+  font-family: var(--font-serif), serif;
+}
+
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+.admin-input {
+  width: 100%;
+  border: 1px solid #e8dfd0;
+  background: #fff;
+  padding: 0.7rem 0.85rem;
+  color: #0d0d0d;
+  outline: none;
+}
+
+.admin-input:focus {
+  border-color: #dcc9a5;
+}
+
+@keyframes hero-kenburns {
+  from {
+    transform: scale(1.14);
+    opacity: 0;
+  }
+  18% {
+    opacity: 1;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-image-fx {
+  animation: hero-kenburns 16s ease-out both;
+}
+
+.hero-overlay-fx {
+  animation: hero-fade-up 1.1s ease-out 0.35s both;
+}
+
+@keyframes page-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.page-fade {
+  animation: page-fade 0.35s ease-out both;
+}
+
+.hero-intro-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-ink);
+  pointer-events: none;
+}
+
+.hero-intro-overlay.is-leaving {
+  animation: hero-intro-out 0.7s ease-out forwards;
+}
+
+@keyframes hero-intro-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-image-fx,
+  .hero-overlay-fx,
+  .page-fade {
+    animation: none;
+  }
+
+  .hero-intro-overlay,
+  .hero-intro-overlay.is-leaving {
+    display: none;
+    animation: none;
+  }
+}
+
+.about-gold-panel {
+  position: relative;
+  background-color: var(--color-gold);
+  color: #fff;
+}
+
+.about-gold-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyAgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA2KSIgaGVpZ2h0PSIxNjBweCIgd2lkdGg9IjgwcHgiIHZpZXdCb3g9IjAgMCA4MCAxNjAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTQxLjEyLDQwLDUzLDE2LjI4LDYwLjYyLDFIODBWMEg1OC44OEw0MCwzNy43NiwyMS4xMiwwSDBWMUgxOS4zOEwyNywxNi4yOCwzOC44OCw0MCwxOS4zOCw3OUgwdjJIMTkuMzhsMTkuNSwzOS0xOS41LDM5SDB2MUgyMS4xMkw0MCwxMjIuMjQsNTguODgsMTYwSDgwdi0xSDYwLjYybC0xOS41LTM5LDE5LjUtMzlIODBWNzlINjAuNjJaTTQwLDExNy43NiwyMS4xMiw4MCw0MCw0Mi4yNCw1OC44OCw4MFoiLz48L3N2Zz4=");
+  background-size: 80px 160px;
+}

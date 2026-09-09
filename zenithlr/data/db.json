@@ -1,0 +1,3454 @@
+{
+  "agents": [
+    {
+      "id": "bernal",
+      "name": "Bernal Alvarado",
+      "role": {
+        "en": "Luxury Real Estate Broker",
+        "es": "Corredor de bienes raíces de lujo"
+      },
+      "phone": "+506 7107-0803",
+      "whatsapp": "50671070803",
+      "email": "management@zenithlr.com",
+      "photo": "/team/bernal.jpg",
+      "bio": {
+        "en": "Bernal has built a steadily growing career, integrating commercial strategy, financial analysis, and high-impact marketing to connect premium properties with international buyers.",
+        "es": "Bernal ha construido una carrera en crecimiento, integrando estrategia comercial, análisis financiero y marketing de alto impacto para conectar propiedades premium con compradores internacionales."
+      }
+    },
+    {
+      "id": "harold",
+      "name": "Harold Springer",
+      "role": {
+        "en": "Coastal & Investment Advisor",
+        "es": "Asesor de costa e inversiones"
+      },
+      "phone": "+506 6294-2112",
+      "whatsapp": "50662942112",
+      "email": "management@zenithlr.com",
+      "photo": "/team/harold.jpg",
+      "bio": {
+        "en": "With more than 8 years of experience, Harold specializes in beach properties, luxury developments, and investment opportunities in Costa Rica and Nicaragua.",
+        "es": "Con más de 8 años de experiencia, Harold se especializa en propiedades de playa, desarrollos de lujo y oportunidades de inversión en Costa Rica y Nicaragua."
+      }
+    }
+  ],
+  "pages": {
+    "home": {
+      "eyebrow": {
+        "en": "Real Estate",
+        "es": "Bienes raíces"
+      },
+      "title": {
+        "en": "Let’s find the best property for you",
+        "es": "Encontrémos la mejor propiedad para ti"
+      },
+      "subtitle": {
+        "en": "Luxury residences, discreet representation, and a team that stays with you after closing.",
+        "es": "Residencias de lujo, representación discreta y un equipo que sigue contigo después del cierre."
+      },
+      "cta": {
+        "en": "Explore properties",
+        "es": "Ver propiedades"
+      },
+      "featuredEyebrow": {
+        "en": "Properties",
+        "es": "Propiedades"
+      },
+      "featuredTitle": {
+        "en": "Featured properties",
+        "es": "Propiedades destacadas"
+      },
+      "reviewsTitle": {
+        "en": "Reviews",
+        "es": "Reseñas"
+      },
+      "newsletterTitle": {
+        "en": "Sign up to our Newsletter",
+        "es": "Suscríbete a nuestro boletín"
+      },
+      "newsletterSuccess": {
+        "en": "Success!",
+        "es": "¡Listo!"
+      },
+      "heroVideo": {
+        "en": "https://youtu.be/FGb7tWmhO7o",
+        "es": "https://youtu.be/FGb7tWmhO7o"
+      },
+      "affiliationsTitle": {
+        "en": "Affiliations",
+        "es": "Afiliaciones"
+      }
+    },
+    "rent": {
+      "eyebrow": {
+        "en": "Rent",
+        "es": "Renta"
+      },
+      "title": {
+        "en": "Selected homes for rent",
+        "es": "Hogares seleccionados en renta"
+      },
+      "subtitle": {
+        "en": "A curated portfolio for those who want to live Costa Rica with comfort and discretion.",
+        "es": "Un portafolio curado para quienes quieren vivir Costa Rica con comodidad y discreción."
+      },
+      "heroImage": {
+        "en": "/heroes/sell-hero.png",
+        "es": "/heroes/sell-hero.png"
+      }
+    },
+    "sell": {
+      "eyebrow": {
+        "en": "Sell",
+        "es": "Venta"
+      },
+      "title": {
+        "en": "Properties for sale",
+        "es": "Propiedades en venta"
+      },
+      "subtitle": {
+        "en": "Welcome to our portfolio of selected properties. We are one step closer to making your higher life a reality.",
+        "es": "Bienvenido a nuestro portafolio de propiedades seleccionadas. Estamos un paso más cerca de hacer realidad tu mejor vida."
+      },
+      "ctaTitle": {
+        "en": "Sell with Zenith",
+        "es": "Vende con Zenith"
+      },
+      "ctaBody": {
+        "en": "Let’s work on your vision, so we can make it happen. Are you ready to start the journey?",
+        "es": "Trabajemos en tu visión para hacerla realidad. ¿Estás listo para comenzar el camino?"
+      },
+      "heroImage": {
+        "en": "/heroes/sell-hero.png",
+        "es": "/heroes/sell-hero.png"
+      },
+      "heroCta": {
+        "en": "View properties",
+        "es": "Ver propiedades"
+      }
+    },
+    "about": {
+      "eyebrow": {
+        "en": "About",
+        "es": "Nosotros"
+      },
+      "title": {
+        "en": "A boutique firm for a higher standard",
+        "es": "Una firma boutique para un estándar más alto"
+      },
+      "intro": {
+        "en": "At Zenith Luxury Realty a property is more than real estate. It is an investment, a legacy, and a way of living.",
+        "es": "En Zenith Luxury Realty una propiedad es más que un inmueble. Es una inversión, un legado y un estilo de vida."
+      },
+      "missionTitle": {
+        "en": "Mission",
+        "es": "Misión"
+      },
+      "mission": {
+        "en": "To elevate the standard of real estate service in Costa Rica by representing properties, investments, and clients with excellence, integrity, and commitment.",
+        "es": "Elevar el estándar del servicio inmobiliario en Costa Rica representando propiedades, inversiones y clientes con excelencia, integridad y compromiso."
+      },
+      "visionTitle": {
+        "en": "Vision",
+        "es": "Visión"
+      },
+      "vision": {
+        "en": "To become a leading real estate firm in Costa Rica, recognized for elevating the standard of service and generating long-term value for clients and investors.",
+        "es": "Convertirnos en una firma inmobiliaria líder en Costa Rica, reconocida por elevar el estándar de servicio y generar valor a largo plazo para clientes e inversionistas."
+      },
+      "valuesTitle": {
+        "en": "Values",
+        "es": "Valores"
+      },
+      "value1Title": {
+        "en": "Excellence",
+        "es": "Excelencia"
+      },
+      "value1Body": {
+        "en": "Every detail of the process is handled with precision and care.",
+        "es": "Cada detalle del proceso se cuida con precisión y atención."
+      },
+      "value2Title": {
+        "en": "Integrity",
+        "es": "Integridad"
+      },
+      "value2Body": {
+        "en": "We protect our clients’ interests with transparency.",
+        "es": "Protegemos los intereses de nuestros clientes con transparencia."
+      },
+      "value3Title": {
+        "en": "Commitment",
+        "es": "Compromiso"
+      },
+      "value3Body": {
+        "en": "The relationship continues after the keys are handed over.",
+        "es": "La relación continúa después de entregar las llaves."
+      },
+      "bernalTitle": {
+        "en": "Bernal Alvarado",
+        "es": "Bernal Alvarado"
+      },
+      "bernalBody": {
+        "en": "Bernal has built a steadily growing career that combines commercial strategy, financial analysis, and high-impact marketing to connect premium properties with international buyers. With a Bachelor’s in Business Administration and training in financial markets, he brings a strong investment perspective to every transaction.\n\nA CILA Jóvenes delegate and luxury real estate broker, his experience in the stock market and portfolio structuring gives him a distinctive edge when advising clients who want to build wealth strategically. He is certified in Luxury Homes by the Residential Real Estate Council and active in Costa Rica’s institutional sector through the Costa Rican Chamber of Real Estate Brokers (CCCBR).\n\nWith more than two million dollars in recent sales volume, he is known for his negotiation skills and positioning in Escazú and Santa Ana. Strategic, analytical, and results-oriented, Bernal represents a new generation of leaders who connect investment, markets, and opportunity in Latin America.",
+        "es": "Bernal ha construido una trayectoria en constante crecimiento, integrando estrategia comercial, análisis financiero y marketing de alto impacto para conectar propiedades premium con compradores internacionales. Bachiller en Administración de Negocios, con formación en mercados financieros, aporta una sólida visión de inversión en cada operación.\n\nDelegado de CILA Jóvenes y corredor de bienes raíces de lujo, su experiencia en bolsa y estructuración de portafolios le da una ventaja al asesorar a clientes que buscan construir patrimonio de manera estratégica. Está certificado en Luxury Homes por el Residential Real Estate Council y participa en el sector institucional a través de la Cámara Costarricense de Corredores de Bienes Raíces (CCCBR).\n\nCon más de dos millones de dólares en volumen de ventas en los últimos años, se destaca por su capacidad de negociación y su posicionamiento en Escazú y Santa Ana. Estratégico, analítico y orientado a resultados, Bernal representa una nueva generación de líderes que conectan inversión, mercado y oportunidades en América Latina."
+      },
+      "haroldTitle": {
+        "en": "Harold Springer",
+        "es": "Harold Springer"
+      },
+      "haroldBody": {
+        "en": "With more than 8 years of experience in real estate, Harold Springer has established himself as an advisor specialized in beach properties, luxury developments, and investment opportunities in Nicaragua and Costa Rica.\n\nHis career has allowed him to build deep knowledge of exclusive markets, connecting national and international clients with properties that represent a strategic investment, a lifestyle, and an opportunity for wealth growth.\n\nThrough a vision focused on excellence, transparency, and personalized service, Harold guides each client through the process of finding high-value properties in privileged locations with strong appreciation potential.",
+        "es": "Con más de 8 años de experiencia en el sector inmobiliario, Harold Springer se ha consolidado como asesor especializado en propiedades de playa, desarrollos de lujo y oportunidades de inversión en Nicaragua y Costa Rica.\n\nSu trayectoria le ha permitido construir un conocimiento profundo de mercados exclusivos, conectando a clientes nacionales e internacionales con propiedades que representan una inversión estratégica, un estilo de vida y una oportunidad de crecimiento patrimonial.\n\nCon una visión centrada en la excelencia, la transparencia y el servicio personalizado, Harold acompaña a cada cliente en la búsqueda de propiedades de alto valor en ubicaciones privilegiadas."
+      }
+    },
+    "contact": {
+      "eyebrow": {
+        "en": "Contact",
+        "es": "Contacto"
+      },
+      "title": {
+        "en": "Get in touch",
+        "es": "Conversemos"
+      },
+      "intro": {
+        "en": "Whether you are looking to rent, sell, or invest, our team is here with personalized support and trusted market expertise.",
+        "es": "Si buscas rentar, vender o invertir, nuestro equipo está aquí con acompañamiento personalizado y conocimiento real del mercado."
+      },
+      "formTitle": {
+        "en": "Send a message",
+        "es": "Envía un mensaje"
+      },
+      "formBody": {
+        "en": "Have a question or need more information? A member of our team will get back to you shortly.",
+        "es": "¿Tienes una pregunta o necesitas más información? Un miembro del equipo te responderá pronto."
+      },
+      "office": {
+        "en": "Escazú, San José, Costa Rica",
+        "es": "Escazú, San José, Costa Rica"
+      }
+    },
+    "blog": {
+      "eyebrow": {
+        "en": "Journal",
+        "es": "Bitácora"
+      },
+      "title": {
+        "en": "News & Updates",
+        "es": "Noticias y actualizaciones"
+      },
+      "empty": {
+        "en": "Articles will appear here soon. The team can publish them from the Zenith panel in English and Spanish.",
+        "es": "Los artículos aparecerán aquí pronto. El equipo puede publicarlos desde el panel de Zenith en inglés y español."
+      }
+    },
+    "reviews": {
+      "eyebrow": {
+        "en": "Reviews",
+        "es": "Reseñas"
+      },
+      "title": {
+        "en": "Client reviews",
+        "es": "Reseñas de clientes"
+      },
+      "intro": {
+        "en": "What clients say after buying, renting, or investing with Zenith Luxury Realty.",
+        "es": "Lo que dicen quienes han comprado, rentado o invertido con Zenith Luxury Realty."
+      },
+      "empty": {
+        "en": "Reviews will appear here as the team publishes them.",
+        "es": "Las reseñas aparecerán aquí cuando el equipo las publique."
+      }
+    },
+    "footer": {
+      "tagline": {
+        "en": "Elevating the standard of real estate in Costa Rica.",
+        "es": "Elevando el estándar de los bienes raíces en Costa Rica."
+      },
+      "rights": {
+        "en": "Copyright © 2026 Zenith Luxury Realty",
+        "es": "Copyright © 2026 Zenith Luxury Realty"
+      }
+    }
+  },
+  "listings": [
+    {
+      "id": "condominium-3-10",
+      "slug": "condominium-3-10",
+      "propertyId": "Condominio 3-10",
+      "status": "published",
+      "goals": [
+        "sell"
+      ],
+      "featured": true,
+      "agentId": "bernal",
+      "title": {
+        "en": "Condominium 3-10",
+        "es": "Condominio 3-10"
+      },
+      "location": "Guachipelin de Escazú",
+      "propertyType": "Home",
+      "price": 370000,
+      "pricePeriod": "sale",
+      "currency": "USD",
+      "bedrooms": 3,
+      "bathrooms": 2.5,
+      "constructionArea": 183,
+      "levels": 2,
+      "kitchen": 1,
+      "description": {
+        "en": "Lot Size: 212.6 m²\n\nConstruction Area: 183 m²\n\nBedrooms: 3\n\nBathrooms: 2.5\n\nOffice\n\nParking Spaces: 2\n\nLocated in Condominio 3-10, this property features a\n\nfully equipped kitchen, garden, balcony, air conditioning in the\n\nprimary bedroom, and provisions for an electric vehicle.",
+        "es": "Tamaño del lote: 212.6 m²\n\nÁrea de construcción: 183 m²\n\nHabitaciones: 3\n\nBaños: 2.5\n\nOficina\n\nEspacios de parqueo: 2\n\nUbicada en Condominio 3-10, esta propiedad cuenta con una\n\ncocina totalmente equipada, jardín, balcón, aire acondicionado en la\n\nhabitación principal y preparación para vehículo eléctrico."
+      },
+      "specialFeatures": {
+        "en": "",
+        "es": ""
+      },
+      "amenities": [
+        {
+          "en": "Swimming pools",
+          "es": "Piscinas"
+        },
+        {
+          "en": "Gym",
+          "es": "Gimnasio"
+        },
+        {
+          "en": "Coworking space",
+          "es": "Coworking"
+        },
+        {
+          "en": "Sauna",
+          "es": "Sauna"
+        },
+        {
+          "en": "Jacuzzi",
+          "es": "Jacuzzi"
+        },
+        {
+          "en": "Sports courts",
+          "es": "Canchas deportivas"
+        },
+        {
+          "en": "BBQ areas",
+          "es": "Zonas BBQ"
+        },
+        {
+          "en": "Pet park",
+          "es": "Parque para mascotas"
+        },
+        {
+          "en": "Mini market",
+          "es": "Minisúper"
+        },
+        {
+          "en": "24/7 security",
+          "es": "Seguridad 24/7"
+        }
+      ],
+      "faq": [],
+      "images": [
+        {
+          "id": "portada",
+          "url": "/listings/condominium-3-10/portada.webp",
+          "isCover": true,
+          "sortOrder": 0
+        },
+        {
+          "id": "img-01",
+          "url": "/listings/condominium-3-10/img-01.webp",
+          "isCover": false,
+          "sortOrder": 1
+        },
+        {
+          "id": "img-02",
+          "url": "/listings/condominium-3-10/img-02.webp",
+          "isCover": false,
+          "sortOrder": 2
+        },
+        {
+          "id": "img-03",
+          "url": "/listings/condominium-3-10/img-03.webp",
+          "isCover": false,
+          "sortOrder": 3
+        },
+        {
+          "id": "img-04",
+          "url": "/listings/condominium-3-10/img-04.webp",
+          "isCover": false,
+          "sortOrder": 4
+        },
+        {
+          "id": "img-05",
+          "url": "/listings/condominium-3-10/img-05.webp",
+          "isCover": false,
+          "sortOrder": 5
+        },
+        {
+          "id": "img-06",
+          "url": "/listings/condominium-3-10/img-06.webp",
+          "isCover": false,
+          "sortOrder": 6
+        },
+        {
+          "id": "img-07",
+          "url": "/listings/condominium-3-10/img-07.webp",
+          "isCover": false,
+          "sortOrder": 7
+        },
+        {
+          "id": "img-08",
+          "url": "/listings/condominium-3-10/img-08.webp",
+          "isCover": false,
+          "sortOrder": 8
+        },
+        {
+          "id": "img-09",
+          "url": "/listings/condominium-3-10/img-09.webp",
+          "isCover": false,
+          "sortOrder": 9
+        },
+        {
+          "id": "img-10",
+          "url": "/listings/condominium-3-10/img-10.webp",
+          "isCover": false,
+          "sortOrder": 10
+        },
+        {
+          "id": "img-11",
+          "url": "/listings/condominium-3-10/img-11.webp",
+          "isCover": false,
+          "sortOrder": 11
+        },
+        {
+          "id": "img-12",
+          "url": "/listings/condominium-3-10/img-12.webp",
+          "isCover": false,
+          "sortOrder": 12
+        },
+        {
+          "id": "img-13",
+          "url": "/listings/condominium-3-10/img-13.webp",
+          "isCover": false,
+          "sortOrder": 13
+        },
+        {
+          "id": "img-14",
+          "url": "/listings/condominium-3-10/img-14.webp",
+          "isCover": false,
+          "sortOrder": 14
+        },
+        {
+          "id": "img-15",
+          "url": "/listings/condominium-3-10/img-15.webp",
+          "isCover": false,
+          "sortOrder": 15
+        },
+        {
+          "id": "img-16",
+          "url": "/listings/condominium-3-10/img-16.webp",
+          "isCover": false,
+          "sortOrder": 16
+        },
+        {
+          "id": "img-17",
+          "url": "/listings/condominium-3-10/img-17.webp",
+          "isCover": false,
+          "sortOrder": 17
+        },
+        {
+          "id": "img-18",
+          "url": "/listings/condominium-3-10/img-18.webp",
+          "isCover": false,
+          "sortOrder": 18
+        },
+        {
+          "id": "img-19",
+          "url": "/listings/condominium-3-10/img-19.webp",
+          "isCover": false,
+          "sortOrder": 19
+        },
+        {
+          "id": "img-20",
+          "url": "/listings/condominium-3-10/img-20.webp",
+          "isCover": false,
+          "sortOrder": 20
+        },
+        {
+          "id": "img-21",
+          "url": "/listings/condominium-3-10/img-21.webp",
+          "isCover": false,
+          "sortOrder": 21
+        }
+      ]
+    },
+    {
+      "id": "condominio-riverside",
+      "slug": "condominio-riverside",
+      "propertyId": "Riverside 122",
+      "status": "published",
+      "goals": [
+        "sell"
+      ],
+      "featured": false,
+      "agentId": "bernal",
+      "title": {
+        "en": "Condominium Riverside",
+        "es": "Condominio Riverside"
+      },
+      "location": "Escazú",
+      "propertyType": "Apartment",
+      "price": 285000,
+      "pricePeriod": "sale",
+      "currency": "USD",
+      "bedrooms": 3,
+      "bathrooms": 2.5,
+      "constructionArea": 188,
+      "lotArea": 1,
+      "levels": 1,
+      "kitchen": 1,
+      "description": {
+        "en": "Spaciousness, comfort, and an excellent layout come together in\n\nthis 188 m² apartment, located in one of the most sought-after\n\nareas of Escazú.\n\nSale Price: $285,000\n\n3 bedrooms\n\n1 office\n\n2.5 bathrooms\n\nSpacious living and dining area\n\nKitchen\n\nLaundry area\n\nPantry\n\n2 balconies\n\n2 parking spaces\n\n1 storage unit\n\n188 m² of construction\n\nAn excellent opportunity to live or invest in Riverside.",
+        "es": "Espacio, comodidad y una excelente distribución se unen en\n\neste apartamento de 188 m², ubicado en una de las zonas más\n\ncotizadas de Escazú.\n\nPrecio de venta: $285,000\n\n3 habitaciones\n\n1 oficina\n\n2.5 baños\n\nEspaciosa sala y comedor\n\nCocina\n\nÁrea de lavandería\n\nDespensa\n\n2 balcones\n\n2 espacios de parqueo\n\n1 bodega\n\n188 m² de construcción\n\nUna excelente oportunidad para vivir o invertir en Riverside."
+      },
+      "specialFeatures": {
+        "en": "Riverside offers an excellent selection of amenities designed to provide comfort, wellness, and entertainment for its residents.",
+        "es": "Riverside ofrece una excelente selección de amenidades diseñadas para brindar comodidad, bienestar y entretenimiento a sus residentes."
+      },
+      "amenities": [
+        {
+          "en": "Children's playground",
+          "es": "Área de juegos infantiles"
+        },
+        {
+          "en": "Swimming pool",
+          "es": "Piscina"
+        },
+        {
+          "en": "Jacuzzi",
+          "es": "Jacuzzi"
+        },
+        {
+          "en": "Sauna",
+          "es": "Sauna"
+        },
+        {
+          "en": "Gym",
+          "es": "Gimnasio"
+        },
+        {
+          "en": "Shopping center with a mini market, beauty salons, veterinary clinic, and other services",
+          "es": "Centro comercial con minisúper, salones de belleza, clínica veterinaria y otros servicios"
+        }
+      ],
+      "faq": [],
+      "images": [
+        {
+          "id": "portada",
+          "url": "/listings/condominio-riverside/portada.webp",
+          "isCover": true,
+          "sortOrder": 0
+        },
+        {
+          "id": "img-01",
+          "url": "/listings/condominio-riverside/img-01.webp",
+          "isCover": false,
+          "sortOrder": 1
+        },
+        {
+          "id": "img-02",
+          "url": "/listings/condominio-riverside/img-02.webp",
+          "isCover": false,
+          "sortOrder": 2
+        },
+        {
+          "id": "img-03",
+          "url": "/listings/condominio-riverside/img-03.webp",
+          "isCover": false,
+          "sortOrder": 3
+        },
+        {
+          "id": "img-04",
+          "url": "/listings/condominio-riverside/img-04.webp",
+          "isCover": false,
+          "sortOrder": 4
+        },
+        {
+          "id": "img-05",
+          "url": "/listings/condominio-riverside/img-05.webp",
+          "isCover": false,
+          "sortOrder": 5
+        },
+        {
+          "id": "img-06",
+          "url": "/listings/condominio-riverside/img-06.webp",
+          "isCover": false,
+          "sortOrder": 6
+        },
+        {
+          "id": "img-07",
+          "url": "/listings/condominio-riverside/img-07.webp",
+          "isCover": false,
+          "sortOrder": 7
+        },
+        {
+          "id": "img-08",
+          "url": "/listings/condominio-riverside/img-08.webp",
+          "isCover": false,
+          "sortOrder": 8
+        },
+        {
+          "id": "img-09",
+          "url": "/listings/condominio-riverside/img-09.webp",
+          "isCover": false,
+          "sortOrder": 9
+        },
+        {
+          "id": "img-10",
+          "url": "/listings/condominio-riverside/img-10.webp",
+          "isCover": false,
+          "sortOrder": 10
+        },
+        {
+          "id": "img-11",
+          "url": "/listings/condominio-riverside/img-11.webp",
+          "isCover": false,
+          "sortOrder": 11
+        },
+        {
+          "id": "img-12",
+          "url": "/listings/condominio-riverside/img-12.webp",
+          "isCover": false,
+          "sortOrder": 12
+        },
+        {
+          "id": "img-13",
+          "url": "/listings/condominio-riverside/img-13.webp",
+          "isCover": false,
+          "sortOrder": 13
+        },
+        {
+          "id": "img-14",
+          "url": "/listings/condominio-riverside/img-14.webp",
+          "isCover": false,
+          "sortOrder": 14
+        },
+        {
+          "id": "img-15",
+          "url": "/listings/condominio-riverside/img-15.webp",
+          "isCover": false,
+          "sortOrder": 15
+        },
+        {
+          "id": "img-16",
+          "url": "/listings/condominio-riverside/img-16.webp",
+          "isCover": false,
+          "sortOrder": 16
+        },
+        {
+          "id": "img-17",
+          "url": "/listings/condominio-riverside/img-17.webp",
+          "isCover": false,
+          "sortOrder": 17
+        },
+        {
+          "id": "img-18",
+          "url": "/listings/condominio-riverside/img-18.webp",
+          "isCover": false,
+          "sortOrder": 18
+        },
+        {
+          "id": "img-19",
+          "url": "/listings/condominio-riverside/img-19.webp",
+          "isCover": false,
+          "sortOrder": 19
+        },
+        {
+          "id": "img-20",
+          "url": "/listings/condominio-riverside/img-20.webp",
+          "isCover": false,
+          "sortOrder": 20
+        },
+        {
+          "id": "img-21",
+          "url": "/listings/condominio-riverside/img-21.webp",
+          "isCover": false,
+          "sortOrder": 21
+        },
+        {
+          "id": "img-22",
+          "url": "/listings/condominio-riverside/img-22.webp",
+          "isCover": false,
+          "sortOrder": 22
+        },
+        {
+          "id": "img-23",
+          "url": "/listings/condominio-riverside/img-23.webp",
+          "isCover": false,
+          "sortOrder": 23
+        },
+        {
+          "id": "img-24",
+          "url": "/listings/condominio-riverside/img-24.webp",
+          "isCover": false,
+          "sortOrder": 24
+        },
+        {
+          "id": "img-25",
+          "url": "/listings/condominio-riverside/img-25.webp",
+          "isCover": false,
+          "sortOrder": 25
+        },
+        {
+          "id": "img-26",
+          "url": "/listings/condominio-riverside/img-26.webp",
+          "isCover": false,
+          "sortOrder": 26
+        }
+      ]
+    },
+    {
+      "id": "condominio-en-central-park",
+      "slug": "condominio-en-central-park",
+      "propertyId": "121",
+      "status": "published",
+      "goals": [
+        "sell"
+      ],
+      "featured": false,
+      "agentId": "bernal",
+      "title": {
+        "en": "Condominium in Central Park",
+        "es": "Condominio en Central Park"
+      },
+      "location": "Escazú",
+      "propertyType": "Apartment",
+      "price": 980000,
+      "pricePeriod": "sale",
+      "currency": "USD",
+      "bedrooms": 3,
+      "bathrooms": 3.5,
+      "constructionArea": 332,
+      "lotArea": 2,
+      "levels": 1,
+      "kitchen": 1,
+      "serviceRoom": 1,
+      "maintenanceFee": 1024,
+      "description": {
+        "en": "Discover this elegant and sophisticated apartment, fully furnished,\n\nlocated in one of the most exclusive and convenient areas of Escazú.\n\nKey Features\n\n332 m² total area\n\n300 m² of living space\n\n16 m² of parking spaces\n\n16 m² storage room\n\n3 bedrooms\n\n3.5 bathrooms\n\n2 parking spaces\n\nFully furnished\n\nStaff quarters\n\n2 terraces: one open-air terrace and one enclosed\n\nglass terrace, ideal for enjoying and creating different living spaces.\n\nA space designed for those seeking\n\nspace, comfort, privacy, and a premium lifestyle\n\nin the heart of Escazú.",
+        "es": "Descubre este elegante y sofisticado apartamento, totalmente amueblado,\n\nubicado en una de las zonas más exclusivas y convenientes de Escazú.\n\nCaracterísticas principales\n\n332 m² de área total\n\n300 m² de área habitable\n\n16 m² de parqueos\n\n16 m² de bodega\n\n3 habitaciones\n\n3.5 baños\n\n2 espacios de parqueo\n\nTotalmente amueblado\n\nCuarto de servicio\n\n2 terrazas: una terraza al aire libre y una terraza\n\nacristalada, ideal para disfrutar y crear distintos espacios de vida.\n\nUn espacio pensado para quienes buscan\n\nespacio, comodidad, privacidad y un estilo de vida premium\n\nen el corazón de Escazú."
+      },
+      "specialFeatures": {
+        "en": "A space for those who value space, views, and quality of life.",
+        "es": "Un espacio para quienes valoran el espacio, las vistas y la calidad de vida."
+      },
+      "amenities": [
+        {
+          "en": "Swimming pools",
+          "es": "Piscinas"
+        },
+        {
+          "en": "Forest-style gardens",
+          "es": "Jardines estilo bosque"
+        },
+        {
+          "en": "Gym",
+          "es": "Gimnasio"
+        },
+        {
+          "en": "Sauna",
+          "es": "Sauna"
+        },
+        {
+          "en": "Jacuzzi",
+          "es": "Jacuzzi"
+        },
+        {
+          "en": "Tennis court",
+          "es": "Cancha de tenis"
+        },
+        {
+          "en": "BBQ area",
+          "es": "Zona BBQ"
+        },
+        {
+          "en": "Yoga area",
+          "es": "Área de yoga"
+        },
+        {
+          "en": "Playground",
+          "es": "Área de juegos infantiles"
+        },
+        {
+          "en": "Backup power generator",
+          "es": "Generador de respaldo"
+        },
+        {
+          "en": "Water tank",
+          "es": "Tanque de agua"
+        },
+        {
+          "en": "Guest parking",
+          "es": "Parqueo para visitas"
+        },
+        {
+          "en": "Pet friendly",
+          "es": "Apto para mascotas"
+        }
+      ],
+      "faq": [],
+      "images": [
+        {
+          "id": "portada",
+          "url": "/listings/condominio-en-central-park/portada.webp",
+          "isCover": true,
+          "sortOrder": 0
+        },
+        {
+          "id": "img-01",
+          "url": "/listings/condominio-en-central-park/img-01.webp",
+          "isCover": false,
+          "sortOrder": 1
+        },
+        {
+          "id": "img-02",
+          "url": "/listings/condominio-en-central-park/img-02.webp",
+          "isCover": false,
+          "sortOrder": 2
+        },
+        {
+          "id": "img-03",
+          "url": "/listings/condominio-en-central-park/img-03.webp",
+          "isCover": false,
+          "sortOrder": 3
+        },
+        {
+          "id": "img-04",
+          "url": "/listings/condominio-en-central-park/img-04.webp",
+          "isCover": false,
+          "sortOrder": 4
+        },
+        {
+          "id": "img-05",
+          "url": "/listings/condominio-en-central-park/img-05.webp",
+          "isCover": false,
+          "sortOrder": 5
+        },
+        {
+          "id": "img-06",
+          "url": "/listings/condominio-en-central-park/img-06.webp",
+          "isCover": false,
+          "sortOrder": 6
+        },
+        {
+          "id": "img-07",
+          "url": "/listings/condominio-en-central-park/img-07.webp",
+          "isCover": false,
+          "sortOrder": 7
+        },
+        {
+          "id": "img-08",
+          "url": "/listings/condominio-en-central-park/img-08.webp",
+          "isCover": false,
+          "sortOrder": 8
+        },
+        {
+          "id": "img-09",
+          "url": "/listings/condominio-en-central-park/img-09.webp",
+          "isCover": false,
+          "sortOrder": 9
+        },
+        {
+          "id": "img-10",
+          "url": "/listings/condominio-en-central-park/img-10.webp",
+          "isCover": false,
+          "sortOrder": 10
+        },
+        {
+          "id": "img-11",
+          "url": "/listings/condominio-en-central-park/img-11.webp",
+          "isCover": false,
+          "sortOrder": 11
+        },
+        {
+          "id": "img-12",
+          "url": "/listings/condominio-en-central-park/img-12.webp",
+          "isCover": false,
+          "sortOrder": 12
+        },
+        {
+          "id": "img-13",
+          "url": "/listings/condominio-en-central-park/img-13.webp",
+          "isCover": false,
+          "sortOrder": 13
+        },
+        {
+          "id": "img-14",
+          "url": "/listings/condominio-en-central-park/img-14.webp",
+          "isCover": false,
+          "sortOrder": 14
+        },
+        {
+          "id": "img-15",
+          "url": "/listings/condominio-en-central-park/img-15.webp",
+          "isCover": false,
+          "sortOrder": 15
+        },
+        {
+          "id": "img-16",
+          "url": "/listings/condominio-en-central-park/img-16.webp",
+          "isCover": false,
+          "sortOrder": 16
+        },
+        {
+          "id": "img-17",
+          "url": "/listings/condominio-en-central-park/img-17.webp",
+          "isCover": false,
+          "sortOrder": 17
+        },
+        {
+          "id": "img-18",
+          "url": "/listings/condominio-en-central-park/img-18.webp",
+          "isCover": false,
+          "sortOrder": 18
+        },
+        {
+          "id": "img-19",
+          "url": "/listings/condominio-en-central-park/img-19.webp",
+          "isCover": false,
+          "sortOrder": 19
+        },
+        {
+          "id": "img-20",
+          "url": "/listings/condominio-en-central-park/img-20.webp",
+          "isCover": false,
+          "sortOrder": 20
+        },
+        {
+          "id": "img-21",
+          "url": "/listings/condominio-en-central-park/img-21.webp",
+          "isCover": false,
+          "sortOrder": 21
+        },
+        {
+          "id": "img-22",
+          "url": "/listings/condominio-en-central-park/img-22.webp",
+          "isCover": false,
+          "sortOrder": 22
+        },
+        {
+          "id": "img-23",
+          "url": "/listings/condominio-en-central-park/img-23.webp",
+          "isCover": false,
+          "sortOrder": 23
+        },
+        {
+          "id": "img-24",
+          "url": "/listings/condominio-en-central-park/img-24.webp",
+          "isCover": false,
+          "sortOrder": 24
+        },
+        {
+          "id": "img-25",
+          "url": "/listings/condominio-en-central-park/img-25.webp",
+          "isCover": false,
+          "sortOrder": 25
+        },
+        {
+          "id": "img-26",
+          "url": "/listings/condominio-en-central-park/img-26.webp",
+          "isCover": false,
+          "sortOrder": 26
+        },
+        {
+          "id": "img-27",
+          "url": "/listings/condominio-en-central-park/img-27.webp",
+          "isCover": false,
+          "sortOrder": 27
+        },
+        {
+          "id": "img-28",
+          "url": "/listings/condominio-en-central-park/img-28.webp",
+          "isCover": false,
+          "sortOrder": 28
+        },
+        {
+          "id": "img-29",
+          "url": "/listings/condominio-en-central-park/img-29.webp",
+          "isCover": false,
+          "sortOrder": 29
+        },
+        {
+          "id": "img-30",
+          "url": "/listings/condominio-en-central-park/img-30.webp",
+          "isCover": false,
+          "sortOrder": 30
+        },
+        {
+          "id": "img-31",
+          "url": "/listings/condominio-en-central-park/img-31.webp",
+          "isCover": false,
+          "sortOrder": 31
+        },
+        {
+          "id": "img-32",
+          "url": "/listings/condominio-en-central-park/img-32.webp",
+          "isCover": false,
+          "sortOrder": 32
+        },
+        {
+          "id": "img-33",
+          "url": "/listings/condominio-en-central-park/img-33.webp",
+          "isCover": false,
+          "sortOrder": 33
+        },
+        {
+          "id": "img-34",
+          "url": "/listings/condominio-en-central-park/img-34.webp",
+          "isCover": false,
+          "sortOrder": 34
+        },
+        {
+          "id": "img-35",
+          "url": "/listings/condominio-en-central-park/img-35.webp",
+          "isCover": false,
+          "sortOrder": 35
+        },
+        {
+          "id": "img-36",
+          "url": "/listings/condominio-en-central-park/img-36.webp",
+          "isCover": false,
+          "sortOrder": 36
+        },
+        {
+          "id": "img-37",
+          "url": "/listings/condominio-en-central-park/img-37.webp",
+          "isCover": false,
+          "sortOrder": 37
+        },
+        {
+          "id": "img-38",
+          "url": "/listings/condominio-en-central-park/img-38.webp",
+          "isCover": false,
+          "sortOrder": 38
+        },
+        {
+          "id": "img-39",
+          "url": "/listings/condominio-en-central-park/img-39.webp",
+          "isCover": false,
+          "sortOrder": 39
+        },
+        {
+          "id": "img-40",
+          "url": "/listings/condominio-en-central-park/img-40.webp",
+          "isCover": false,
+          "sortOrder": 40
+        }
+      ]
+    },
+    {
+      "id": "vista-al-valle",
+      "slug": "vista-al-valle",
+      "propertyId": "100",
+      "status": "published",
+      "goals": [
+        "sell"
+      ],
+      "featured": false,
+      "agentId": "bernal",
+      "title": {
+        "en": "Vista al Valle",
+        "es": "Vista al Valle"
+      },
+      "location": "Santa Ana",
+      "propertyType": "Home",
+      "price": 650000,
+      "pricePeriod": "sale",
+      "currency": "USD",
+      "bedrooms": 4,
+      "bathrooms": 3.5,
+      "constructionArea": 27980,
+      "levels": 1,
+      "kitchen": 1,
+      "serviceRoom": 1,
+      "description": {
+        "en": "Elegance, spaciousness, and unparalleled views in one of the most exclusive\n\nareas of Santa Ana. Contemporary design, double-height ceilings in the\n\nsocial area, and a panoramic balcony overlooking the entire living and\n\ndining area.\n\n4 Bedrooms\n\n4 Parking Spaces\n\n3.5 Bathrooms (primary ensuite, secondary ensuite, shared bathroom +\n\nguest bathroom)\n\n2 Bedrooms with Balconies (primary + 1 secondary)\n\nHighlights\n\nSpectacular views of the Santa Ana mountains.\n\nSecurity windows.\n\nPet-friendly condominium.\n\nPower Backup Generator for elevators and electric gate.\n\nWater storage tank, elevator, and guest parking.\n\nAmenities\n\nExpansive landscaped gardens.\n\nSwimming pool.\n\nTwo-level clubhouse with BBQ area, fully equipped kitchen, and full\n\nbathrooms.",
+        "es": "Elegancia, amplitud y vistas incomparables en una de las zonas más exclusivas\n\nde Santa Ana. Diseño contemporáneo, techos de doble altura en el\n\nárea social y un balcón panorámico con vista a toda la sala y el\n\ncomedor.\n\n4 habitaciones\n\n4 espacios de parqueo\n\n3.5 baños (principal en suite, secundario en suite, baño compartido +\n\nbaño de visitas)\n\n2 habitaciones con balcón (principal + 1 secundaria)\n\nLo destacado\n\nVistas espectaculares a las montañas de Santa Ana.\n\nVentanas de seguridad.\n\nCondominio pet-friendly.\n\nPlanta eléctrica de respaldo para elevadores y portón eléctrico.\n\nTanque de agua, elevador y parqueo para visitas.\n\nAmenidades\n\nAmplios jardines paisajísticos.\n\nPiscina.\n\nCasa club de dos niveles con zona BBQ, cocina completamente equipada y baños\n\ncompletos."
+      },
+      "specialFeatures": {
+        "en": "Highlights include spectacular views of the Santa Ana mountains, security windows, a pet-friendly condominium, a backup generator for elevators and the electric gate, plus a water storage tank, elevator, and guest parking.",
+        "es": "Entre lo destacado: vistas espectaculares a las montañas de Santa Ana, ventanas de seguridad, condominio pet-friendly, generador de respaldo para elevadores y portón eléctrico, tanque de agua, elevador y parqueo para visitas."
+      },
+      "amenities": [
+        {
+          "en": "Expansive landscaped gardens",
+          "es": "Jardines paisajísticos amplios"
+        },
+        {
+          "en": "Swimming pool",
+          "es": "Piscina"
+        },
+        {
+          "en": "Two-level clubhouse with BBQ area, fully equipped kitchen, and full bathrooms",
+          "es": "Casa club de dos niveles con zona BBQ, cocina equipada y baños completos"
+        }
+      ],
+      "faq": [],
+      "images": [
+        {
+          "id": "portada",
+          "url": "/listings/vista-al-valle/portada.webp",
+          "isCover": true,
+          "sortOrder": 0
+        },
+        {
+          "id": "01-entrada",
+          "url": "/listings/vista-al-valle/01-entrada.webp",
+          "isCover": false,
+          "sortOrder": 1
+        },
+        {
+          "id": "02-edificio",
+          "url": "/listings/vista-al-valle/02-edificio.webp",
+          "isCover": false,
+          "sortOrder": 2
+        },
+        {
+          "id": "03-piscina-vista",
+          "url": "/listings/vista-al-valle/03-piscina-vista.webp",
+          "isCover": false,
+          "sortOrder": 3
+        },
+        {
+          "id": "04-piscina",
+          "url": "/listings/vista-al-valle/04-piscina.webp",
+          "isCover": false,
+          "sortOrder": 4
+        },
+        {
+          "id": "05-sala",
+          "url": "/listings/vista-al-valle/05-sala.webp",
+          "isCover": false,
+          "sortOrder": 5
+        },
+        {
+          "id": "06-cocina",
+          "url": "/listings/vista-al-valle/06-cocina.webp",
+          "isCover": false,
+          "sortOrder": 6
+        },
+        {
+          "id": "07-social",
+          "url": "/listings/vista-al-valle/07-social.webp",
+          "isCover": false,
+          "sortOrder": 7
+        },
+        {
+          "id": "08-habitacion",
+          "url": "/listings/vista-al-valle/08-habitacion.webp",
+          "isCover": false,
+          "sortOrder": 8
+        },
+        {
+          "id": "09-habitacion-closet",
+          "url": "/listings/vista-al-valle/09-habitacion-closet.webp",
+          "isCover": false,
+          "sortOrder": 9
+        },
+        {
+          "id": "10-bano",
+          "url": "/listings/vista-al-valle/10-bano.webp",
+          "isCover": false,
+          "sortOrder": 10
+        }
+      ]
+    },
+    {
+      "id": "san-nicolas",
+      "slug": "san-nicolas",
+      "propertyId": "101",
+      "status": "published",
+      "goals": [
+        "sell"
+      ],
+      "featured": true,
+      "agentId": "bernal",
+      "title": {
+        "en": "San Nicolas",
+        "es": "San Nicolas"
+      },
+      "location": "Santa Ana",
+      "propertyType": "Apartment",
+      "price": 230000,
+      "pricePeriod": "sale",
+      "currency": "USD",
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "levels": 2,
+      "kitchen": 1,
+      "description": {
+        "en": "A Home Unlike Any Other\n\nThis apartment is unlike any other.\n\nThoughtfully remodeled with vision and style, it features a more spacious\n\nlayout, enhanced natural lighting, and a warm, modern atmosphere.\n\nIts redesigned quartz kitchen, contemporary finishes, and private terrace\n\nwith a fire pit create a unique living experience where every detail has\n\nbeen carefully considered.\n\nIdeal for those looking for a distinctive home with character, generous\n\ncloset space, and the convenience of a move-in-ready residence from day one.",
+        "es": "Una vivienda única\n\nEste apartamento es diferente a cualquier otro.\n\nCuidadosamente remodelado con visión y estilo, cuenta con una distribución más amplia, mayor iluminación natural y una atmósfera cálida y moderna.\n\nSu cocina rediseñada con cuarzo, acabados contemporáneos y terraza privada con fogata crean una experiencia de vida única, donde cada detalle ha sido cuidadosamente considerado.\n\nIdeal para quienes buscan una vivienda distintiva, con carácter, amplios espacios de clóset y la comodidad de una residencia lista para mudarse desde el primer día."
+      },
+      "specialFeatures": {
+        "en": "A fully remodeled, turnkey apartment that combines modern design, warmth,\n\nand unique outdoor living with a private fire-pit terrace.",
+        "es": "Un apartamento completamente remodelado y listo para habitar, que combina diseño moderno, calidez y una experiencia única al aire libre con una terraza privada con fogata."
+      },
+      "amenities": [
+        {
+          "en": "Swimming Pool",
+          "es": "Piscina"
+        },
+        {
+          "en": "Walking Trails",
+          "es": "Senderos para caminar"
+        },
+        {
+          "en": "Jacuzzi",
+          "es": "Jacuzzi"
+        },
+        {
+          "en": "Gym",
+          "es": "Gimnasio"
+        },
+        {
+          "en": "Social Area",
+          "es": "Área social"
+        },
+        {
+          "en": "Gated Entrance",
+          "es": "Entrada con acceso controlado"
+        }
+      ],
+      "faq": [],
+      "images": [
+        {
+          "id": "portada",
+          "url": "/listings/san-nicolas/portada.webp",
+          "isCover": true,
+          "sortOrder": 0
+        },
+        {
+          "id": "img-8197",
+          "url": "/listings/san-nicolas/img-8197.webp",
+          "isCover": false,
+          "sortOrder": 1
+        },
+        {
+          "id": "img-8200",
+          "url": "/listings/san-nicolas/img-8200.webp",
+          "isCover": false,
+          "sortOrder": 2
+        },
+        {
+          "id": "img-8212",
+          "url": "/listings/san-nicolas/img-8212.webp",
+          "isCover": false,
+          "sortOrder": 3
+        },
+        {
+          "id": "img-8215",
+          "url": "/listings/san-nicolas/img-8215.webp",
+          "isCover": false,
+          "sortOrder": 4
+        },
+        {
+          "id": "img-8219",
+          "url": "/listings/san-nicolas/img-8219.webp",
+          "isCover": false,
+          "sortOrder": 5
+        },
+        {
+          "id": "img-8224",
+          "url": "/listings/san-nicolas/img-8224.webp",
+          "isCover": false,
+          "sortOrder": 6
+        },
+        {
+          "id": "img-8226",
+          "url": "/listings/san-nicolas/img-8226.webp",
+          "isCover": false,
+          "sortOrder": 7
+        },
+        {
+          "id": "img-8238",
+          "url": "/listings/san-nicolas/img-8238.webp",
+          "isCover": false,
+          "sortOrder": 8
+        },
+        {
+          "id": "img-8244",
+          "url": "/listings/san-nicolas/img-8244.webp",
+          "isCover": false,
+          "sortOrder": 9
+        },
+        {
+          "id": "img-8249",
+          "url": "/listings/san-nicolas/img-8249.webp",
+          "isCover": false,
+          "sortOrder": 10
+        },
+        {
+          "id": "img-8256",
+          "url": "/listings/san-nicolas/img-8256.webp",
+          "isCover": false,
+          "sortOrder": 11
+        },
+        {
+          "id": "img-8261",
+          "url": "/listings/san-nicolas/img-8261.webp",
+          "isCover": false,
+          "sortOrder": 12
+        },
+        {
+          "id": "img-8263",
+          "url": "/listings/san-nicolas/img-8263.webp",
+          "isCover": false,
+          "sortOrder": 13
+        },
+        {
+          "id": "img-8278",
+          "url": "/listings/san-nicolas/img-8278.webp",
+          "isCover": false,
+          "sortOrder": 14
+        },
+        {
+          "id": "img-8284",
+          "url": "/listings/san-nicolas/img-8284.webp",
+          "isCover": false,
+          "sortOrder": 15
+        },
+        {
+          "id": "img-8286",
+          "url": "/listings/san-nicolas/img-8286.webp",
+          "isCover": false,
+          "sortOrder": 16
+        },
+        {
+          "id": "img-8290",
+          "url": "/listings/san-nicolas/img-8290.webp",
+          "isCover": false,
+          "sortOrder": 17
+        },
+        {
+          "id": "img-8298",
+          "url": "/listings/san-nicolas/img-8298.webp",
+          "isCover": false,
+          "sortOrder": 18
+        },
+        {
+          "id": "img-8316",
+          "url": "/listings/san-nicolas/img-8316.webp",
+          "isCover": false,
+          "sortOrder": 19
+        },
+        {
+          "id": "img-8321",
+          "url": "/listings/san-nicolas/img-8321.webp",
+          "isCover": false,
+          "sortOrder": 20
+        },
+        {
+          "id": "img-8326",
+          "url": "/listings/san-nicolas/img-8326.webp",
+          "isCover": false,
+          "sortOrder": 21
+        },
+        {
+          "id": "img-8328",
+          "url": "/listings/san-nicolas/img-8328.webp",
+          "isCover": false,
+          "sortOrder": 22
+        },
+        {
+          "id": "img-8336",
+          "url": "/listings/san-nicolas/img-8336.webp",
+          "isCover": false,
+          "sortOrder": 23
+        },
+        {
+          "id": "img-8338",
+          "url": "/listings/san-nicolas/img-8338.webp",
+          "isCover": false,
+          "sortOrder": 24
+        },
+        {
+          "id": "img-8341",
+          "url": "/listings/san-nicolas/img-8341.webp",
+          "isCover": false,
+          "sortOrder": 25
+        }
+      ]
+    },
+    {
+      "id": "lote-montana-del-sol",
+      "slug": "lote-montana-del-sol",
+      "propertyId": "119",
+      "status": "published",
+      "goals": [
+        "sell"
+      ],
+      "featured": true,
+      "agentId": "bernal",
+      "title": {
+        "en": "Parque Montaña del Sol",
+        "es": "Parque Montaña del Sol"
+      },
+      "location": "Santa Ana",
+      "propertyType": "Development Land",
+      "price": 125900,
+      "pricePeriod": "sale",
+      "currency": "USD",
+      "bedrooms": 0,
+      "bathrooms": 0,
+      "description": {
+        "en": "Prices starting at $55/m²\n\nOur lots are available in a variety of sizes and price ranges, giving you\n\nflexible options to find the property that best fits your investment.\n\nThe price of $55/m² applies to a specific\n\n2,949 m² lot. Other available lots are priced at\n\n$75, $80, $100, $125, $129, and $200 per m²,\n\ndepending on the specific lot.\n\nDifferent lot sizes available\n\nPrices vary according to the specific lot and size",
+        "es": "Precios desde $55/m²\n\nNuestros lotes están disponibles en una variedad de tamaños y rangos de precio, con\n\nopciones flexibles para encontrar la propiedad que mejor se ajuste a tu inversión.\n\nEl precio de $55/m² aplica a un lote específico\n\nde 2,949 m². Otros lotes disponibles tienen un precio de\n\n$75, $80, $100, $125, $129 y $200 por m²,\n\nsegún el lote.\n\nDiferentes tamaños de lote disponibles\n\nLos precios varían según el lote y el tamaño"
+      },
+      "specialFeatures": {
+        "en": "Build your dream home in an exclusive mountain setting with breathtaking panoramic views of San José’s Central Valley. Enjoy privacy, fresh mountain air, and year-round cool weather while investing in a property with strong potential for long-term appreciation.",
+        "es": "Construye la casa de tus sueños en un entorno de montaña exclusivo, con vistas panorámicas al Valle Central de San José. Disfruta de privacidad, aire fresco de montaña y clima fresco todo el año, invirtiendo en una propiedad con fuerte potencial de plusvalía a largo plazo."
+      },
+      "amenities": [],
+      "faq": [],
+      "images": [
+        {
+          "id": "portada",
+          "url": "/listings/lote-montana-del-sol/portada.webp",
+          "isCover": true,
+          "sortOrder": 0
+        },
+        {
+          "id": "bosque",
+          "url": "/listings/lote-montana-del-sol/bosque.webp",
+          "isCover": false,
+          "sortOrder": 1
+        },
+        {
+          "id": "ladera",
+          "url": "/listings/lote-montana-del-sol/ladera.webp",
+          "isCover": false,
+          "sortOrder": 2
+        },
+        {
+          "id": "lote-aereo-1",
+          "url": "/listings/lote-montana-del-sol/lote-aereo-1.webp",
+          "isCover": false,
+          "sortOrder": 3
+        },
+        {
+          "id": "lote-aereo-2",
+          "url": "/listings/lote-montana-del-sol/lote-aereo-2.webp",
+          "isCover": false,
+          "sortOrder": 4
+        },
+        {
+          "id": "lote-aereo-3",
+          "url": "/listings/lote-montana-del-sol/lote-aereo-3.webp",
+          "isCover": false,
+          "sortOrder": 5
+        },
+        {
+          "id": "lote-aereo-4",
+          "url": "/listings/lote-montana-del-sol/lote-aereo-4.webp",
+          "isCover": false,
+          "sortOrder": 6
+        },
+        {
+          "id": "lote-aereo-5",
+          "url": "/listings/lote-montana-del-sol/lote-aereo-5.webp",
+          "isCover": false,
+          "sortOrder": 7
+        },
+        {
+          "id": "master-plan",
+          "url": "/listings/lote-montana-del-sol/master-plan.webp",
+          "isCover": false,
+          "sortOrder": 8
+        },
+        {
+          "id": "vista-ladera",
+          "url": "/listings/lote-montana-del-sol/vista-ladera.webp",
+          "isCover": false,
+          "sortOrder": 9
+        },
+        {
+          "id": "vista-valle",
+          "url": "/listings/lote-montana-del-sol/vista-valle.webp",
+          "isCover": false,
+          "sortOrder": 10
+        }
+      ]
+    },
+    {
+      "id": "jaboncillo",
+      "slug": "jaboncillo",
+      "propertyId": "114",
+      "status": "published",
+      "goals": [
+        "sell"
+      ],
+      "featured": true,
+      "agentId": "bernal",
+      "title": {
+        "en": "Jaboncillo",
+        "es": "Jaboncillo"
+      },
+      "location": "Escazú",
+      "propertyType": "Apartment",
+      "price": 780000,
+      "pricePeriod": "sale",
+      "currency": "USD",
+      "bedrooms": 3,
+      "bathrooms": 3.5,
+      "constructionArea": 278,
+      "levels": 1,
+      "kitchen": 1,
+      "serviceRoom": 1,
+      "maintenanceFee": 860,
+      "description": {
+        "en": "Exclusive Apartment in Jaboncillos Condominium\n\nDiscover this elegant single-story apartment located in the exclusive\n\nJaboncillos Condominium. With 278 m² of construction, this residence offers\n\nspacious and comfortable interiors designed for a sophisticated and relaxed\n\nlifestyle.\n\nIts privileged location features spectacular sunset views, creating the\n\nperfect setting to unwind and enjoy breathtaking afternoons from the\n\ncomfort of your home.",
+        "es": "Apartamento Exclusivo en Condominio Jaboncillos\n\nDescubre este elegante apartamento de una sola planta, ubicado en el exclusivo\n\nCondominio Jaboncillos. Con 278 m² de construcción, esta residencia ofrece\n\nespacios amplios y confortables, diseñados para un estilo de vida sofisticado\n\ny relajado.\n\nSu ubicación privilegiada ofrece espectaculares vistas al atardecer, creando\n\nel escenario perfecto para relajarse y disfrutar de tardes impresionantes\n\ndesde la comodidad de tu hogar."
+      },
+      "specialFeatures": {
+        "en": "The property features 3 bedrooms, 3.5 bathrooms, staff quarters with a private bathroom, and 4 parking spaces, providing space, privacy, and functionality for the entire family.",
+        "es": "La propiedad cuenta con 3 habitaciones, 3.5 baños, cuarto de servicio con baño privado y 4 parqueos, con espacio, privacidad y funcionalidad para toda la familia."
+      },
+      "amenities": [
+        {
+          "en": "Single-story residence",
+          "es": "Residencia de un nivel"
+        },
+        {
+          "en": "Privileged sunset views",
+          "es": "Vistas privilegiadas al atardecer"
+        }
+      ],
+      "faq": [],
+      "images": [
+        {
+          "id": "portada",
+          "url": "/listings/jaboncillo/portada.webp",
+          "isCover": true,
+          "sortOrder": 0
+        },
+        {
+          "id": "img-01",
+          "url": "/listings/jaboncillo/img-01.webp",
+          "isCover": false,
+          "sortOrder": 1
+        },
+        {
+          "id": "img-02",
+          "url": "/listings/jaboncillo/img-02.webp",
+          "isCover": false,
+          "sortOrder": 2
+        },
+        {
+          "id": "img-03",
+          "url": "/listings/jaboncillo/img-03.webp",
+          "isCover": false,
+          "sortOrder": 3
+        },
+        {
+          "id": "img-04",
+          "url": "/listings/jaboncillo/img-04.webp",
+          "isCover": false,
+          "sortOrder": 4
+        },
+        {
+          "id": "img-05",
+          "url": "/listings/jaboncillo/img-05.webp",
+          "isCover": false,
+          "sortOrder": 5
+        },
+        {
+          "id": "img-06",
+          "url": "/listings/jaboncillo/img-06.webp",
+          "isCover": false,
+          "sortOrder": 6
+        },
+        {
+          "id": "img-07",
+          "url": "/listings/jaboncillo/img-07.webp",
+          "isCover": false,
+          "sortOrder": 7
+        },
+        {
+          "id": "img-08",
+          "url": "/listings/jaboncillo/img-08.webp",
+          "isCover": false,
+          "sortOrder": 8
+        },
+        {
+          "id": "img-09",
+          "url": "/listings/jaboncillo/img-09.webp",
+          "isCover": false,
+          "sortOrder": 9
+        },
+        {
+          "id": "img-10",
+          "url": "/listings/jaboncillo/img-10.webp",
+          "isCover": false,
+          "sortOrder": 10
+        },
+        {
+          "id": "img-11",
+          "url": "/listings/jaboncillo/img-11.webp",
+          "isCover": false,
+          "sortOrder": 11
+        },
+        {
+          "id": "img-12",
+          "url": "/listings/jaboncillo/img-12.webp",
+          "isCover": false,
+          "sortOrder": 12
+        },
+        {
+          "id": "img-13",
+          "url": "/listings/jaboncillo/img-13.webp",
+          "isCover": false,
+          "sortOrder": 13
+        },
+        {
+          "id": "img-14",
+          "url": "/listings/jaboncillo/img-14.webp",
+          "isCover": false,
+          "sortOrder": 14
+        }
+      ]
+    },
+    {
+      "id": "cerro-alto",
+      "slug": "cerro-alto",
+      "propertyId": "109",
+      "status": "published",
+      "goals": [
+        "sell"
+      ],
+      "featured": true,
+      "agentId": "bernal",
+      "title": {
+        "en": "Cerro Alto",
+        "es": "Cerro Alto"
+      },
+      "location": "Escazú",
+      "propertyType": "Home",
+      "price": 1275000,
+      "pricePeriod": "sale",
+      "currency": "USD",
+      "bedrooms": 5,
+      "bathrooms": 5,
+      "constructionArea": 562,
+      "levels": 2,
+      "serviceRoom": 1,
+      "description": {
+        "en": "INVESTMENT OPPORTUNITY IN CERRO ALTO, ESCAZÚ – COSTA RICA\n\nDiscover an exceptional investment opportunity in one of Escazú’s most\n\nprestigious residential communities. This fully furnished property combines\n\ncomfort, privacy, and premium amenities, making it an ideal choice for a\n\nluxury residence or investment property.\n\nEquipped Kitchen: Refrigerator, microwave, oven, dishwasher, and extractor hood\n\nWasher & Dryer\n\nCentral Air Conditioning\n\nPrivate Terrace\n\nPrivate Garden\n\nWater Storage Tank\n\nBackup Generator\n\nAlarm System\n\nStorage Room\n\nSwimming Pool with Jacuzzi\n\nFully Furnished\n\nGuest House",
+        "es": "OPORTUNIDAD DE INVERSIÓN EN CERRO ALTO, ESCAZÚ – COSTA RICA\n\nDescubre una excelente oportunidad de inversión en una de las comunidades\n\nresidenciales más prestigiosas de Escazú. Esta propiedad, totalmente\n\namueblada, combina comodidad, privacidad y amenidades de primer nivel,\n\nconvirtiéndola en una opción ideal como residencia de lujo o propiedad\n\nde inversión.\n\nCocina equipada: Refrigeradora, microondas, horno, lavaplatos y extractor\n\nLavadora y secadora\n\nAire acondicionado central\n\nTerraza privada\n\nJardín privado\n\nTanque de almacenamiento de agua\n\nPlanta eléctrica de respaldo\n\nSistema de alarma\n\nBodega\n\nPiscina con Jacuzzi\n\nTotalmente amueblada\n\nCasa de huéspedes"
+      },
+      "specialFeatures": {
+        "en": "",
+        "es": ""
+      },
+      "amenities": [
+        {
+          "en": "Swimming pool",
+          "es": "Piscina"
+        },
+        {
+          "en": "BBQ ranch",
+          "es": "Rancho BBQ"
+        },
+        {
+          "en": "Landscaped gardens",
+          "es": "Jardines paisajísticos"
+        },
+        {
+          "en": "Tennis court",
+          "es": "Cancha de tenis"
+        },
+        {
+          "en": "Gym",
+          "es": "Gimnasio"
+        },
+        {
+          "en": "Event hall",
+          "es": "Salón de eventos"
+        },
+        {
+          "en": "Playground",
+          "es": "Área de juegos infantiles"
+        }
+      ],
+      "faq": [],
+      "images": [
+        {
+          "id": "portada",
+          "url": "/listings/cerro-alto/portada.webp",
+          "isCover": true,
+          "sortOrder": 0
+        },
+        {
+          "id": "img-01",
+          "url": "/listings/cerro-alto/img-01.webp",
+          "isCover": false,
+          "sortOrder": 1
+        },
+        {
+          "id": "img-02",
+          "url": "/listings/cerro-alto/img-02.webp",
+          "isCover": false,
+          "sortOrder": 2
+        },
+        {
+          "id": "img-03",
+          "url": "/listings/cerro-alto/img-03.webp",
+          "isCover": false,
+          "sortOrder": 3
+        },
+        {
+          "id": "img-04",
+          "url": "/listings/cerro-alto/img-04.webp",
+          "isCover": false,
+          "sortOrder": 4
+        },
+        {
+          "id": "img-05",
+          "url": "/listings/cerro-alto/img-05.webp",
+          "isCover": false,
+          "sortOrder": 5
+        },
+        {
+          "id": "img-06",
+          "url": "/listings/cerro-alto/img-06.webp",
+          "isCover": false,
+          "sortOrder": 6
+        },
+        {
+          "id": "img-07",
+          "url": "/listings/cerro-alto/img-07.webp",
+          "isCover": false,
+          "sortOrder": 7
+        },
+        {
+          "id": "img-08",
+          "url": "/listings/cerro-alto/img-08.webp",
+          "isCover": false,
+          "sortOrder": 8
+        },
+        {
+          "id": "img-09",
+          "url": "/listings/cerro-alto/img-09.webp",
+          "isCover": false,
+          "sortOrder": 9
+        },
+        {
+          "id": "img-10",
+          "url": "/listings/cerro-alto/img-10.webp",
+          "isCover": false,
+          "sortOrder": 10
+        },
+        {
+          "id": "img-11",
+          "url": "/listings/cerro-alto/img-11.webp",
+          "isCover": false,
+          "sortOrder": 11
+        },
+        {
+          "id": "img-12",
+          "url": "/listings/cerro-alto/img-12.webp",
+          "isCover": false,
+          "sortOrder": 12
+        },
+        {
+          "id": "img-13",
+          "url": "/listings/cerro-alto/img-13.webp",
+          "isCover": false,
+          "sortOrder": 13
+        },
+        {
+          "id": "img-14",
+          "url": "/listings/cerro-alto/img-14.webp",
+          "isCover": false,
+          "sortOrder": 14
+        },
+        {
+          "id": "img-15",
+          "url": "/listings/cerro-alto/img-15.webp",
+          "isCover": false,
+          "sortOrder": 15
+        },
+        {
+          "id": "img-16",
+          "url": "/listings/cerro-alto/img-16.webp",
+          "isCover": false,
+          "sortOrder": 16
+        },
+        {
+          "id": "img-17",
+          "url": "/listings/cerro-alto/img-17.webp",
+          "isCover": false,
+          "sortOrder": 17
+        },
+        {
+          "id": "img-18",
+          "url": "/listings/cerro-alto/img-18.webp",
+          "isCover": false,
+          "sortOrder": 18
+        },
+        {
+          "id": "img-19",
+          "url": "/listings/cerro-alto/img-19.webp",
+          "isCover": false,
+          "sortOrder": 19
+        },
+        {
+          "id": "img-20",
+          "url": "/listings/cerro-alto/img-20.webp",
+          "isCover": false,
+          "sortOrder": 20
+        },
+        {
+          "id": "img-21",
+          "url": "/listings/cerro-alto/img-21.webp",
+          "isCover": false,
+          "sortOrder": 21
+        },
+        {
+          "id": "img-22",
+          "url": "/listings/cerro-alto/img-22.webp",
+          "isCover": false,
+          "sortOrder": 22
+        },
+        {
+          "id": "img-23",
+          "url": "/listings/cerro-alto/img-23.webp",
+          "isCover": false,
+          "sortOrder": 23
+        },
+        {
+          "id": "img-24",
+          "url": "/listings/cerro-alto/img-24.webp",
+          "isCover": false,
+          "sortOrder": 24
+        },
+        {
+          "id": "img-25",
+          "url": "/listings/cerro-alto/img-25.webp",
+          "isCover": false,
+          "sortOrder": 25
+        },
+        {
+          "id": "img-26",
+          "url": "/listings/cerro-alto/img-26.webp",
+          "isCover": false,
+          "sortOrder": 26
+        },
+        {
+          "id": "img-27",
+          "url": "/listings/cerro-alto/img-27.webp",
+          "isCover": false,
+          "sortOrder": 27
+        },
+        {
+          "id": "img-28",
+          "url": "/listings/cerro-alto/img-28.webp",
+          "isCover": false,
+          "sortOrder": 28
+        },
+        {
+          "id": "img-29",
+          "url": "/listings/cerro-alto/img-29.webp",
+          "isCover": false,
+          "sortOrder": 29
+        },
+        {
+          "id": "img-30",
+          "url": "/listings/cerro-alto/img-30.webp",
+          "isCover": false,
+          "sortOrder": 30
+        },
+        {
+          "id": "img-31",
+          "url": "/listings/cerro-alto/img-31.webp",
+          "isCover": false,
+          "sortOrder": 31
+        },
+        {
+          "id": "img-32",
+          "url": "/listings/cerro-alto/img-32.webp",
+          "isCover": false,
+          "sortOrder": 32
+        },
+        {
+          "id": "img-33",
+          "url": "/listings/cerro-alto/img-33.webp",
+          "isCover": false,
+          "sortOrder": 33
+        },
+        {
+          "id": "img-34",
+          "url": "/listings/cerro-alto/img-34.webp",
+          "isCover": false,
+          "sortOrder": 34
+        },
+        {
+          "id": "img-35",
+          "url": "/listings/cerro-alto/img-35.webp",
+          "isCover": false,
+          "sortOrder": 35
+        },
+        {
+          "id": "img-36",
+          "url": "/listings/cerro-alto/img-36.webp",
+          "isCover": false,
+          "sortOrder": 36
+        },
+        {
+          "id": "img-37",
+          "url": "/listings/cerro-alto/img-37.webp",
+          "isCover": false,
+          "sortOrder": 37
+        },
+        {
+          "id": "img-38",
+          "url": "/listings/cerro-alto/img-38.webp",
+          "isCover": false,
+          "sortOrder": 38
+        },
+        {
+          "id": "img-39",
+          "url": "/listings/cerro-alto/img-39.webp",
+          "isCover": false,
+          "sortOrder": 39
+        },
+        {
+          "id": "img-40",
+          "url": "/listings/cerro-alto/img-40.webp",
+          "isCover": false,
+          "sortOrder": 40
+        },
+        {
+          "id": "img-41",
+          "url": "/listings/cerro-alto/img-41.webp",
+          "isCover": false,
+          "sortOrder": 41
+        },
+        {
+          "id": "img-42",
+          "url": "/listings/cerro-alto/img-42.webp",
+          "isCover": false,
+          "sortOrder": 42
+        },
+        {
+          "id": "img-43",
+          "url": "/listings/cerro-alto/img-43.webp",
+          "isCover": false,
+          "sortOrder": 43
+        },
+        {
+          "id": "img-44",
+          "url": "/listings/cerro-alto/img-44.webp",
+          "isCover": false,
+          "sortOrder": 44
+        }
+      ]
+    },
+    {
+      "id": "flat-21",
+      "slug": "flat-21",
+      "propertyId": "113",
+      "status": "published",
+      "goals": [
+        "sell"
+      ],
+      "featured": false,
+      "agentId": "bernal",
+      "title": {
+        "en": "Flat 21",
+        "es": "Flat 21"
+      },
+      "location": "Santa Ana",
+      "propertyType": "Apartment",
+      "price": 1000000,
+      "pricePeriod": "sale",
+      "currency": "USD",
+      "bedrooms": 4,
+      "bathrooms": 4.5,
+      "constructionArea": 397.712,
+      "kitchen": 1,
+      "serviceRoom": 1,
+      "maintenanceFee": 0,
+      "description": {
+        "en": "INVESTMENT OPPORTUNITY IN SANTA ANA, SAN JOSÉ – COSTA RICA\n\nWake Up at the Top of the Santa Ana Valley!\n\nThis is more than just a penthouse — it’s your exclusive sanctuary in a\n\nboutique tower surrounded by nature.\n\nLuxury Lives Here:\n\nStriking Design: Double-height social area seamlessly integrated with\n\na gourmet kitchen.\n\n360° Views: A huge balcony with sliding doors that seamlessly blend the\n\ninterior with the breathtaking views.\n\nMultifunctional Space: Spacious mezzanine, ideal for a home office or\n\nreading lounge.\n\n4 Bedrooms + Staff Quarters: Double-height master suite featuring\n\n2 walk-in closets and electric blinds. Maximum comfort and privacy!\n\nTotal Area: 397.71 m²",
+        "es": "OPORTUNIDAD DE INVERSIÓN EN SANTA ANA, SAN JOSÉ – COSTA RICA\n\n¡Despierta en la cima del Valle de Santa Ana!\n\nEsto es más que un penthouse: es tu santuario exclusivo en una torre\n\nboutique rodeada de naturaleza.\n\nEl Lujo se Vive Aquí:\n\nDiseño Impactante: Área social de doble altura integrada de manera\n\narmoniosa con una cocina gourmet.\n\nVistas 360°: Un amplio balcón con puertas corredizas que fusionan\n\nperfectamente los espacios interiores con las impresionantes vistas.\n\nEspacio Multifuncional: Amplio mezzanine, ideal para una oficina en casa\n\no una acogedora sala de lectura.\n\n4 Habitaciones + Cuarto de Servicio: Suite principal de doble altura\n\ncon 2 walk-in closets y persianas eléctricas. ¡Máximo confort y privacidad!\n\nÁrea Total: 397.71 m²"
+      },
+      "specialFeatures": {
+        "en": "Alto de las Palomas: enjoy some of the best views of the city while being conveniently close to everything.",
+        "es": "Alto de las Palomas: disfruta de algunas de las mejores vistas de la ciudad, con la comodidad de estar cerca de todo."
+      },
+      "amenities": [
+        {
+          "en": "20-meter covered swimming pool",
+          "es": "Piscina techada de 20 metros"
+        },
+        {
+          "en": "State-of-the-art gym",
+          "es": "Gimnasio de última generación"
+        },
+        {
+          "en": "Natural trails and tennis courts",
+          "es": "Senderos naturales y canchas de tenis"
+        },
+        {
+          "en": "Pet-friendly community",
+          "es": "Comunidad pet-friendly"
+        }
+      ],
+      "faq": [],
+      "images": [
+        {
+          "id": "portada",
+          "url": "/listings/flat-21/portada.webp",
+          "isCover": true,
+          "sortOrder": 0
+        },
+        {
+          "id": "img-01",
+          "url": "/listings/flat-21/img-01.webp",
+          "isCover": false,
+          "sortOrder": 1
+        },
+        {
+          "id": "img-02",
+          "url": "/listings/flat-21/img-02.webp",
+          "isCover": false,
+          "sortOrder": 2
+        },
+        {
+          "id": "img-03",
+          "url": "/listings/flat-21/img-03.webp",
+          "isCover": false,
+          "sortOrder": 3
+        },
+        {
+          "id": "img-04",
+          "url": "/listings/flat-21/img-04.webp",
+          "isCover": false,
+          "sortOrder": 4
+        },
+        {
+          "id": "img-05",
+          "url": "/listings/flat-21/img-05.webp",
+          "isCover": false,
+          "sortOrder": 5
+        },
+        {
+          "id": "img-06",
+          "url": "/listings/flat-21/img-06.webp",
+          "isCover": false,
+          "sortOrder": 6
+        },
+        {
+          "id": "img-07",
+          "url": "/listings/flat-21/img-07.webp",
+          "isCover": false,
+          "sortOrder": 7
+        },
+        {
+          "id": "img-08",
+          "url": "/listings/flat-21/img-08.webp",
+          "isCover": false,
+          "sortOrder": 8
+        },
+        {
+          "id": "img-09",
+          "url": "/listings/flat-21/img-09.webp",
+          "isCover": false,
+          "sortOrder": 9
+        },
+        {
+          "id": "img-10",
+          "url": "/listings/flat-21/img-10.webp",
+          "isCover": false,
+          "sortOrder": 10
+        },
+        {
+          "id": "img-11",
+          "url": "/listings/flat-21/img-11.webp",
+          "isCover": false,
+          "sortOrder": 11
+        },
+        {
+          "id": "img-12",
+          "url": "/listings/flat-21/img-12.webp",
+          "isCover": false,
+          "sortOrder": 12
+        },
+        {
+          "id": "img-13",
+          "url": "/listings/flat-21/img-13.webp",
+          "isCover": false,
+          "sortOrder": 13
+        },
+        {
+          "id": "img-14",
+          "url": "/listings/flat-21/img-14.webp",
+          "isCover": false,
+          "sortOrder": 14
+        },
+        {
+          "id": "img-15",
+          "url": "/listings/flat-21/img-15.webp",
+          "isCover": false,
+          "sortOrder": 15
+        },
+        {
+          "id": "img-16",
+          "url": "/listings/flat-21/img-16.webp",
+          "isCover": false,
+          "sortOrder": 16
+        },
+        {
+          "id": "img-17",
+          "url": "/listings/flat-21/img-17.webp",
+          "isCover": false,
+          "sortOrder": 17
+        },
+        {
+          "id": "img-18",
+          "url": "/listings/flat-21/img-18.webp",
+          "isCover": false,
+          "sortOrder": 18
+        },
+        {
+          "id": "img-19",
+          "url": "/listings/flat-21/img-19.webp",
+          "isCover": false,
+          "sortOrder": 19
+        },
+        {
+          "id": "img-20",
+          "url": "/listings/flat-21/img-20.webp",
+          "isCover": false,
+          "sortOrder": 20
+        },
+        {
+          "id": "img-21",
+          "url": "/listings/flat-21/img-21.webp",
+          "isCover": false,
+          "sortOrder": 21
+        },
+        {
+          "id": "img-22",
+          "url": "/listings/flat-21/img-22.webp",
+          "isCover": false,
+          "sortOrder": 22
+        },
+        {
+          "id": "img-23",
+          "url": "/listings/flat-21/img-23.webp",
+          "isCover": false,
+          "sortOrder": 23
+        },
+        {
+          "id": "img-24",
+          "url": "/listings/flat-21/img-24.webp",
+          "isCover": false,
+          "sortOrder": 24
+        },
+        {
+          "id": "img-25",
+          "url": "/listings/flat-21/img-25.webp",
+          "isCover": false,
+          "sortOrder": 25
+        },
+        {
+          "id": "img-26",
+          "url": "/listings/flat-21/img-26.webp",
+          "isCover": false,
+          "sortOrder": 26
+        },
+        {
+          "id": "img-27",
+          "url": "/listings/flat-21/img-27.webp",
+          "isCover": false,
+          "sortOrder": 27
+        },
+        {
+          "id": "img-28",
+          "url": "/listings/flat-21/img-28.webp",
+          "isCover": false,
+          "sortOrder": 28
+        },
+        {
+          "id": "img-29",
+          "url": "/listings/flat-21/img-29.webp",
+          "isCover": false,
+          "sortOrder": 29
+        },
+        {
+          "id": "img-30",
+          "url": "/listings/flat-21/img-30.webp",
+          "isCover": false,
+          "sortOrder": 30
+        },
+        {
+          "id": "img-31",
+          "url": "/listings/flat-21/img-31.webp",
+          "isCover": false,
+          "sortOrder": 31
+        },
+        {
+          "id": "img-32",
+          "url": "/listings/flat-21/img-32.webp",
+          "isCover": false,
+          "sortOrder": 32
+        },
+        {
+          "id": "img-33",
+          "url": "/listings/flat-21/img-33.webp",
+          "isCover": false,
+          "sortOrder": 33
+        },
+        {
+          "id": "img-34",
+          "url": "/listings/flat-21/img-34.webp",
+          "isCover": false,
+          "sortOrder": 34
+        },
+        {
+          "id": "img-35",
+          "url": "/listings/flat-21/img-35.webp",
+          "isCover": false,
+          "sortOrder": 35
+        },
+        {
+          "id": "img-36",
+          "url": "/listings/flat-21/img-36.webp",
+          "isCover": false,
+          "sortOrder": 36
+        },
+        {
+          "id": "img-37",
+          "url": "/listings/flat-21/img-37.webp",
+          "isCover": false,
+          "sortOrder": 37
+        },
+        {
+          "id": "img-38",
+          "url": "/listings/flat-21/img-38.webp",
+          "isCover": false,
+          "sortOrder": 38
+        },
+        {
+          "id": "img-39",
+          "url": "/listings/flat-21/img-39.webp",
+          "isCover": false,
+          "sortOrder": 39
+        },
+        {
+          "id": "img-40",
+          "url": "/listings/flat-21/img-40.webp",
+          "isCover": false,
+          "sortOrder": 40
+        },
+        {
+          "id": "img-41",
+          "url": "/listings/flat-21/img-41.webp",
+          "isCover": false,
+          "sortOrder": 41
+        },
+        {
+          "id": "img-42",
+          "url": "/listings/flat-21/img-42.webp",
+          "isCover": false,
+          "sortOrder": 42
+        },
+        {
+          "id": "img-43",
+          "url": "/listings/flat-21/img-43.webp",
+          "isCover": false,
+          "sortOrder": 43
+        },
+        {
+          "id": "img-44",
+          "url": "/listings/flat-21/img-44.webp",
+          "isCover": false,
+          "sortOrder": 44
+        },
+        {
+          "id": "img-45",
+          "url": "/listings/flat-21/img-45.webp",
+          "isCover": false,
+          "sortOrder": 45
+        },
+        {
+          "id": "img-46",
+          "url": "/listings/flat-21/img-46.webp",
+          "isCover": false,
+          "sortOrder": 46
+        },
+        {
+          "id": "img-47",
+          "url": "/listings/flat-21/img-47.webp",
+          "isCover": false,
+          "sortOrder": 47
+        },
+        {
+          "id": "img-48",
+          "url": "/listings/flat-21/img-48.webp",
+          "isCover": false,
+          "sortOrder": 48
+        },
+        {
+          "id": "img-49",
+          "url": "/listings/flat-21/img-49.webp",
+          "isCover": false,
+          "sortOrder": 49
+        },
+        {
+          "id": "img-50",
+          "url": "/listings/flat-21/img-50.webp",
+          "isCover": false,
+          "sortOrder": 50
+        },
+        {
+          "id": "img-51",
+          "url": "/listings/flat-21/img-51.webp",
+          "isCover": false,
+          "sortOrder": 51
+        },
+        {
+          "id": "img-52",
+          "url": "/listings/flat-21/img-52.webp",
+          "isCover": false,
+          "sortOrder": 52
+        },
+        {
+          "id": "img-53",
+          "url": "/listings/flat-21/img-53.webp",
+          "isCover": false,
+          "sortOrder": 53
+        },
+        {
+          "id": "img-54",
+          "url": "/listings/flat-21/img-54.webp",
+          "isCover": false,
+          "sortOrder": 54
+        },
+        {
+          "id": "img-55",
+          "url": "/listings/flat-21/img-55.webp",
+          "isCover": false,
+          "sortOrder": 55
+        },
+        {
+          "id": "img-56",
+          "url": "/listings/flat-21/img-56.webp",
+          "isCover": false,
+          "sortOrder": 56
+        },
+        {
+          "id": "img-57",
+          "url": "/listings/flat-21/img-57.webp",
+          "isCover": false,
+          "sortOrder": 57
+        },
+        {
+          "id": "img-58",
+          "url": "/listings/flat-21/img-58.webp",
+          "isCover": false,
+          "sortOrder": 58
+        },
+        {
+          "id": "img-59",
+          "url": "/listings/flat-21/img-59.webp",
+          "isCover": false,
+          "sortOrder": 59
+        },
+        {
+          "id": "img-60",
+          "url": "/listings/flat-21/img-60.webp",
+          "isCover": false,
+          "sortOrder": 60
+        },
+        {
+          "id": "img-61",
+          "url": "/listings/flat-21/img-61.webp",
+          "isCover": false,
+          "sortOrder": 61
+        },
+        {
+          "id": "img-62",
+          "url": "/listings/flat-21/img-62.webp",
+          "isCover": false,
+          "sortOrder": 62
+        },
+        {
+          "id": "img-63",
+          "url": "/listings/flat-21/img-63.webp",
+          "isCover": false,
+          "sortOrder": 63
+        },
+        {
+          "id": "img-64",
+          "url": "/listings/flat-21/img-64.webp",
+          "isCover": false,
+          "sortOrder": 64
+        },
+        {
+          "id": "img-65",
+          "url": "/listings/flat-21/img-65.webp",
+          "isCover": false,
+          "sortOrder": 65
+        },
+        {
+          "id": "img-66",
+          "url": "/listings/flat-21/img-66.webp",
+          "isCover": false,
+          "sortOrder": 66
+        },
+        {
+          "id": "img-67",
+          "url": "/listings/flat-21/img-67.webp",
+          "isCover": false,
+          "sortOrder": 67
+        },
+        {
+          "id": "img-68",
+          "url": "/listings/flat-21/img-68.webp",
+          "isCover": false,
+          "sortOrder": 68
+        },
+        {
+          "id": "img-69",
+          "url": "/listings/flat-21/img-69.webp",
+          "isCover": false,
+          "sortOrder": 69
+        },
+        {
+          "id": "img-70",
+          "url": "/listings/flat-21/img-70.webp",
+          "isCover": false,
+          "sortOrder": 70
+        },
+        {
+          "id": "img-71",
+          "url": "/listings/flat-21/img-71.webp",
+          "isCover": false,
+          "sortOrder": 71
+        },
+        {
+          "id": "img-72",
+          "url": "/listings/flat-21/img-72.webp",
+          "isCover": false,
+          "sortOrder": 72
+        },
+        {
+          "id": "img-73",
+          "url": "/listings/flat-21/img-73.webp",
+          "isCover": false,
+          "sortOrder": 73
+        },
+        {
+          "id": "img-74",
+          "url": "/listings/flat-21/img-74.webp",
+          "isCover": false,
+          "sortOrder": 74
+        },
+        {
+          "id": "img-75",
+          "url": "/listings/flat-21/img-75.webp",
+          "isCover": false,
+          "sortOrder": 75
+        },
+        {
+          "id": "img-76",
+          "url": "/listings/flat-21/img-76.webp",
+          "isCover": false,
+          "sortOrder": 76
+        },
+        {
+          "id": "img-77",
+          "url": "/listings/flat-21/img-77.webp",
+          "isCover": false,
+          "sortOrder": 77
+        },
+        {
+          "id": "img-78",
+          "url": "/listings/flat-21/img-78.webp",
+          "isCover": false,
+          "sortOrder": 78
+        },
+        {
+          "id": "img-79",
+          "url": "/listings/flat-21/img-79.webp",
+          "isCover": false,
+          "sortOrder": 79
+        },
+        {
+          "id": "img-80",
+          "url": "/listings/flat-21/img-80.webp",
+          "isCover": false,
+          "sortOrder": 80
+        },
+        {
+          "id": "img-81",
+          "url": "/listings/flat-21/img-81.webp",
+          "isCover": false,
+          "sortOrder": 81
+        },
+        {
+          "id": "img-82",
+          "url": "/listings/flat-21/img-82.webp",
+          "isCover": false,
+          "sortOrder": 82
+        },
+        {
+          "id": "img-83",
+          "url": "/listings/flat-21/img-83.webp",
+          "isCover": false,
+          "sortOrder": 83
+        },
+        {
+          "id": "img-84",
+          "url": "/listings/flat-21/img-84.webp",
+          "isCover": false,
+          "sortOrder": 84
+        },
+        {
+          "id": "img-85",
+          "url": "/listings/flat-21/img-85.webp",
+          "isCover": false,
+          "sortOrder": 85
+        },
+        {
+          "id": "img-86",
+          "url": "/listings/flat-21/img-86.webp",
+          "isCover": false,
+          "sortOrder": 86
+        },
+        {
+          "id": "img-87",
+          "url": "/listings/flat-21/img-87.webp",
+          "isCover": false,
+          "sortOrder": 87
+        },
+        {
+          "id": "img-88",
+          "url": "/listings/flat-21/img-88.webp",
+          "isCover": false,
+          "sortOrder": 88
+        },
+        {
+          "id": "img-89",
+          "url": "/listings/flat-21/img-89.webp",
+          "isCover": false,
+          "sortOrder": 89
+        },
+        {
+          "id": "img-90",
+          "url": "/listings/flat-21/img-90.webp",
+          "isCover": false,
+          "sortOrder": 90
+        },
+        {
+          "id": "img-91",
+          "url": "/listings/flat-21/img-91.webp",
+          "isCover": false,
+          "sortOrder": 91
+        },
+        {
+          "id": "img-92",
+          "url": "/listings/flat-21/img-92.webp",
+          "isCover": false,
+          "sortOrder": 92
+        },
+        {
+          "id": "img-93",
+          "url": "/listings/flat-21/img-93.webp",
+          "isCover": false,
+          "sortOrder": 93
+        }
+      ]
+    },
+    {
+      "id": "bebedero",
+      "slug": "bebedero",
+      "propertyId": "123",
+      "status": "published",
+      "goals": [
+        "sell",
+        "investment"
+      ],
+      "featured": true,
+      "agentId": "harold",
+      "title": {
+        "en": "Bebedero",
+        "es": "Bebedero"
+      },
+      "location": "Escazú",
+      "propertyType": "Home",
+      "price": 1000000,
+      "pricePeriod": "sale",
+      "currency": "USD",
+      "bedrooms": 3,
+      "bathrooms": 3.5,
+      "constructionArea": 920,
+      "lotArea": 1,
+      "levels": 3,
+      "kitchen": 1,
+      "serviceRoom": 1,
+      "description": {
+        "en": "INVESTMENT OPPORTUNITY IN BEBEDERO, ESCAZÚ– COSTA RICA\n\nA residence with an architectural design that seamlessly blends elegance, privacy, and one of the most breathtaking views in Escazú.\n\nSpacious interiors, striking floor-to-ceiling windows, and thoughtfully designed social areas, all created to enjoy every sunset over the city.\n\n3 habitaciones en total\n\n1 Master King Room con terraza, baño privado y Jacuzzi en un 3er piso\n\n2 habitaciones en el primer piso con baño compartido\n\nTerrazas en habitaciones\n\n3.5 baños\n\nParqueo para 8+ vehículos\n\nVista panorámica a toda la ciudad\n\nPiscina\n\n3.060 m² de terreno\n\n920 m² de construcción",
+        "es": "OPORTUNIDAD DE INVERSIÓN EN BEBEDERO, ESCAZÚ – COSTA RICA\n\nUna residencia con un diseño arquitectónico que combina elegancia, privacidad\n\ny una de las vistas más impresionantes de Escazú.\n\nEspacios amplios, ventanales de piso a techo y áreas sociales cuidadosamente\n\ndiseñadas para disfrutar de cada atardecer sobre la ciudad.\n\n3 habitaciones en total\n\n1 habitación principal King con terraza, baño privado y Jacuzzi en un 3er piso\n\n2 habitaciones en el primer piso con baño compartido\n\nTerrazas en las habitaciones\n\n3.5 baños\n\nParqueo para 8+ vehículos\n\nVista panorámica de toda la ciudad\n\nPiscina\n\n3.060 m² de terreno\n\n920 m² de construcción"
+      },
+      "specialFeatures": {
+        "en": "",
+        "es": ""
+      },
+      "amenities": [
+        {
+          "en": "Bar with lounge and wine cellar",
+          "es": "Bar con lounge y cava"
+        },
+        {
+          "en": "Rooftop terrace on the 3rd floor with BBQ area",
+          "es": "Terraza en el 3.er piso con zona BBQ"
+        },
+        {
+          "en": "Electric gate",
+          "es": "Portón eléctrico"
+        },
+        {
+          "en": "Expansive gardens",
+          "es": "Jardines amplios"
+        },
+        {
+          "en": "Additional staff house",
+          "es": "Casa adicional para personal"
+        }
+      ],
+      "faq": [],
+      "images": [
+        {
+          "id": "portada",
+          "url": "/listings/bebedero/portada.webp",
+          "isCover": true,
+          "sortOrder": 0
+        },
+        {
+          "id": "img-01",
+          "url": "/listings/bebedero/img-01.webp",
+          "isCover": false,
+          "sortOrder": 1
+        },
+        {
+          "id": "img-02",
+          "url": "/listings/bebedero/img-02.webp",
+          "isCover": false,
+          "sortOrder": 2
+        },
+        {
+          "id": "img-03",
+          "url": "/listings/bebedero/img-03.webp",
+          "isCover": false,
+          "sortOrder": 3
+        },
+        {
+          "id": "img-04",
+          "url": "/listings/bebedero/img-04.webp",
+          "isCover": false,
+          "sortOrder": 4
+        },
+        {
+          "id": "img-05",
+          "url": "/listings/bebedero/img-05.webp",
+          "isCover": false,
+          "sortOrder": 5
+        },
+        {
+          "id": "img-06",
+          "url": "/listings/bebedero/img-06.webp",
+          "isCover": false,
+          "sortOrder": 6
+        },
+        {
+          "id": "img-07",
+          "url": "/listings/bebedero/img-07.webp",
+          "isCover": false,
+          "sortOrder": 7
+        },
+        {
+          "id": "img-08",
+          "url": "/listings/bebedero/img-08.webp",
+          "isCover": false,
+          "sortOrder": 8
+        },
+        {
+          "id": "img-09",
+          "url": "/listings/bebedero/img-09.webp",
+          "isCover": false,
+          "sortOrder": 9
+        },
+        {
+          "id": "img-10",
+          "url": "/listings/bebedero/img-10.webp",
+          "isCover": false,
+          "sortOrder": 10
+        },
+        {
+          "id": "img-11",
+          "url": "/listings/bebedero/img-11.webp",
+          "isCover": false,
+          "sortOrder": 11
+        },
+        {
+          "id": "img-12",
+          "url": "/listings/bebedero/img-12.webp",
+          "isCover": false,
+          "sortOrder": 12
+        },
+        {
+          "id": "img-13",
+          "url": "/listings/bebedero/img-13.webp",
+          "isCover": false,
+          "sortOrder": 13
+        },
+        {
+          "id": "img-14",
+          "url": "/listings/bebedero/img-14.webp",
+          "isCover": false,
+          "sortOrder": 14
+        },
+        {
+          "id": "img-15",
+          "url": "/listings/bebedero/img-15.webp",
+          "isCover": false,
+          "sortOrder": 15
+        },
+        {
+          "id": "img-16",
+          "url": "/listings/bebedero/img-16.webp",
+          "isCover": false,
+          "sortOrder": 16
+        },
+        {
+          "id": "img-17",
+          "url": "/listings/bebedero/img-17.webp",
+          "isCover": false,
+          "sortOrder": 17
+        },
+        {
+          "id": "img-18",
+          "url": "/listings/bebedero/img-18.webp",
+          "isCover": false,
+          "sortOrder": 18
+        },
+        {
+          "id": "img-19",
+          "url": "/listings/bebedero/img-19.webp",
+          "isCover": false,
+          "sortOrder": 19
+        },
+        {
+          "id": "img-20",
+          "url": "/listings/bebedero/img-20.webp",
+          "isCover": false,
+          "sortOrder": 20
+        },
+        {
+          "id": "img-21",
+          "url": "/listings/bebedero/img-21.webp",
+          "isCover": false,
+          "sortOrder": 21
+        },
+        {
+          "id": "img-22",
+          "url": "/listings/bebedero/img-22.webp",
+          "isCover": false,
+          "sortOrder": 22
+        },
+        {
+          "id": "img-23",
+          "url": "/listings/bebedero/img-23.webp",
+          "isCover": false,
+          "sortOrder": 23
+        },
+        {
+          "id": "img-24",
+          "url": "/listings/bebedero/img-24.webp",
+          "isCover": false,
+          "sortOrder": 24
+        },
+        {
+          "id": "img-25",
+          "url": "/listings/bebedero/img-25.webp",
+          "isCover": false,
+          "sortOrder": 25
+        },
+        {
+          "id": "img-26",
+          "url": "/listings/bebedero/img-26.webp",
+          "isCover": false,
+          "sortOrder": 26
+        },
+        {
+          "id": "img-27",
+          "url": "/listings/bebedero/img-27.webp",
+          "isCover": false,
+          "sortOrder": 27
+        },
+        {
+          "id": "img-28",
+          "url": "/listings/bebedero/img-28.webp",
+          "isCover": false,
+          "sortOrder": 28
+        },
+        {
+          "id": "img-29",
+          "url": "/listings/bebedero/img-29.webp",
+          "isCover": false,
+          "sortOrder": 29
+        },
+        {
+          "id": "img-30",
+          "url": "/listings/bebedero/img-30.webp",
+          "isCover": false,
+          "sortOrder": 30
+        },
+        {
+          "id": "img-31",
+          "url": "/listings/bebedero/img-31.webp",
+          "isCover": false,
+          "sortOrder": 31
+        },
+        {
+          "id": "img-32",
+          "url": "/listings/bebedero/img-32.webp",
+          "isCover": false,
+          "sortOrder": 32
+        },
+        {
+          "id": "img-33",
+          "url": "/listings/bebedero/img-33.webp",
+          "isCover": false,
+          "sortOrder": 33
+        },
+        {
+          "id": "img-34",
+          "url": "/listings/bebedero/img-34.webp",
+          "isCover": false,
+          "sortOrder": 34
+        },
+        {
+          "id": "img-35",
+          "url": "/listings/bebedero/img-35.webp",
+          "isCover": false,
+          "sortOrder": 35
+        },
+        {
+          "id": "img-36",
+          "url": "/listings/bebedero/img-36.webp",
+          "isCover": false,
+          "sortOrder": 36
+        },
+        {
+          "id": "img-37",
+          "url": "/listings/bebedero/img-37.webp",
+          "isCover": false,
+          "sortOrder": 37
+        },
+        {
+          "id": "img-38",
+          "url": "/listings/bebedero/img-38.webp",
+          "isCover": false,
+          "sortOrder": 38
+        },
+        {
+          "id": "img-39",
+          "url": "/listings/bebedero/img-39.webp",
+          "isCover": false,
+          "sortOrder": 39
+        },
+        {
+          "id": "img-40",
+          "url": "/listings/bebedero/img-40.webp",
+          "isCover": false,
+          "sortOrder": 40
+        },
+        {
+          "id": "img-41",
+          "url": "/listings/bebedero/img-41.webp",
+          "isCover": false,
+          "sortOrder": 41
+        },
+        {
+          "id": "img-42",
+          "url": "/listings/bebedero/img-42.webp",
+          "isCover": false,
+          "sortOrder": 42
+        },
+        {
+          "id": "img-43",
+          "url": "/listings/bebedero/img-43.webp",
+          "isCover": false,
+          "sortOrder": 43
+        }
+      ]
+    },
+    {
+      "id": "balsa",
+      "slug": "balsa",
+      "propertyId": "107",
+      "status": "published",
+      "goals": [
+        "sell",
+        "investment"
+      ],
+      "featured": false,
+      "agentId": "harold",
+      "title": {
+        "en": "Balsa",
+        "es": "Balsa"
+      },
+      "location": "Alajuela",
+      "propertyType": "Apartment",
+      "price": 435000,
+      "pricePeriod": "sale",
+      "currency": "USD",
+      "bedrooms": 2,
+      "bathrooms": 1,
+      "kitchen": 1,
+      "description": {
+        "en": "INVESTMENT OPPORTUNITY IN BALSA, ATENAS – COSTA RICA\n\nAnnual return above 10%\n\nProperty with 5 fully furnished apartments\n\nInvestment: $450,000.00\n\nDiscover a property designed to generate income from day one.\n\nThis complex includes 5 fully equipped apartments, each featuring:\n\nOpen-concept living room, kitchen, and dining area\n\n2 Bedrooms\n\n1 Bathroom\n\nPrivate Backyard\n\nParking for 2 Vehicles\n\nAir Conditioning",
+        "es": "OPORTUNIDAD DE INVERSIÓN EN BALSA, ATENAS – COSTA RICA\n\nRetorno anual superior al 10%\n\nPropiedad con 5 apartamentos totalmente amueblados\n\nInversión: $450,000.00\n\nDescubre una propiedad diseñada para generar ingresos desde el primer día.\n\nEste complejo cuenta con 5 apartamentos completamente equipados, cada uno con:\n\nSala, cocina y comedor de concepto abierto\n\n2 habitaciones\n\n1 baño\n\nPatio privado\n\nParqueo para 2 vehículos\n\nAire acondicionado"
+      },
+      "specialFeatures": {
+        "en": "A solid and stable investment with excellent returns. Ideal for long-term rentals, Airbnb, or a hybrid rental model.",
+        "es": "Una inversión sólida y estable con excelente rentabilidad. Ideal para alquileres a largo plazo, Airbnb o un modelo híbrido."
+      },
+      "amenities": [
+        {
+          "en": "Private access with electric gate and security code",
+          "es": "Acceso privado con portón eléctrico y código de seguridad"
+        },
+        {
+          "en": "Easy access and excellent location in Balsa de Atenas",
+          "es": "Fácil acceso y excelente ubicación en Balsa de Atenas"
+        },
+        {
+          "en": "Turnkey operation, ready to continue generating immediate income",
+          "es": "Operación llave en mano, lista para continuar generando ingresos de forma inmediata"
+        }
+      ],
+      "faq": [],
+      "images": [
+        {
+          "id": "portada",
+          "url": "/listings/balsa/portada.webp",
+          "isCover": true,
+          "sortOrder": 0
+        },
+        {
+          "id": "img-01",
+          "url": "/listings/balsa/img-01.webp",
+          "isCover": false,
+          "sortOrder": 1
+        },
+        {
+          "id": "img-02",
+          "url": "/listings/balsa/img-02.webp",
+          "isCover": false,
+          "sortOrder": 2
+        },
+        {
+          "id": "img-03",
+          "url": "/listings/balsa/img-03.webp",
+          "isCover": false,
+          "sortOrder": 3
+        },
+        {
+          "id": "img-04",
+          "url": "/listings/balsa/img-04.webp",
+          "isCover": false,
+          "sortOrder": 4
+        },
+        {
+          "id": "img-05",
+          "url": "/listings/balsa/img-05.webp",
+          "isCover": false,
+          "sortOrder": 5
+        },
+        {
+          "id": "img-06",
+          "url": "/listings/balsa/img-06.webp",
+          "isCover": false,
+          "sortOrder": 6
+        },
+        {
+          "id": "img-07",
+          "url": "/listings/balsa/img-07.webp",
+          "isCover": false,
+          "sortOrder": 7
+        },
+        {
+          "id": "img-08",
+          "url": "/listings/balsa/img-08.webp",
+          "isCover": false,
+          "sortOrder": 8
+        },
+        {
+          "id": "img-09",
+          "url": "/listings/balsa/img-09.webp",
+          "isCover": false,
+          "sortOrder": 9
+        },
+        {
+          "id": "img-10",
+          "url": "/listings/balsa/img-10.webp",
+          "isCover": false,
+          "sortOrder": 10
+        },
+        {
+          "id": "img-11",
+          "url": "/listings/balsa/img-11.webp",
+          "isCover": false,
+          "sortOrder": 11
+        },
+        {
+          "id": "img-12",
+          "url": "/listings/balsa/img-12.webp",
+          "isCover": false,
+          "sortOrder": 12
+        },
+        {
+          "id": "img-13",
+          "url": "/listings/balsa/img-13.webp",
+          "isCover": false,
+          "sortOrder": 13
+        }
+      ]
+    },
+    {
+      "id": "bahiti",
+      "slug": "bahiti",
+      "propertyId": "110",
+      "status": "published",
+      "goals": [
+        "sell",
+        "investment"
+      ],
+      "featured": true,
+      "agentId": "harold",
+      "title": {
+        "en": "Bahiti",
+        "es": "Bahiti"
+      },
+      "location": "Puntarenas",
+      "propertyType": "Casa",
+      "price": 985000,
+      "pricePeriod": "sale",
+      "currency": "USD",
+      "bedrooms": 3,
+      "bathrooms": 3.5,
+      "constructionArea": 324,
+      "levels": 1,
+      "kitchen": 1,
+      "serviceRoom": 1,
+      "description": {
+        "en": "Located in one of the highest-growth areas of Costa Rica’s Central Pacific, Casa Bahiti is an\n\nexceptional property that blends luxury, privacy, and strong investment potential.\n\nThe residence features 3 spacious bedrooms, each with its own private bathroom, plus a\n\nguest bathroom, offering comfort and functionality throughout. The fully equipped kitchen\n\nintegrates seamlessly with the social areas, creating an ideal space for entertaining and\n\neveryday living.\n\nOutdoors, the property impresses with an infinity pool with waterfall, covered terrace, and\n\nbreathtaking mountain views. An exclusive yoga and sun deck, along with an outdoor\n\nkitchen with grill, elevates the outdoor living experience.\n\nThe home also includes covered parking for 2 vehicles, a laundry center, high-speed\n\ninternet, and an electric gate with code and remote access, ensuring both security and\n\nconvenience.\n\nAdditionally, the property includes a service house and fully usable land for additional\n\nconstruction, making it an excellent option for both residential living and investment.",
+        "es": "Ubicada en una de las zonas de mayor crecimiento del Pacífico Central de Costa Rica, Casa Bahiti es una\n\npropiedad excepcional que combina lujo, privacidad y un sólido potencial de inversión.\n\nLa residencia cuenta con 3 habitaciones amplias, cada una con baño privado, más un\n\nbaño de visitas, ofreciendo comodidad y funcionalidad en cada espacio. La cocina totalmente equipada\n\nse integra de forma natural con las áreas sociales, creando un espacio ideal para recibir y\n\npara la vida cotidiana.\n\nEn el exterior, la propiedad impresiona con una piscina infinita con cascada, terraza cubierta y\n\nvistas espectaculares a las montañas. Una terraza exclusiva para yoga y sol, junto con una cocina\n\nexterior con parrilla, eleva la experiencia al aire libre.\n\nLa casa también incluye parqueo cubierto para 2 vehículos, centro de lavandería, internet de alta\n\nvelocidad y portón eléctrico con código y control remoto, para mayor seguridad y\n\ncomodidad.\n\nAdemás, la propiedad incluye casa de servicio y terreno aprovechable para construcción\n\nadicional, lo que la convierte en una excelente opción tanto para vivir como para invertir."
+      },
+      "specialFeatures": {
+        "en": "Highly rated by Airbnb guests, Casa Bahiti stands out for its excellent occupancy and rental returns, positioning it as a secure investment in one of Costa Rica’s most sought-after destinations.\n\nBahiti is not just a property — it’s a lifestyle experience and a unique investment opportunity.",
+        "es": "Muy bien valorada por huéspedes de Airbnb, Casa Bahiti destaca por su excelente ocupación y rentabilidad, y se posiciona como una inversión segura en uno de los destinos más cotizados de Costa Rica.\n\nBahiti no es solo una propiedad: es una experiencia de vida y una oportunidad de inversión única."
+      },
+      "amenities": [
+        {
+          "en": "Just 5 minutes from Playa Mantas",
+          "es": "A solo 5 minutos de Playa Mantas"
+        },
+        {
+          "en": "15 minutes from downtown Jacó",
+          "es": "A 15 minutos del centro de Jacó"
+        },
+        {
+          "en": "Close to supermarkets and established tourist areas",
+          "es": "Cerca de supermercados y zonas turísticas consolidadas"
+        }
+      ],
+      "faq": [],
+      "images": [
+        {
+          "id": "portada",
+          "url": "/listings/bahiti/portada.webp",
+          "isCover": true,
+          "sortOrder": 0
+        },
+        {
+          "id": "img-01",
+          "url": "/listings/bahiti/img-01.webp",
+          "isCover": false,
+          "sortOrder": 1
+        },
+        {
+          "id": "img-02",
+          "url": "/listings/bahiti/img-02.webp",
+          "isCover": false,
+          "sortOrder": 2
+        },
+        {
+          "id": "img-03",
+          "url": "/listings/bahiti/img-03.webp",
+          "isCover": false,
+          "sortOrder": 3
+        },
+        {
+          "id": "img-04",
+          "url": "/listings/bahiti/img-04.webp",
+          "isCover": false,
+          "sortOrder": 4
+        },
+        {
+          "id": "img-05",
+          "url": "/listings/bahiti/img-05.webp",
+          "isCover": false,
+          "sortOrder": 5
+        },
+        {
+          "id": "img-06",
+          "url": "/listings/bahiti/img-06.webp",
+          "isCover": false,
+          "sortOrder": 6
+        },
+        {
+          "id": "img-07",
+          "url": "/listings/bahiti/img-07.webp",
+          "isCover": false,
+          "sortOrder": 7
+        },
+        {
+          "id": "img-08",
+          "url": "/listings/bahiti/img-08.webp",
+          "isCover": false,
+          "sortOrder": 8
+        },
+        {
+          "id": "img-09",
+          "url": "/listings/bahiti/img-09.webp",
+          "isCover": false,
+          "sortOrder": 9
+        },
+        {
+          "id": "img-10",
+          "url": "/listings/bahiti/img-10.webp",
+          "isCover": false,
+          "sortOrder": 10
+        },
+        {
+          "id": "img-11",
+          "url": "/listings/bahiti/img-11.webp",
+          "isCover": false,
+          "sortOrder": 11
+        },
+        {
+          "id": "img-12",
+          "url": "/listings/bahiti/img-12.webp",
+          "isCover": false,
+          "sortOrder": 12
+        },
+        {
+          "id": "img-13",
+          "url": "/listings/bahiti/img-13.webp",
+          "isCover": false,
+          "sortOrder": 13
+        },
+        {
+          "id": "img-14",
+          "url": "/listings/bahiti/img-14.webp",
+          "isCover": false,
+          "sortOrder": 14
+        },
+        {
+          "id": "img-15",
+          "url": "/listings/bahiti/img-15.webp",
+          "isCover": false,
+          "sortOrder": 15
+        },
+        {
+          "id": "img-16",
+          "url": "/listings/bahiti/img-16.webp",
+          "isCover": false,
+          "sortOrder": 16
+        },
+        {
+          "id": "img-17",
+          "url": "/listings/bahiti/img-17.webp",
+          "isCover": false,
+          "sortOrder": 17
+        },
+        {
+          "id": "img-18",
+          "url": "/listings/bahiti/img-18.webp",
+          "isCover": false,
+          "sortOrder": 18
+        },
+        {
+          "id": "img-19",
+          "url": "/listings/bahiti/img-19.webp",
+          "isCover": false,
+          "sortOrder": 19
+        },
+        {
+          "id": "img-20",
+          "url": "/listings/bahiti/img-20.webp",
+          "isCover": false,
+          "sortOrder": 20
+        },
+        {
+          "id": "img-21",
+          "url": "/listings/bahiti/img-21.webp",
+          "isCover": false,
+          "sortOrder": 21
+        },
+        {
+          "id": "img-22",
+          "url": "/listings/bahiti/img-22.webp",
+          "isCover": false,
+          "sortOrder": 22
+        },
+        {
+          "id": "img-23",
+          "url": "/listings/bahiti/img-23.webp",
+          "isCover": false,
+          "sortOrder": 23
+        },
+        {
+          "id": "img-24",
+          "url": "/listings/bahiti/img-24.webp",
+          "isCover": false,
+          "sortOrder": 24
+        },
+        {
+          "id": "img-25",
+          "url": "/listings/bahiti/img-25.webp",
+          "isCover": false,
+          "sortOrder": 25
+        },
+        {
+          "id": "img-26",
+          "url": "/listings/bahiti/img-26.webp",
+          "isCover": false,
+          "sortOrder": 26
+        },
+        {
+          "id": "img-27",
+          "url": "/listings/bahiti/img-27.webp",
+          "isCover": false,
+          "sortOrder": 27
+        },
+        {
+          "id": "img-28",
+          "url": "/listings/bahiti/img-28.webp",
+          "isCover": false,
+          "sortOrder": 28
+        },
+        {
+          "id": "img-29",
+          "url": "/listings/bahiti/img-29.webp",
+          "isCover": false,
+          "sortOrder": 29
+        },
+        {
+          "id": "img-30",
+          "url": "/listings/bahiti/img-30.webp",
+          "isCover": false,
+          "sortOrder": 30
+        },
+        {
+          "id": "img-31",
+          "url": "/listings/bahiti/img-31.webp",
+          "isCover": false,
+          "sortOrder": 31
+        },
+        {
+          "id": "img-32",
+          "url": "/listings/bahiti/img-32.webp",
+          "isCover": false,
+          "sortOrder": 32
+        },
+        {
+          "id": "img-33",
+          "url": "/listings/bahiti/img-33.webp",
+          "isCover": false,
+          "sortOrder": 33
+        },
+        {
+          "id": "img-34",
+          "url": "/listings/bahiti/img-34.webp",
+          "isCover": false,
+          "sortOrder": 34
+        },
+        {
+          "id": "img-35",
+          "url": "/listings/bahiti/img-35.webp",
+          "isCover": false,
+          "sortOrder": 35
+        }
+      ]
+    }
+  ],
+  "posts": [
+    {
+      "id": "property-financing-in-costa-rica",
+      "slug": "property-financing-in-costa-rica",
+      "published": true,
+      "date": "2026-08-23",
+      "pdf": "/blog/financiamiento-inmobiliario.pdf",
+      "author": "Bernal Alvarado Sanabria",
+      "role": {
+        "en": "Zenith Luxury Realty",
+        "es": "Zenith Luxury Realty"
+      },
+      "title": {
+        "en": "Property financing in Costa Rica",
+        "es": "Financiamiento para comprar propiedades en Costa Rica"
+      },
+      "excerpt": {
+        "en": "Available to Costa Rican and international buyers, subject to evaluation and approval.",
+        "es": "Opciones para compradores nacionales y extranjeros, sujeto a evaluación y aprobación."
+      },
+      "body": {
+        "en": "## Property financing in Costa Rica\n\n:::intro\nAt Zenith Luxury Realty, we can help you explore financing options to purchase property anywhere in Costa Rica. Available to Costa Rican and international buyers, subject to evaluation and approval.\n:::\n\n:::stats\n12% | Annual interest\n15 | Year term\n20-50% | Down payment by property\n:::\n\n### How do the payments work?\n\nEach monthly payment is divided into two portions: one covers interest and the other directly reduces the outstanding principal. With every payment, the financing balance is gradually reduced.\n\n:::note\nAvailable for properties located throughout Costa Rica.\n:::\n\n:::cta\nWant to estimate your down payment and monthly payment?\nContact me and we will review your case. Final terms depend on the buyer and the property.\n:::",
+        "es": "## Financiamiento para comprar propiedades en Costa Rica\n\n:::intro\nEn Zenith Luxury Realty podemos ayudarte a gestionar opciones de financiamiento para comprar propiedades en cualquier parte del país. Disponible para compradores nacionales y extranjeros, sujeto a evaluación y aprobación.\n:::\n\n:::stats\n12% | Interés anual\n15 | Años de plazo\n20-50% | Prima según la propiedad\n:::\n\n### ¿Cómo funcionan los pagos?\n\nCada mensualidad se divide en dos partes: una se destina al pago de intereses y la otra reduce directamente el capital pendiente. Con cada pago disminuye progresivamente el saldo del financiamiento.\n\n:::note\nAplica para propiedades ubicadas en todo Costa Rica.\n:::\n\n:::cta\n¿Quieres conocer tu prima y mensualidad?\nEscríbeme y evaluamos tu caso. Las condiciones finales dependerán del comprador y de la propiedad.\n:::"
+      }
+    },
+    {
+      "id": "how-can-a-foreigner-buy-property-in-costa-rica",
+      "slug": "how-can-a-foreigner-buy-property-in-costa-rica",
+      "published": true,
+      "date": "2026-08-23",
+      "pdf": "/blog/guia-compra-extranjeros.pdf",
+      "author": "Bernal Alvarado Sanabria",
+      "role": {
+        "en": "Zenith Luxury Realty",
+        "es": "Zenith Luxury Realty"
+      },
+      "title": {
+        "en": "How can a foreigner buy property in Costa Rica?",
+        "es": "¿Cómo comprar una propiedad en Costa Rica siendo extranjero?"
+      },
+      "excerpt": {
+        "en": "A concise guide for international buyers",
+        "es": "Guía para comprar una propiedad en Costa Rica"
+      },
+      "body": {
+        "en": "## How can a foreigner buy property in Costa Rica?\n\n:::intro\nForeigners can purchase titled property in Costa Rica without being residents. From the beginning, Zenith Luxury Realty can connect you with recommended real estate attorneys to guide the legal process.\n:::\n\n### 1. Set your budget and financing\n\nIn addition to the purchase price, budget approximately 3.8% for legal and property transfer costs. If you need financing, we can help you explore available options. A 20% down payment is a common starting point, depending on the lender, property and buyer profile.\n\n### 2. Find the right property\n\nWe select properties based on your objective: living, investing, renting or vacationing. We analyze location, price, condition, expenses, appreciation potential and expected returns.\n\n### 3. Submit an offer\n\nThe offer defines the price, payment method and purchase conditions. The initial deposit is always negotiable. Once accepted, the parties normally sign an option-to-purchase agreement.\n\n### 4. Place the funds in escrow\n\nThe deposit and purchase funds can be handled through an escrow account. We work with trusted local partners and can recommend options to coordinate this service.\n\n### 5. Legal review and closing\n\nThe attorney reviews ownership, taxes, liens, the cadastral plan and applicable permits. After due diligence, the deed is signed before a Costa Rican notary and submitted to the National Registry.\n\n### Support after the purchase\n\nOur network can also assist with moving services, furniture, décor, art sourcing and interior designers—so your new property can be delivered fully prepared and impeccable.\n\n:::cta\nReady to buy property in Costa Rica?\nZenith Luxury Realty coordinates each stage of the process, even while you are still abroad.\n:::",
+        "es": "## ¿Cómo comprar una propiedad en Costa Rica siendo extranjero?\n\n:::intro\nLos extranjeros pueden comprar propiedades tituladas en Costa Rica sin necesidad de tener residencia. Desde el inicio, en Zenith Luxury Realty podemos recomendarte abogados especializados para acompañar legalmente toda la operación.\n:::\n\n### 1. Definir presupuesto y financiamiento\n\nAl precio de la propiedad debes sumarle aproximadamente un 3,8% en gastos legales y de traspaso. Si necesitas financiamiento, podemos ayudarte a evaluar opciones. El down payment suele comenzar alrededor del 20%, según el banco, la propiedad y el perfil del comprador.\n\n### 2. Encontrar la propiedad\n\nSeleccionamos propiedades según tu objetivo: vivir, invertir, alquilar o vacacionar. Analizamos ubicación, precio, condición, gastos y potencial de plusvalía o rentabilidad.\n\n### 3. Presentar la oferta\n\nLa oferta establece el precio, la forma de pago y las condiciones. El enganche o depósito inicial siempre es negociable. Cuando se acepta, normalmente se firma un contrato de opción de compraventa.\n\n### 4. Depositar los fondos en escrow\n\nEl depósito y los fondos pueden manejarse mediante una cuenta de escrow. Contamos con alianzas y recomendaciones locales para ayudarte a coordinar este servicio.\n\n### 5. Revisión legal y cierre\n\nEl abogado revisará la propiedad, titular registral, impuestos, gravámenes, plano y permisos. Completada la revisión, la compra se firma ante un notario y se presenta ante el Registro Nacional.\n\n### Te acompañamos incluso después de comprar\n\nContamos con alianzas para servicios de mudanza, compra de muebles, decoración, selección de arte y diseñadores de interiores. El objetivo es que recibas tu propiedad completamente preparada e impecable.\n\n:::cta\n¿Quieres comprar una propiedad en Costa Rica?\nEn Zenith Luxury Realty centralizamos cada etapa del proceso, incluso si todavía te encuentras en otro país.\n:::"
+      }
+    },
+    {
+      "id": "when-is-a-property-truly-profitable",
+      "slug": "when-is-a-property-truly-profitable",
+      "published": true,
+      "date": "2026-08-23",
+      "pdf": "/blog/propiedades-rentables.pdf",
+      "author": "Bernal Alvarado Sanabria",
+      "role": {
+        "en": "Specialist in profitable properties",
+        "es": "Especialista en propiedades rentables"
+      },
+      "title": {
+        "en": "When is a property truly profitable?",
+        "es": "¿Cuándo una propiedad es realmente rentable en Costa Rica?"
+      },
+      "excerpt": {
+        "en": "A practical guide to finding the market’s hidden gems",
+        "es": "Una guía práctica para encontrar las joyas del mercado"
+      },
+      "body": {
+        "en": "## When is a property truly profitable?\n\n:::intro\nBuying a property to rent does not automatically make it a good investment. A profitable property should generate attractive income, keep expenses under control and retain appreciation and resale potential.\n:::\n\nBefore purchasing, it is essential to analyze the price, projected rent, location and true return.\n\n### What is a good rental yield?\n\n| Gross rental yield | Assessment |\n| --- | --- |\n| Below 6% | Low |\n| 6% to 8% | Acceptable |\n| 8% to 10% | Attractive |\n| 10% | Very good |\n| Above 10% | Excellent |\n\nFor reference, Costa Rica’s average gross rental yield was estimated at approximately 7.63% in the second quarter of 2026. At Zenith Luxury Realty, we do not simply target the national average: we look for hidden gems capable of outperforming it.\n\n:::formula\nGROSS YIELD = ANNUAL RENT ÷ TOTAL INVESTMENT × 100\n:::\n\nA $200,000 property generating $1,700 per month produces $20,400 annually: a 10.2% gross yield, an excellent result when expenses remain controlled.\n\n### Gross yield versus net yield\n\nGross yield measures income before expenses. Net yield reflects what remains after HOA fees, maintenance, repairs, insurance, taxes, management, placement commissions and applicable tax obligations.\n\n## Five points to review before buying\n\n### 1. Purchase price\n\nReturns begin at acquisition. Paying above market value can turn strong rent into a poor investment.\n\n### 2. Location demand\n\nIn Escazú and Santa Ana, proximity to offices, schools, shopping and major roads directly influences demand and rent.\n\n### 3. Monthly expenses\n\nHOA fees, maintenance and taxes can significantly reduce returns. What matters is what the property keeps, not only what it bills.\n\n### 4. Rental strategy\n\nLong-term rentals may offer stability, while short-term rentals may earn more but require greater management.\n\n### 5. Resale potential\n\nA well-managed property with verifiable income can be easier to sell.\n\n### My specialty: finding and creating profitable properties\n\nI specialize in identifying properties with genuine income potential and supporting investors throughout the process.\n\nI have completed full transactions by finding the opportunity, negotiating the purchase and making the property profitable. I have also taken vacant properties and created strategies to turn them into attractive income-producing assets. A properly prepared operation can also support a faster future sale.\n\n### We do not look for average properties\n\nThe national average is only a reference. The objective is to find market gems combining a strategic purchase price, proven demand, controlled expenses, strong returns, appreciation and resale potential.\n\n:::cta\nLooking for a property that truly performs?\nZenith Luxury Realty can help you find, evaluate and monetize properties in Escazú, Santa Ana and other strategic areas of Costa Rica.\n:::",
+        "es": "## ¿Cuándo una propiedad es realmente rentable?\n\n:::intro\nComprar una propiedad para alquilarla no garantiza automáticamente una buena inversión. Una propiedad rentable debe generar ingresos atractivos, mantener gastos controlados y conservar potencial de plusvalía y venta futura.\n:::\n\nAntes de comprar, es necesario analizar el precio, el alquiler proyectado, la ubicación y la rentabilidad real del inmueble.\n\n### ¿Qué porcentaje de rentabilidad es bueno?\n\n| Rentabilidad bruta | Lectura |\n| --- | --- |\n| Menos del 6% | Baja |\n| 6% a 8% | Aceptable |\n| 8% a 10% | Atractiva |\n| 10% | Muy buena |\n| Más del 10% | Excelente |\n\nComo referencia, el rendimiento bruto promedio de alquiler en Costa Rica se estimó en aproximadamente 7,63% durante el segundo trimestre de 2026. En Zenith Luxury Realty no buscamos simplemente alcanzar el promedio: buscamos las joyas del mercado capaces de superarlo.\n\n:::formula\nRENTABILIDAD BRUTA = ALQUILER ANUAL ÷ INVERSIÓN TOTAL × 100\n:::\n\nUna propiedad de $200.000 que genera $1.700 mensuales produce $20.400 al año: una rentabilidad bruta de 10,2%, excelente si los gastos se mantienen bajo control.\n\n### Rentabilidad bruta y rentabilidad neta\n\nLa rentabilidad bruta muestra cuánto produce el inmueble antes de gastos. La neta refleja cuánto queda después de cuota condominal, mantenimiento, reparaciones, seguros, impuestos, administración, comisiones y obligaciones tributarias.\n\n## Cinco puntos que debes analizar antes de comprar\n\n### 1. Precio de compra\n\nLa rentabilidad comienza al comprar. Pagar más del valor real puede convertir un buen alquiler en una mala inversión.\n\n### 2. Demanda de la ubicación\n\nEn Escazú y Santa Ana, la cercanía a oficinas, colegios, comercios y vías principales influye en la demanda y el alquiler.\n\n### 3. Gastos mensuales\n\nCuotas condominales, mantenimiento e impuestos pueden reducir el rendimiento. Importa lo que deja, no solo lo que factura.\n\n### 4. Tipo de alquiler\n\nEl alquiler tradicional ofrece estabilidad; la corta estancia puede generar más ingresos, pero exige mayor administración.\n\n### 5. Potencial de reventa\n\nUn inmueble bien administrado y con ingresos comprobables puede venderse más fácilmente.\n\n### Mi especialidad: encontrar y crear propiedades rentables\n\nMe especializo en identificar inmuebles con potencial real y acompañar al inversionista durante todo el proceso.\n\nHe cerrado negocios completos encontrando la oportunidad, negociando la compra y rentabilizando el inmueble. También he recibido propiedades vacías y desarrollado la estrategia para convertirlas en activos con un profit atractivo. Una operación bien preparada puede facilitar una venta posterior más rápida.\n\n### No buscamos propiedades promedio\n\nEl promedio nacional sirve como referencia, pero el objetivo es encontrar joyas del mercado con precio estratégico, demanda comprobable, gastos controlados, buen rendimiento, plusvalía y facilidad de reventa.\n\n:::cta\n¿Buscas una propiedad que realmente produzca?\nEn Zenith Luxury Realty puedo ayudarte a encontrar, evaluar y rentabilizar propiedades en Escazú, Santa Ana y otras zonas estratégicas de Costa Rica.\n:::"
+      }
+    },
+    {
+      "id": "why-buy-property-in-costa-rica",
+      "slug": "why-buy-property-in-costa-rica",
+      "published": true,
+      "date": "2026-08-19",
+      "author": "Bernal Alvarado Sanabria",
+      "role": {
+        "en": "Zenith Luxury Realty",
+        "es": "Zenith Luxury Realty"
+      },
+      "heroImage": "/blog/costa-rica-coast.webp",
+      "heroBand": "/blog/costa-rica-waterfall.webp",
+      "heroPhoto": "/blog/costa-rica-interior.webp",
+      "title": {
+        "en": "Why buy property in Costa Rica?",
+        "es": "¿Por qué comprar una propiedad en Costa Rica?"
+      },
+      "excerpt": {
+        "en": "Nature · Stability · Quality of Life",
+        "es": "Naturaleza · Estabilidad · Calidad de vida"
+      },
+      "body": {
+        "en": "## Why buy property in Costa Rica?\n\nBuying property in Costa Rica means much more than acquiring square footage. It means waking up surrounded by mountains, living near the ocean and making nature part of everyday life.\n\n### An extraordinarily green country\n\nMore than half of Costa Rica retains natural cover, while roughly one quarter is protected. In just a few hours, you can travel from a modern city to a cloud forest, beach, volcano or waterfall. In 2025, 98.6% of the country’s electricity was produced from renewable sources.\n\n### Peace as a national identity\n\nCosta Rica abolished its army in 1948 and chose to invest in education, healthcare and public institutions. Democracy, stability and peaceful conflict resolution are central to the country’s identity.\n\n### A modern, stable economy\n\nAs an OECD member, Costa Rica has built an economy driven by services, technology, tourism and high-value manufacturing. Growth reached approximately 4.6% in 2025, while inflation remained particularly low and affluent areas continued to support real-estate demand.\n\n## Pura Vida.\n\n:::stats\n81 | Years life expectancy\n98.6% | Renewable electricity\n1948 | Army abolished\n:::\n\n### Education, healthcare and quality of life\n\nPublic education is free and compulsory. The country combines a public healthcare system with private hospitals and bilingual professionals. Life expectancy is approximately 81 years, comparable to many developed economies.\n\n### Ready to welcome international residents\n\nEnglish is widely used in tourism, business, technology and real estate. French is also present in schools, tourism and international communities. Residency categories are available for retirees, income earners and investors.\n\n### An ideal retirement destination\n\nA tropical climate, two coastlines, cool mountain regions, healthcare, international flights and established expatriate communities make Costa Rica a natural place to begin a new chapter.\n\n### A property for every story\n\nModern apartments, luxury residences, beachfront homes, mountain retreats, farms and investment properties allow you to buy for living, vacationing, retirement, rental income or long-term wealth.\n\n> You are not simply buying a property.\n> You are investing in a way of life.\n\n:::cta\nYou are not simply buying a property. | You are investing in a way of life.\nZenith Luxury Realty can help you find the place that best matches your lifestyle and objectives in Costa Rica. Thinking about living, investing or retiring here? Contact me.\n:::\n\nSources: World Bank, BCCR, OECD, SINAC, Grupo ICE.",
+        "es": "## ¿Por qué comprar una propiedad en Costa Rica?\n\nComprar una propiedad en Costa Rica significa mucho más que adquirir metros cuadrados. Significa despertar rodeado de montañas, vivir cerca del mar y hacer de la naturaleza parte de la vida cotidiana.\n\n### Un país extraordinariamente verde\n\nMás de la mitad del territorio mantiene cobertura natural y cerca de una cuarta parte está protegida. En pocas horas puedes pasar de una ciudad moderna a un bosque nuboso, una playa, un volcán o una catarata. En 2025, el 98,6% de la electricidad del país se produjo con fuentes renovables.\n\n### Paz convertida en identidad\n\nCosta Rica abolió su ejército en 1948 y eligió invertir en educación, salud e instituciones. La democracia, la estabilidad y la resolución pacífica forman parte de la identidad nacional.\n\n### Una economía moderna y estable\n\nMiembro de la OCDE, Costa Rica ha desarrollado una economía de servicios, tecnología, turismo y manufactura de alto valor. Creció aproximadamente 4,6% en 2025 y ha mantenido una inflación particularmente baja, junto con zonas de alto poder adquisitivo y demanda inmobiliaria.\n\n## Pura Vida.\n\n:::stats\n81 | Años de vida\n98.6% | Energía renovable\n1948 | Sin ejército\n:::\n\n### Educación, salud y calidad de vida\n\nLa educación pública es gratuita y obligatoria. El país combina un sistema de salud público con hospitales privados y profesionales bilingües. Su esperanza de vida ronda los 81 años, comparable con la de muchas economías desarrolladas.\n\n### Un país preparado para recibirte\n\nEl inglés se utiliza ampliamente en turismo, negocios, tecnología y bienes raíces. También existe presencia del francés en centros educativos, turismo y comunidades internacionales. Además, hay categorías migratorias para pensionados, rentistas e inversionistas.\n\n### Un destino ideal para el retiro\n\nClima tropical, playas en dos océanos, montañas frescas, atención médica, conexiones aéreas y comunidades internacionales convierten a Costa Rica en un destino natural para comenzar una nueva etapa de vida.\n\n### Una propiedad para cada historia\n\nApartamentos modernos, residencias de lujo, casas frente al mar, propiedades de montaña, fincas y oportunidades de inversión: puedes comprar para vivir, vacacionar, retirarte, alquilar o construir patrimonio.\n\n> No estás comprando solamente una propiedad.\n> Estás invirtiendo en una forma de vivir.\n\n:::cta\nNo estás comprando solamente una propiedad. | Estás invirtiendo en una forma de vivir.\nEn Zenith Luxury Realty puedo ayudarte a encontrar el lugar que mejor se adapte a tu estilo de vida y a tus objetivos en Costa Rica. ¿Estás pensando en vivir, invertir o retirarte aquí? Escríbeme.\n:::\n\nFuentes: World Bank, BCCR, OECD, SINAC, Grupo ICE."
+      }
+    }
+  ],
+  "leads": [],
+  "reviews": [
+    {
+      "id": "review-4",
+      "author": "Jonathan Levy",
+      "quote": {
+        "en": "My experience with Zenith has been excellent. Bernal and Harold S. stand out for their professionalism, commitment, and above all their ability to understand the client’s needs and turn them into practical solutions.",
+        "es": "Mi experiencia con Zenith ha sido excelente. Bernal y Harold S. se distinguen por su profesionalismo, compromiso y, sobre todo, por su capacidad de entender las necesidades del cliente y convertirlas en soluciones prácticas."
+      },
+      "date": "2026-01-01",
+      "featured": true,
+      "published": true,
+      "sortOrder": 0
+    },
+    {
+      "id": "review-1",
+      "author": "Paula Barrado",
+      "quote": {
+        "en": "Bernal was incredibly helpful when I arrived in Costa Rica and made the entire process much easier and more comfortable. Both he and Harold were always wonderful, showing us every option that matched our budget and needs, and even picking us up and driving us around when we did not have transportation. They also helped us negotiate and find the best possible home. Even today, they are still available whenever we need anything.",
+        "es": "Bernal hizo que nuestra llegada a Costa Rica fuera mucho más fácil y cómoda. Junto con Harold, nos mostró opciones adaptadas a nuestro presupuesto, nos ayudó con el transporte, la negociación y a encontrar la mejor casa posible. Incluso hoy siguen disponibles cuando los necesitamos."
+      },
+      "date": "2026-01-01",
+      "featured": true,
+      "published": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "review-2",
+      "author": "Faith Bellini",
+      "quote": {
+        "en": "In the best hands.",
+        "es": "En las mejores manos."
+      },
+      "date": "2026-01-01",
+      "featured": true,
+      "published": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "review-3",
+      "author": "Sudip B.",
+      "quote": {
+        "en": "Bernal and the guys are awesome! The entire building got rented out so fast. Super happy about it.",
+        "es": "¡Bernal y los chicos son increíbles! Todo el edificio se alquiló rapidísimo. Estoy súper feliz por eso."
+      },
+      "date": "2026-01-01",
+      "featured": true,
+      "published": true,
+      "sortOrder": 3
+    }
+  ]
+}

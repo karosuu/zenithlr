@@ -1,0 +1,102 @@
+{
+  "meta": {
+    "title": "Zenith Luxury Realty",
+    "description": "Bienes raíces de lujo en Costa Rica. Renta, venta e inversión con un equipo boutique en Escazú y Santa Ana."
+  },
+  "nav": {
+    "home": "Inicio",
+    "rent": "Renta",
+    "sell": "Venta",
+    "about": "Nosotros",
+    "blog": "Blog",
+    "contact": "Contacto",
+    "admin": "Equipo"
+  },
+  "filters": {
+    "all": "Todos",
+    "rent": "Renta",
+    "sell": "Venta",
+    "investment": "Inversiones inmobiliarias",
+    "type": "Tipo de propiedad",
+    "budget": "Presupuesto",
+    "location": "Ubicación",
+    "rooms": "Habitaciones",
+    "roomsPlus": "{count}+",
+    "sort": "Ordenar por",
+    "sortDefault": "Orden predeterminado",
+    "sortNew": "Más recientes",
+    "sortAsc": "Precio menor a mayor",
+    "sortDesc": "Precio mayor a menor",
+    "clear": "Limpiar filtros",
+    "search": "Buscar",
+    "viewAll": "Ver todas",
+    "empty": "Ninguna propiedad coincide con estos filtros.",
+    "seeMore": "Ver más detalles",
+    "bed": "HAB",
+    "bath": "BA",
+    "priceOnRequest": "Precio a consultar"
+  },
+  "listing": {
+    "overview": "Descripción general",
+    "description": "Descripción",
+    "features": "Características especiales",
+    "amenities": "Amenidades",
+    "visit": "Visita esta propiedad",
+    "visitBody": "Cuéntanos cuándo quieres verla. Nuestro equipo coordina la visita.",
+    "faq": "Preguntas frecuentes",
+    "id": "ID de propiedad",
+    "levels": "Niveles",
+    "bedrooms": "Dormitorios",
+    "bathrooms": "Baños",
+    "kitchen": "Cocina",
+    "service": "Cuarto de servicio",
+    "construction": "Área de construcción",
+    "lot": "Área del lote",
+    "year": "Año de construcción",
+    "maintenance": "Cuota de mantenimiento",
+    "parking": "Parqueo",
+    "share": "Compartir",
+    "agent": "Tu asesor",
+    "viewPhotos": "{count, plural, one {Ver foto} other {Ver las # fotos}}",
+    "photoCount": "{count, plural, one {# foto} other {# fotos}}",
+    "closeGallery": "Cerrar galería",
+    "prevPhoto": "Foto anterior",
+    "nextPhoto": "Foto siguiente"
+  },
+  "forms": {
+    "name": "Nombre",
+    "email": "Correo",
+    "phone": "Teléfono",
+    "message": "Mensaje",
+    "submit": "Enviar",
+    "sending": "Enviando…",
+    "success": "Gracias. Te contactaremos en breve.",
+    "error": "Algo salió mal. Inténtalo de nuevo o escríbenos por WhatsApp.",
+    "emailLabel": "Correo",
+    "call": "Llamar",
+    "office": "Oficina"
+  },
+  "blog": {
+    "badge": "Propiedades destacadas",
+    "read": "Leer más",
+    "minRead": "{count} min de lectura",
+    "back": "Volver al Blog",
+    "writtenBy": "Escrito por",
+    "author": "Autor",
+    "readingTime": "Lectura de {count} min",
+    "download": "Descargar guía",
+    "fullGuide": "Guía completa (PDF)",
+    "share": "Compartir",
+    "shareFacebook": "Share on Facebook",
+    "shareWhatsapp": "Share on Whatsapp",
+    "shareLinkedin": "Share on Linkedin"
+  },
+  "reviews": {
+    "viewAll": "Ver todas las reseñas",
+    "empty": "Las reseñas aparecerán aquí pronto."
+  },
+  "privacy": {
+    "title": "Política de privacidad",
+    "body": "Zenith Luxury Realty utiliza la información que compartes en nuestros formularios únicamente para responder tu consulta y prestar servicios inmobiliarios. No vendemos datos personales. Puedes solicitar acceso o eliminación escribiendo a management@zenithlr.com."
+  }
+}

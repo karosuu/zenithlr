@@ -1,0 +1,102 @@
+{
+  "meta": {
+    "title": "Zenith Luxury Realty",
+    "description": "Luxury real estate in Costa Rica. Rent, sell, and invest with a boutique team in Escazú and Santa Ana."
+  },
+  "nav": {
+    "home": "Home",
+    "rent": "Rent",
+    "sell": "Sell",
+    "about": "About",
+    "blog": "Blog",
+    "contact": "Contact",
+    "admin": "Team"
+  },
+  "filters": {
+    "all": "All",
+    "rent": "Rent",
+    "sell": "Sell",
+    "investment": "Real Estate Investments",
+    "type": "Type of Property",
+    "budget": "Budget",
+    "location": "Location",
+    "rooms": "Rooms",
+    "roomsPlus": "{count}+",
+    "sort": "Sort by",
+    "sortDefault": "Default order",
+    "sortNew": "New listings",
+    "sortAsc": "Price low-to-high",
+    "sortDesc": "Price high-to-low",
+    "clear": "Clear filters",
+    "search": "Search",
+    "viewAll": "View all",
+    "empty": "No properties match these filters.",
+    "seeMore": "See more details",
+    "bed": "BD",
+    "bath": "BA",
+    "priceOnRequest": "Price upon request"
+  },
+  "listing": {
+    "overview": "Overview",
+    "description": "Description",
+    "features": "Special features",
+    "amenities": "Amenities",
+    "visit": "Visit this property",
+    "visitBody": "Tell us when you would like to see it. Our team will arrange the visit.",
+    "faq": "Frequently asked questions",
+    "id": "Property ID",
+    "levels": "Levels",
+    "bedrooms": "Bedrooms",
+    "bathrooms": "Bathrooms",
+    "kitchen": "Kitchen",
+    "service": "Service room",
+    "construction": "Construction area",
+    "lot": "Lot area",
+    "year": "Year built",
+    "maintenance": "Maintenance fee",
+    "parking": "Parking",
+    "share": "Share",
+    "agent": "Your advisor",
+    "viewPhotos": "{count, plural, one {View photo} other {View all # photos}}",
+    "photoCount": "{count, plural, one {# photo} other {# photos}}",
+    "closeGallery": "Close gallery",
+    "prevPhoto": "Previous photo",
+    "nextPhoto": "Next photo"
+  },
+  "forms": {
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "message": "Message",
+    "submit": "Submit",
+    "sending": "Sending…",
+    "success": "Thank you. We will be in touch shortly.",
+    "error": "Something went wrong. Please try again or write us on WhatsApp.",
+    "emailLabel": "Email",
+    "call": "Call",
+    "office": "Office"
+  },
+  "blog": {
+    "badge": "Featured Properties",
+    "read": "Read more",
+    "minRead": "{count} min read",
+    "back": "Back to Blog",
+    "writtenBy": "Written by",
+    "author": "Author",
+    "readingTime": "{count} min read",
+    "download": "Download guide",
+    "fullGuide": "Full guide (PDF)",
+    "share": "Share",
+    "shareFacebook": "Share on Facebook",
+    "shareWhatsapp": "Share on Whatsapp",
+    "shareLinkedin": "Share on Linkedin"
+  },
+  "reviews": {
+    "viewAll": "View all reviews",
+    "empty": "Reviews will appear here soon."
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "body": "Zenith Luxury Realty collects the information you share in our forms solely to respond to your inquiry and provide real estate services. We do not sell personal data. You may request access or deletion by writing to management@zenithlr.com."
+  }
+}
