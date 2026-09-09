@@ -43,8 +43,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       data-scroll-behavior="smooth"
     >
       <head>
-        {/* Stable CSS URL for TMDHosting when /_next/static/css hashes 404 after deploys */}
-        <link rel="stylesheet" href="/zenith.css" />
+        {/* Stable CSS via API route — TMDHosting/LiteSpeed often 404s public *.css */}
+        <link rel="stylesheet" href="/api/site-css" />
       </head>
       <body className="min-h-full bg-paper text-ink">{children}</body>
     </html>

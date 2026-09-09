@@ -14,6 +14,22 @@ const next = require("next");
 
 process.chdir(__dirname);
 
+try {
+  const pub = path.join(__dirname, "public");
+  const lines = [
+    new Date().toISOString(),
+    `dirname=${__dirname}`,
+    `cwd=${process.cwd()}`,
+    `publicExists=${fs.existsSync(pub)}`,
+    `zenithCss=${fs.existsSync(path.join(pub, "zenith.css"))}`,
+    `publicFiles=${fs.existsSync(pub) ? fs.readdirSync(pub).join("|") : ""}`,
+  ];
+  fs.mkdirSync(path.join(__dirname, "tmp"), { recursive: true });
+  fs.writeFileSync(path.join(__dirname, "tmp", "zenith-boot.log"), `${lines.join("\n")}\n`);
+} catch (err) {
+  console.error("[zenith] boot log failed", err);
+}
+
 const dbFile = path.join(__dirname, "data", "db.json");
 const dbExample = path.join(__dirname, "data", "db.example.json");
 if (!fs.existsSync(dbFile) && fs.existsSync(dbExample)) {
@@ -208,10 +224,22 @@ function sendPublicFile(req, res) {
   return sendFile(file, res, "public, max-age=86400");
 }
 
+function sendStableCss(req, res) {
+  const raw = requestPath(req);
+  if (raw !== "/zenith.css" && raw !== "/api/site-css") return false;
+
+  const cssFile =
+    resolveExistingFile(path.join(publicRoot, "zenith.css")) ||
+    resolveCssFallback(path.join(staticRoot, "css", "app.css"));
+  if (!cssFile) return false;
+  return sendDiskFile(cssFile, res, "public, max-age=60");
+}
+
 app
   .prepare()
   .then(() => {
     const server = createServer((req, res) => {
+      if (sendStableCss(req, res)) return;
       if (sendBuildStatic(req, res)) return;
       if (sendUpload(req, res)) return;
       if (sendPublicFile(req, res)) return;
