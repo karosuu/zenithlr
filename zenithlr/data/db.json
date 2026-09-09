@@ -72,8 +72,8 @@
         "es": "¡Listo!"
       },
       "heroVideo": {
-        "en": "https://youtu.be/FGb7tWmhO7o",
-        "es": "https://youtu.be/FGb7tWmhO7o"
+        "en": "/videos/hero.mp4",
+        "es": "/videos/hero.mp4"
       },
       "affiliationsTitle": {
         "en": "Affiliations",
