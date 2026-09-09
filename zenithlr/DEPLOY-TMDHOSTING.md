@@ -53,18 +53,20 @@ En la misma pantalla de la app Node, pega los valores de `.env.example` (con sec
 
 No definas `PORT` a mano: Passenger lo asigna.
 
-### 4. Instalar, compilar, arrancar
+### 4. Instalar y arrancar
 
-1. **Run NPM Install** (hace falta el install **completo**, no `--omit=dev`: el build usa TypeScript y Tailwind).
-2. Terminal de cPanel o SSH, con el entorno de la app (el comando `source` que muestra Setup Node.js App), dentro de `zenithlr`:
+Application root real: `repositories/zenithlr/zenithlr`.
+
+1. **Run NPM Install**.
+2. El build en TMDHosting suele abortar (`EAGAIN` / `SIGABRT`). Compila en tu PC:
 
 ```bash
+cd zenithlr
 npm run build
 ```
 
-3. **Restart** la aplicación.
-
-Si el build se queda sin memoria, compílalo en tu PC (`npm run build`) y sube la carpeta `.next` **además** del código. `node_modules` sigue teniéndose que instalar en el servidor.
+3. Sube la carpeta `.next` a `/home/nicahost/repositories/zenithlr/zenithlr/.next` (no subas `node_modules` de Windows).
+4. **Restart** la aplicación.
 
 ### 5. Cuando el sitio nuevo cargue
 

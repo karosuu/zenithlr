@@ -1,4 +1,4 @@
-import { parseListingCopy } from "@/lib/listing-copy";
+import { parseListingCopy, type ListingCopyBlock } from "@/lib/listing-copy";
 
 export function FeatureList({ items }: { items: string[] }) {
   return (
@@ -37,7 +37,7 @@ export function ListingCopy({ text }: { text: string }) {
     const block = blocks[index];
 
     if (block.type === "heading") {
-      const section = [block];
+      const section: ListingCopyBlock[] = [block];
       while (index + 1 < blocks.length && blocks[index + 1].type !== "heading") {
         index += 1;
         section.push(blocks[index]);
