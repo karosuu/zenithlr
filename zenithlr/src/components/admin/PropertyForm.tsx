@@ -6,7 +6,7 @@ import { AmenitiesEditor, compactAmenities } from "./AmenitiesEditor";
 import { BilingualField } from "./BilingualField";
 import { DeleteListingButton } from "./DeleteListingButton";
 import { PhotoUploader } from "./PhotoUploader";
-import type { Listing, Localized } from "@/lib/types";
+import type { Listing, ListingImage, Localized } from "@/lib/types";
 
 const emptyLocalized = (): Localized => ({ en: "", es: "" });
 
@@ -35,10 +35,34 @@ export function emptyListing(): Listing {
   };
 }
 
+function removeListingImages(images: ListingImage[], idsToRemove: Set<string>) {
+  const remaining = images.filter((item) => !idsToRemove.has(item.id));
+  if (remaining.length === 0 || remaining.some((item) => item.isCover)) {
+    return remaining;
+  }
+  return remaining.map((item, index) => ({ ...item, isCover: index === 0 }));
+}
+
 export function PropertyForm({ initial, isNew }: { initial?: Listing; isNew?: boolean }) {
   const router = useRouter();
   const [listing, setListing] = useState(initial ?? emptyListing());
+  const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [status, setStatus] = useState("");
+
+  const toggleSelected = (id: string) => {
+    setSelectedIds((prev) =>
+      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id],
+    );
+  };
+
+  const removeImages = (ids: string[]) => {
+    const idSet = new Set(ids);
+    setListing((prev) => ({
+      ...prev,
+      images: removeListingImages(prev.images, idSet),
+    }));
+    setSelectedIds((prev) => prev.filter((id) => !idSet.has(id)));
+  };
 
   const toggleGoal = (goal: Listing["goals"][number]) => {
     setListing((prev) => ({
@@ -254,40 +278,82 @@ export function PropertyForm({ initial, isNew }: { initial?: Listing; isNew?: bo
             }))
           }
         />
+        {listing.images.length > 0 && (
+          <div className="mt-3 flex flex-wrap items-center gap-3 text-xs text-sand-deep">
+            <button type="button" onClick={() => setSelectedIds(listing.images.map((image) => image.id))}>
+              Select all
+            </button>
+            <button
+              type="button"
+              className="disabled:opacity-40"
+              disabled={selectedIds.length === 0}
+              onClick={() => setSelectedIds([])}
+            >
+              Clear
+            </button>
+            <button
+              type="button"
+              className="disabled:opacity-40"
+              disabled={selectedIds.length === 0}
+              onClick={() => {
+                const count = selectedIds.length;
+                if (
+                  !confirm(
+                    `Remove ${count} photo${count === 1 ? "" : "s"} from this listing?`,
+                  )
+                ) {
+                  return;
+                }
+                removeImages(selectedIds);
+              }}
+            >
+              Delete selected ({selectedIds.length})
+            </button>
+          </div>
+        )}
         <div className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-4">
-          {listing.images.map((image) => (
-            <div key={image.id} className="relative">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={image.url} alt="" className="aspect-[4/3] w-full object-cover" />
-              <div className="mt-2 flex gap-2 text-xs">
+          {listing.images.map((image) => {
+            const selected = selectedIds.includes(image.id);
+            return (
+              <div key={image.id} className="relative">
+                <label className="absolute left-2 top-2 z-10 flex h-5 w-5 items-center justify-center bg-cream/90">
+                  <input
+                    type="checkbox"
+                    checked={selected}
+                    onChange={() => toggleSelected(image.id)}
+                    aria-label="Select photo"
+                  />
+                </label>
                 <button
                   type="button"
-                  onClick={() =>
-                    setListing((prev) => ({
-                      ...prev,
-                      images: prev.images.map((item) => ({
-                        ...item,
-                        isCover: item.id === image.id,
-                      })),
-                    }))
-                  }
+                  onClick={() => toggleSelected(image.id)}
+                  className={`block w-full ${selected ? "ring-2 ring-ink ring-offset-2" : ""}`}
                 >
-                  {image.isCover ? "Cover" : "Set cover"}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={image.url} alt="" className="aspect-[4/3] w-full object-cover" />
                 </button>
-                <button
-                  type="button"
-                  onClick={() =>
-                    setListing((prev) => ({
-                      ...prev,
-                      images: prev.images.filter((item) => item.id !== image.id),
-                    }))
-                  }
-                >
-                  Remove
-                </button>
+                <div className="mt-2 flex gap-2 text-xs">
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setListing((prev) => ({
+                        ...prev,
+                        images: prev.images.map((item) => ({
+                          ...item,
+                          isCover: item.id === image.id,
+                        })),
+                      }))
+                    }
+                  >
+                    {image.isCover ? "Cover" : "Set cover"}
+                  </button>
+                  <button type="button" onClick={() => removeImages([image.id])}>
+                    Remove
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
