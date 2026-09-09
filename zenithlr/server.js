@@ -38,11 +38,62 @@ const app = next({
   conf: { distDir: ".next" },
 });
 const handle = app.getRequestHandler();
+const staticRoot = path.resolve(__dirname, ".next", "static");
+const STATIC_TYPES = {
+  ".css": "text/css; charset=utf-8",
+  ".js": "application/javascript; charset=utf-8",
+  ".mjs": "application/javascript; charset=utf-8",
+  ".woff2": "font/woff2",
+  ".woff": "font/woff",
+  ".ttf": "font/ttf",
+  ".otf": "font/otf",
+  ".png": "image/png",
+  ".jpg": "image/jpeg",
+  ".jpeg": "image/jpeg",
+  ".svg": "image/svg+xml",
+  ".json": "application/json",
+  ".map": "application/json",
+};
+
+function sendBuildStatic(req, res) {
+  const raw = (req.url || "").split("?")[0];
+  if (!raw.startsWith("/_next/static/")) return false;
+
+  let rel;
+  try {
+    rel = decodeURIComponent(raw.slice("/_next/static/".length));
+  } catch {
+    return false;
+  }
+  if (!rel || rel.includes("\0")) return false;
+
+  const file = path.resolve(staticRoot, rel);
+  if (file !== staticRoot && !file.startsWith(staticRoot + path.sep)) return false;
+
+  let stat;
+  try {
+    stat = fs.statSync(file);
+  } catch {
+    return false;
+  }
+  if (!stat.isFile()) return false;
+
+  res.statusCode = 200;
+  res.setHeader(
+    "Content-Type",
+    STATIC_TYPES[path.extname(file).toLowerCase()] || "application/octet-stream",
+  );
+  res.setHeader("Content-Length", String(stat.size));
+  res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
+  fs.createReadStream(file).pipe(res);
+  return true;
+}
 
 app
   .prepare()
   .then(() => {
     const server = createServer((req, res) => {
+      if (sendBuildStatic(req, res)) return;
       handle(req, res).catch((err) => {
         console.error("[zenith] request error", req.url, err);
         if (!res.headersSent) {
