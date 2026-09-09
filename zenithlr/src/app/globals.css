@@ -97,6 +97,15 @@ button {
   animation: page-fade 0.35s ease-out both;
 }
 
+.hero-yt-frame iframe {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  border: 0;
+  pointer-events: none;
+}
+
 .hero-intro-overlay {
   position: absolute;
   inset: 0;
