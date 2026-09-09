@@ -7,6 +7,7 @@ New site for [zenithlr.com](https://zenithlr.com/): English / Spanish, sand-blac
 ```bash
 cd zenithlr
 cp .env.example .env.local
+cp data/db.example.json data/db.json   # only if data/db.json does not exist yet
 npm install
 npm run dev
 ```
@@ -43,7 +44,7 @@ If `SMTP_HOST` / `SMTP_USER` / `SMTP_PASS` are missing, local `npm run dev` stil
 This app needs Node (cPanel **Setup Node.js App**), not PHP. Do not drop it into WordPress `public_html`.
 
 1. Backup WordPress (`public_html` + MySQL).
-2. Push this `zenithlr` folder to GitHub (never commit `.env` / `node_modules` / `.next`).
+2. Push this `zenithlr` folder to GitHub (never commit `.env` / `node_modules` / `.next` / `data/db.json`).
 3. Clone or upload into `/home/USER/zenithlr`.
 4. Create a Node app: version **20.20.2**, production, startup file **`server.js`**, URL = your domain.
 5. Paste environment variables from `.env.example`.
@@ -60,4 +61,4 @@ From `/admin`:
 - Reviews (English / Spanish, publish, homepage order)
 - Blog articles (can be added later)
 
-Uploads are saved to `public/uploads`. Content is stored in `data/db.json` so it works without WordPress. A Supabase schema is in `supabase/schema.sql` for when you deploy.
+Uploads are saved to `public/uploads`. Live content is `data/db.json` (not in Git). New clones copy `data/db.example.json`. A Supabase schema is in `supabase/schema.sql` for when you deploy.

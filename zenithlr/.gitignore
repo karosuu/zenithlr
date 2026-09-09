@@ -41,6 +41,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# live content (seed: data/db.example.json)
+/data/db.json
+/data/db.json.bak
+
 # uploads
 /public/uploads/*
 !/public/uploads/.gitkeep

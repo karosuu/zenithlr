@@ -15,9 +15,11 @@ En cPanel el código debe vivir en una carpeta propia (por ejemplo `zenithlr`). 
 
 Sube **el contenido de esta carpeta** (`zenithlr`) como raíz del repositorio, para que en el servidor existan `package.json` y `server.js` en la raíz.
 
-**Sí:** código, `data/db.json`, `public/` (sin fotos nuevas), `server.js`, `.env.example`
+**Sí:** código, `data/db.example.json`, `public/` (sin fotos de listings), `server.js`, `.env.example`
 
-**No:** `node_modules`, `.next`, `.env`, `.env.local`, `SMTP_PASS`, contraseñas
+**No:** `data/db.json`, `node_modules`, `.next`, `.env`, `.env.local`, `SMTP_PASS`, contraseñas
+
+`data/db.json` es la base del sitio (textos, propiedades, reseñas). Vive **solo en el servidor y en tu PC**. GitHub guarda un semilla en `data/db.example.json`. Si `db.json` no existe, la app lo crea copiando el example.
 
 ## En cPanel (orden)
 
@@ -76,11 +78,26 @@ En `public_html` puedes quitar `index.php`, `wp-admin`, `wp-content`, `wp-includ
 
 `data/db.json` y `public/uploads` deben ser escribibles por la cuenta de cPanel (panel admin y formularios).
 
+Instalación nueva: si no hay `data/db.json`, cópialo una vez:
+
+```bash
+cp data/db.example.json data/db.json
+```
+
 ## Actualizar después
 
-```text
-git pull  →  npm install  →  npm run build  →  Restart (o touch tmp/restart.txt)
+**Siempre** copia `db.json` antes del pull. El primer pull que quite ese archivo de Git **lo borra del disco**.
+
+```bash
+cp data/db.json data/db.json.bak
+git pull
+# si desapareció o se reescribió:
+cp data/db.json.bak data/db.json
 ```
+
+Luego: `npm install` → `npm run build` (o sube `.next`) → Restart (`touch tmp/restart.txt`).
+
+No hagas `git checkout -- data/db.json` ni restaurar ese archivo desde GitHub.
 
 ## Si no arranca
 

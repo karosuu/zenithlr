@@ -8,10 +8,17 @@
  */
 
 const { createServer } = require("http");
+const fs = require("fs");
 const path = require("path");
 const next = require("next");
 
 process.chdir(__dirname);
+
+const dbFile = path.join(__dirname, "data", "db.json");
+const dbExample = path.join(__dirname, "data", "db.example.json");
+if (!fs.existsSync(dbFile) && fs.existsSync(dbExample)) {
+  fs.copyFileSync(dbExample, dbFile);
+}
 
 const dev = process.env.NODE_ENV === "development";
 const port = parseInt(process.env.PORT || "3000", 10);

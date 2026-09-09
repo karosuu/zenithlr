@@ -2,5 +2,7 @@ zenithlr/node_modules/
 zenithlr/.next/
 zenithlr/.env
 zenithlr/.env.local
+zenithlr/data/db.json
+zenithlr/data/db.json.bak
 .DS_Store
 Thumbs.db

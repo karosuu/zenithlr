@@ -12,8 +12,18 @@ import type {
 import { tx } from "./i18n-text";
 
 const dbPath = path.join(process.cwd(), "data", "db.json");
+const examplePath = path.join(process.cwd(), "data", "db.example.json");
+
+async function ensureDb() {
+  try {
+    await fs.access(dbPath);
+  } catch {
+    await fs.copyFile(examplePath, dbPath);
+  }
+}
 
 async function readDb(): Promise<Database> {
+  await ensureDb();
   const raw = await fs.readFile(dbPath, "utf8");
   return JSON.parse(raw) as Database;
 }
