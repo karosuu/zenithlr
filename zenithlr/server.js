@@ -45,7 +45,7 @@ const uploadDirs = [
   path.resolve(__dirname, "data", "uploads"),
 ];
 const STATIC_TYPES = {
-  ".css": "text/css; charset=utf-8",
+  ".css": "text/css",
   ".js": "application/javascript; charset=utf-8",
   ".mjs": "application/javascript; charset=utf-8",
   ".woff2": "font/woff2",
@@ -64,6 +64,59 @@ const STATIC_TYPES = {
   ".map": "application/json",
 };
 
+function isInside(root, file) {
+  return file === root || file.startsWith(root + path.sep);
+}
+
+function resolveExistingFile(file) {
+  try {
+    const info = fs.statSync(file);
+    if (info.isFile()) return file;
+  } catch {
+    /* missing */
+  }
+  return null;
+}
+
+/** If an old CSS hash is requested after a deploy, serve the current build CSS. */
+function resolveCssFallback(requestedFile) {
+  const cssDir = path.join(staticRoot, "css");
+  if (!isInside(cssDir, requestedFile) || path.extname(requestedFile).toLowerCase() !== ".css") {
+    return null;
+  }
+  try {
+    const match = fs
+      .readdirSync(cssDir)
+      .filter((name) => name.endsWith(".css"))
+      .map((name) => path.join(cssDir, name))
+      .find((file) => resolveExistingFile(file));
+    return match || null;
+  } catch {
+    return null;
+  }
+}
+
+function sendDiskFile(file, res, cacheControl) {
+  const existing = resolveExistingFile(file);
+  if (!existing) return false;
+
+  try {
+    const data = fs.readFileSync(existing);
+    res.statusCode = 200;
+    res.setHeader(
+      "Content-Type",
+      STATIC_TYPES[path.extname(existing).toLowerCase()] || "application/octet-stream",
+    );
+    res.setHeader("Content-Length", String(data.length));
+    res.setHeader("Cache-Control", cacheControl);
+    res.end(data);
+    return true;
+  } catch (err) {
+    console.error("[zenith] static read failed", existing, err);
+    return false;
+  }
+}
+
 function sendBuildStatic(req, res) {
   const raw = (req.url || "").split("?")[0];
   if (!raw.startsWith("/_next/static/")) return false;
@@ -74,48 +127,21 @@ function sendBuildStatic(req, res) {
   } catch {
     return false;
   }
-  if (!rel || rel.includes("\0")) return false;
+  if (!rel || rel.includes("\0") || rel.includes("..")) return false;
 
   const file = path.resolve(staticRoot, rel);
-  if (file !== staticRoot && !file.startsWith(staticRoot + path.sep)) return false;
+  if (!isInside(staticRoot, file)) return false;
 
-  let stat;
-  try {
-    stat = fs.statSync(file);
-  } catch {
-    return false;
-  }
-  if (!stat.isFile()) return false;
+  if (sendDiskFile(file, res, "public, max-age=31536000, immutable")) return true;
 
-  res.statusCode = 200;
-  res.setHeader(
-    "Content-Type",
-    STATIC_TYPES[path.extname(file).toLowerCase()] || "application/octet-stream",
-  );
-  res.setHeader("Content-Length", String(stat.size));
-  res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
-  fs.createReadStream(file).pipe(res);
-  return true;
+  const cssFallback = resolveCssFallback(file);
+  if (cssFallback && sendDiskFile(cssFallback, res, "public, max-age=60")) return true;
+
+  return false;
 }
 
 function sendFile(file, res, cacheControl) {
-  let info;
-  try {
-    info = fs.statSync(file);
-  } catch {
-    return false;
-  }
-  if (!info.isFile()) return false;
-
-  res.statusCode = 200;
-  res.setHeader(
-    "Content-Type",
-    STATIC_TYPES[path.extname(file).toLowerCase()] || "application/octet-stream",
-  );
-  res.setHeader("Content-Length", String(info.size));
-  res.setHeader("Cache-Control", cacheControl);
-  fs.createReadStream(file).pipe(res);
-  return true;
+  return sendDiskFile(file, res, cacheControl);
 }
 
 function sendUpload(req, res) {
