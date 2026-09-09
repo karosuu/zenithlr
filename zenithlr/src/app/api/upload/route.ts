@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { promises as fs } from "fs";
 import path from "path";
 import { getSessionEmail } from "@/lib/auth";
+import { safeUploadFilename, uploadsDir } from "@/lib/uploads";
 
 export async function POST(request: Request) {
   if (!(await getSessionEmail())) {
@@ -20,8 +21,14 @@ export async function POST(request: Request) {
   }
 
   const ext = file.name.split(".").pop()?.toLowerCase() || "jpg";
-  const name = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
-  const dir = path.join(process.cwd(), "public", "uploads");
+  const name = safeUploadFilename(
+    `${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`,
+  );
+  if (!name) {
+    return NextResponse.json({ error: "Invalid type" }, { status: 400 });
+  }
+
+  const dir = uploadsDir();
   await fs.mkdir(dir, { recursive: true });
   const buffer = Buffer.from(await file.arrayBuffer());
   await fs.writeFile(path.join(dir, name), buffer);

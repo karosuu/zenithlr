@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { LeadForm } from "@/components/forms/LeadForm";
 import { FeatureList, ListingCopy } from "@/components/listings/ListingCopy";
 import { ListingGallery } from "@/components/listings/ListingGallery";
-import { formatPrice, tx } from "@/lib/i18n-text";
+import { formatArea, formatPrice, tx } from "@/lib/i18n-text";
 import { getAgents, getListingBySlug } from "@/lib/store";
 import type { Locale } from "@/lib/types";
 
@@ -34,8 +34,10 @@ export default async function ListingPage({
     listing.bathrooms ? [t("bathrooms"), String(listing.bathrooms)] : null,
     listing.kitchen ? [t("kitchen"), String(listing.kitchen)] : null,
     listing.serviceRoom ? [t("service"), String(listing.serviceRoom)] : null,
-    listing.constructionArea ? [t("construction"), `${listing.constructionArea} m²`] : null,
-    listing.lotArea ? [t("lot"), `${listing.lotArea} m²`] : null,
+    listing.constructionArea
+      ? [t("construction"), formatArea(listing.constructionArea, loc)]
+      : null,
+    listing.lotArea ? [t("lot"), formatArea(listing.lotArea, loc)] : null,
     listing.yearBuilt ? [t("year"), String(listing.yearBuilt)] : null,
     listing.maintenanceFee ? [t("maintenance"), `$${listing.maintenanceFee}`] : null,
     listing.parking ? [t("parking"), String(listing.parking)] : null,

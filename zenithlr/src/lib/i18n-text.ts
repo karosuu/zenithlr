@@ -22,3 +22,12 @@ export function formatPrice(
   }
   return formatted;
 }
+
+export function formatArea(area: number, locale: Locale) {
+  const formatted = new Intl.NumberFormat(locale === "es" ? "es-CR" : "en-US", {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 2,
+  }).format(area);
+
+  return `${formatted} m²`;
+}

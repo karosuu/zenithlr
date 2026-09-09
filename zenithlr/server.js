@@ -39,6 +39,11 @@ const app = next({
 });
 const handle = app.getRequestHandler();
 const staticRoot = path.resolve(__dirname, ".next", "static");
+const publicRoot = path.resolve(__dirname, "public");
+const uploadDirs = [
+  path.resolve(__dirname, "public", "uploads"),
+  path.resolve(__dirname, "data", "uploads"),
+];
 const STATIC_TYPES = {
   ".css": "text/css; charset=utf-8",
   ".js": "application/javascript; charset=utf-8",
@@ -50,7 +55,11 @@ const STATIC_TYPES = {
   ".png": "image/png",
   ".jpg": "image/jpeg",
   ".jpeg": "image/jpeg",
+  ".webp": "image/webp",
+  ".avif": "image/avif",
+  ".gif": "image/gif",
   ".svg": "image/svg+xml",
+  ".mp4": "video/mp4",
   ".json": "application/json",
   ".map": "application/json",
 };
@@ -89,11 +98,76 @@ function sendBuildStatic(req, res) {
   return true;
 }
 
+function sendFile(file, res, cacheControl) {
+  let info;
+  try {
+    info = fs.statSync(file);
+  } catch {
+    return false;
+  }
+  if (!info.isFile()) return false;
+
+  res.statusCode = 200;
+  res.setHeader(
+    "Content-Type",
+    STATIC_TYPES[path.extname(file).toLowerCase()] || "application/octet-stream",
+  );
+  res.setHeader("Content-Length", String(info.size));
+  res.setHeader("Cache-Control", cacheControl);
+  fs.createReadStream(file).pipe(res);
+  return true;
+}
+
+function sendUpload(req, res) {
+  const raw = (req.url || "").split("?")[0];
+  if (!raw.startsWith("/uploads/")) return false;
+
+  let name;
+  try {
+    name = decodeURIComponent(raw.slice("/uploads/".length));
+  } catch {
+    return false;
+  }
+  if (!name || name.includes("\0") || name.includes("/") || name.includes("\\") || name.includes("..")) {
+    return false;
+  }
+  if (path.basename(name) !== name) return false;
+
+  for (const dir of uploadDirs) {
+    const file = path.resolve(dir, name);
+    if (file !== dir && !file.startsWith(dir + path.sep)) continue;
+    if (sendFile(file, res, "public, max-age=86400")) return true;
+  }
+  return false;
+}
+
+function sendPublicFile(req, res) {
+  const raw = (req.url || "").split("?")[0];
+  if (!raw || raw === "/" || raw.startsWith("/api/") || raw.startsWith("/_next/") || raw.startsWith("/admin/")) {
+    return false;
+  }
+
+  let rel;
+  try {
+    rel = decodeURIComponent(raw.replace(/^\//, ""));
+  } catch {
+    return false;
+  }
+  if (!rel || rel.includes("\0") || rel.includes("..")) return false;
+
+  const file = path.resolve(publicRoot, rel);
+  if (file !== publicRoot && !file.startsWith(publicRoot + path.sep)) return false;
+
+  return sendFile(file, res, "public, max-age=86400");
+}
+
 app
   .prepare()
   .then(() => {
     const server = createServer((req, res) => {
       if (sendBuildStatic(req, res)) return;
+      if (sendUpload(req, res)) return;
+      if (sendPublicFile(req, res)) return;
       handle(req, res).catch((err) => {
         console.error("[zenith] request error", req.url, err);
         if (!res.headersSent) {

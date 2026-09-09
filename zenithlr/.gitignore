@@ -48,6 +48,8 @@ next-env.d.ts
 # uploads
 /public/uploads/*
 !/public/uploads/.gitkeep
+/data/uploads/*
+!/data/uploads/.gitkeep
 
 # Passenger restart file (cPanel)
 /tmp/*

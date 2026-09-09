@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/routing";
-import { formatPrice, tx } from "@/lib/i18n-text";
+import { formatArea, formatPrice, tx } from "@/lib/i18n-text";
 import type { Listing, Locale } from "@/lib/types";
 
 export async function ListingCard({
@@ -29,6 +29,7 @@ export async function ListingCard({
               src={cover.url}
               alt={tx(listing.title, locale)}
               fill
+              unoptimized={cover.url.startsWith("/uploads/")}
               className="object-cover transition duration-700 group-hover:scale-105"
               sizes="(min-width: 1024px) 33vw, 100vw"
             />
@@ -51,10 +52,12 @@ export async function ListingCard({
           <h3 className="font-serif mt-1 text-2xl">{tx(listing.title, locale)}</h3>
           <p className="mt-3 text-sm text-ink/70">
             {listing.lotArea
-              ? `${listing.lotArea} m²`
+              ? formatArea(listing.lotArea, locale)
               : listing.bedrooms || listing.bathrooms
                 ? `${listing.bedrooms} ${t("bed")} · ${listing.bathrooms} ${t("bath")}${
-                    listing.constructionArea ? ` · ${listing.constructionArea} m²` : ""
+                    listing.constructionArea
+                      ? ` · ${formatArea(listing.constructionArea, locale)}`
+                      : ""
                   }`
                 : listing.propertyType}
           </p>
