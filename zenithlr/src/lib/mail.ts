@@ -28,6 +28,13 @@ export function isMailConfigured() {
   return Boolean(process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS);
 }
 
+function fromAddress(fallback: string) {
+  const mailbox = process.env.SMTP_USER || fallback;
+  const raw = (process.env.MAIL_FROM || mailbox).trim();
+  if (raw.includes("@")) return raw;
+  return `${raw} <${mailbox}>`;
+}
+
 export async function sendLeadEmail(lead: Lead) {
   const to =
     process.env.MANAGEMENT_EMAIL ||
@@ -36,25 +43,39 @@ export async function sendLeadEmail(lead: Lead) {
 
   if (!isMailConfigured()) {
     if (process.env.NODE_ENV === "production") {
-      throw new Error("SMTP is not configured");
+      console.error("[lead email skipped] SMTP_HOST / SMTP_USER / SMTP_PASS missing");
+    } else {
+      console.info("[lead email skipped — set SMTP_* in .env.local]\n", textFor(lead));
     }
-    console.info("[lead email skipped — set SMTP_* in .env.local]\n", textFor(lead));
     return;
   }
 
+  const host = process.env.SMTP_HOST as string;
   const port = Number(process.env.SMTP_PORT || 587);
+  const secure = process.env.SMTP_SECURE === "true" || port === 465;
+  const local = host === "localhost" || host === "127.0.0.1";
+
   const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
+    host,
     port,
-    secure: process.env.SMTP_SECURE === "true" || port === 465,
+    secure,
+    ignoreTLS: !secure,
+    requireTLS: false,
     auth: {
       user: process.env.SMTP_USER,
       pass: process.env.SMTP_PASS,
     },
+    tls: {
+      rejectUnauthorized: false,
+      servername: local ? "mail.zenithlr.com" : host,
+    },
+    connectionTimeout: 15000,
+    greetingTimeout: 15000,
+    socketTimeout: 15000,
   });
 
   await transporter.sendMail({
-    from: process.env.MAIL_FROM || process.env.SMTP_USER || to,
+    from: fromAddress(to),
     to,
     replyTo: lead.email,
     subject: subjectFor(lead),

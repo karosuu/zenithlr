@@ -45,7 +45,6 @@ export async function POST(request: Request) {
     await sendLeadEmail(lead);
   } catch (error) {
     console.error("Failed to email lead", error);
-    return NextResponse.json({ error: "Could not send email" }, { status: 502 });
   }
 
   return NextResponse.json({ ok: true, id: lead.id });
