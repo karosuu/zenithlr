@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getSessionEmail } from "@/lib/auth";
+import { slugify } from "@/lib/slug";
 import { getAllListings, saveListing } from "@/lib/store";
 import type { Listing } from "@/lib/types";
 
@@ -16,7 +17,10 @@ export async function POST(request: Request) {
   }
   const listing = (await request.json()) as Listing;
   if (!listing.id) listing.id = crypto.randomUUID();
-  if (!listing.slug) listing.slug = listing.id;
+  listing.slug =
+    slugify(listing.slug) ||
+    slugify(listing.title?.en || listing.title?.es || "") ||
+    listing.id;
   const saved = await saveListing(listing);
   return NextResponse.json(saved);
 }

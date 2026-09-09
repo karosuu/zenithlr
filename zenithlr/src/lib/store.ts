@@ -10,6 +10,7 @@ import type {
   Review,
 } from "./types";
 import { tx } from "./i18n-text";
+import { slugify } from "./slug";
 
 const dbPath = path.join(process.cwd(), "data", "db.json");
 const examplePath = path.join(process.cwd(), "data", "db.example.json");
@@ -65,13 +66,28 @@ export async function getAllListings() {
 
 export async function getListingBySlug(slug: string, locale: Locale) {
   const db = await readDb();
+  let decoded = slug;
+  try {
+    decoded = decodeURIComponent(slug);
+  } catch {
+    /* keep raw */
+  }
+  const normalized = slugify(decoded);
+  const visible = (listing: Listing) =>
+    listing.status === "published" ||
+    listing.status === "sold" ||
+    listing.status === "rented";
+
   return (
     db.listings.find(
-      (listing) =>
-        listing.slug === slug &&
-        (listing.status === "published" || listing.status === "sold" || listing.status === "rented"),
+      (listing) => listing.slug === decoded && visible(listing),
     ) ??
-    db.listings.find((listing) => tx(listing.title, locale).toLowerCase().includes(slug))
+    db.listings.find(
+      (listing) => slugify(listing.slug) === normalized && visible(listing),
+    ) ??
+    db.listings.find((listing) =>
+      tx(listing.title, locale).toLowerCase().includes(decoded.toLowerCase()),
+    )
   );
 }
 
@@ -82,14 +98,22 @@ export async function getListingById(id: string) {
 
 export async function saveListing(listing: Listing) {
   const db = await readDb();
-  const index = db.listings.findIndex((item) => item.id === listing.id);
+  const cleaned: Listing = {
+    ...listing,
+    slug:
+      slugify(listing.slug) ||
+      slugify(listing.title?.en || listing.title?.es || "") ||
+      slugify(listing.id) ||
+      listing.id,
+  };
+  const index = db.listings.findIndex((item) => item.id === cleaned.id);
   if (index >= 0) {
-    db.listings[index] = listing;
+    db.listings[index] = cleaned;
   } else {
-    db.listings.unshift(listing);
+    db.listings.unshift(cleaned);
   }
   await writeDb(db);
-  return listing;
+  return cleaned;
 }
 
 export async function deleteListing(id: string) {

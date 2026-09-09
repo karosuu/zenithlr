@@ -60,6 +60,15 @@ export function PropertyForm({ initial, isNew }: { initial?: Listing; isNew?: bo
           slug: listing.slug || listing.title.en.toLowerCase().replace(/\s+/g, "-"),
           amenities: compactAmenities(listing.amenities),
         };
+        // Keep URL-safe slug even if the admin typed spaces or accents
+        payload.slug = payload.slug
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase()
+          .trim()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/^-+|-+$/g, "")
+          .slice(0, 80) || payload.id;
         setStatus("Saving…");
         const res = await fetch(
           isNew ? "/api/listings" : `/api/listings/${listing.id}`,
