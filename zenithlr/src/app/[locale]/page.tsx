@@ -32,7 +32,7 @@ export default async function HomePage({
 
   return (
     <>
-      <HomeHero url={tx(page.heroVideo, loc) || "/videos/hero.mp4"}>
+      <HomeHero url={tx(page.heroVideo, loc) || "/api/hero-video"}>
         <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/45 to-ink/25" />
         <div className="relative z-10 mx-auto flex min-h-[92vh] max-w-7xl flex-col justify-end px-5 pb-20 pt-36 lg:px-8">
           <p className="text-[11px] tracking-[0.32em] uppercase text-sand">

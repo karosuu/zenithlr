@@ -81,7 +81,14 @@ function youtubeId(url: string) {
 }
 
 function isDirectVideo(url: string) {
+  if (!url) return false;
+  if (url.startsWith("/") && !url.includes("youtu")) return true;
   return /\.(mp4|webm|ogg)(\?|#|$)/i.test(url);
+}
+
+function fileVideoSrc(url: string) {
+  if (url.startsWith("/api/")) return url;
+  return "/api/hero-video";
 }
 
 export function HomeHero({
@@ -215,7 +222,7 @@ export function HomeHero({
       <div className="absolute inset-0 overflow-hidden bg-ink">
         {fileVideo ? (
           <video
-            src={url}
+            src={fileVideoSrc(url)}
             autoPlay
             muted
             loop
