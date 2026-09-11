@@ -131,11 +131,15 @@ jobs:
           if command -v cloudlinux-selector >/dev/null 2>&1; then
             cloudlinux-selector stop --json --interpreter nodejs --app-root "$DEPLOY_PATH" || true
           fi
-          pkill -f "Passenger NodeApp: ${DEPLOY_PATH}" 2>/dev/null || true
-          pkill -f "${DEPLOY_PATH}/server.js" 2>/dev/null || true
+          pkill -9 -f "lsnode:${DEPLOY_PATH}" 2>/dev/null || true
+          pkill -9 -f "Passenger NodeApp: ${DEPLOY_PATH}" 2>/dev/null || true
+          pkill -9 -f "${DEPLOY_PATH}/server.js" 2>/dev/null || true
           sleep 8
-          pkill -f "Passenger NodeApp: ${DEPLOY_PATH}" 2>/dev/null || true
-          pkill -f "${DEPLOY_PATH}/server.js" 2>/dev/null || true
+          pkill -9 -f "lsnode:${DEPLOY_PATH}" 2>/dev/null || true
+          pkill -9 -f "Passenger NodeApp: ${DEPLOY_PATH}" 2>/dev/null || true
+          pkill -9 -f "${DEPLOY_PATH}/server.js" 2>/dev/null || true
+          echo "Leftover processes:"
+          ps auxww | grep -E "lsnode:|Passenger NodeApp|${DEPLOY_PATH}/server.js" | grep -v grep || true
           sleep 2
 
           mkdir -p data
@@ -230,19 +234,16 @@ jobs:
           i=1
           while [ "$i" -le 12 ]; do
             echo "Live check attempt $i"
-            if live=$(curl -fsS -H "Cache-Control: no-cache" "https://zenithlr.com/deploy-marker.txt"); then
-              echo "$live"
-              live_id=$(printf '%s\n' "$live" | tr -d '\r' | awk -F= '/^BUILD_ID=/{print $2; exit}')
-              if [ -n "$expected_id" ] && [ "$live_id" = "$expected_id" ]; then
-                echo "Live site is serving this build"
-                exit 0
-              fi
-              echo "Live BUILD_ID=${live_id:-missing} does not match yet"
-            else
-              echo "deploy-marker.txt not reachable yet"
+            headers=$(curl -fsSI -H "Cache-Control: no-cache" "https://zenithlr.com/en" || true)
+            live_id=$(printf '%s\n' "$headers" | tr -d '\r' | awk -F': ' 'tolower($1)=="x-zenith-build"{print $2; exit}')
+            echo "X-Zenith-Build=${live_id:-missing}"
+            if [ -n "$expected_id" ] && [ "$live_id" = "$expected_id" ]; then
+              echo "Live HTML is serving this build"
+              exit 0
             fi
             i=$((i + 1))
             sleep 8
           done
-          echo "Live site is still serving an old (or unreachable) build"
+          echo "Live HTML is still serving an old Node worker"
+          echo "$headers"
           exit 1

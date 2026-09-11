@@ -237,10 +237,19 @@ function sendStableCss(req, res) {
   return sendDiskFile(cssFile, res, "public, max-age=60");
 }
 
+function currentBuildId() {
+  try {
+    return fs.readFileSync(path.join(__dirname, ".next", "BUILD_ID"), "utf8").trim();
+  } catch {
+    return "unknown";
+  }
+}
+
 app
   .prepare()
   .then(() => {
     const server = createServer((req, res) => {
+      res.setHeader("X-Zenith-Build", currentBuildId());
       if (sendStableCss(req, res)) return;
       if (sendBuildStatic(req, res)) return;
       if (sendUpload(req, res)) return;
