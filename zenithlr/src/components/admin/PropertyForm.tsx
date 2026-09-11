@@ -1,13 +1,20 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { AmenitiesEditor, compactAmenities } from "./AmenitiesEditor";
 import { BilingualField } from "./BilingualField";
 import { DeleteListingButton } from "./DeleteListingButton";
 import { PhotoUploader } from "./PhotoUploader";
+import {
+  appendListingImages,
+  moveListingImages,
+  pinCoverFirst,
+  removeListingImages,
+  setListingCover,
+} from "@/lib/listing-images";
 import { normalizePropertyType } from "@/lib/property-type";
-import type { Listing, ListingImage, Localized } from "@/lib/types";
+import type { Listing, Localized } from "@/lib/types";
 
 const emptyLocalized = (): Localized => ({ en: "", es: "" });
 
@@ -36,22 +43,21 @@ export function emptyListing(): Listing {
   };
 }
 
-function removeListingImages(images: ListingImage[], idsToRemove: Set<string>) {
-  const remaining = images.filter((item) => !idsToRemove.has(item.id));
-  if (remaining.length === 0 || remaining.some((item) => item.isCover)) {
-    return remaining;
-  }
-  return remaining.map((item, index) => ({ ...item, isCover: index === 0 }));
-}
-
 export function PropertyForm({ initial, isNew }: { initial?: Listing; isNew?: boolean }) {
   const router = useRouter();
   const [listing, setListing] = useState(() => {
     const source = initial ?? emptyListing();
-    return { ...source, propertyType: normalizePropertyType(source.propertyType) };
+    return {
+      ...source,
+      propertyType: normalizePropertyType(source.propertyType),
+      images: pinCoverFirst(source.images),
+    };
   });
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [status, setStatus] = useState("");
+  const [draggingId, setDraggingId] = useState<string | null>(null);
+  const [overId, setOverId] = useState<string | null>(null);
+  const draggingIdRef = useRef<string | null>(null);
 
   const toggleSelected = (id: string) => {
     setSelectedIds((prev) =>
@@ -88,6 +94,7 @@ export function PropertyForm({ initial, isNew }: { initial?: Listing; isNew?: bo
           slug: listing.slug || listing.title.en.toLowerCase().replace(/\s+/g, "-"),
           amenities: compactAmenities(listing.amenities),
           propertyType: normalizePropertyType(listing.propertyType),
+          images: pinCoverFirst(listing.images),
         };
         // Keep URL-safe slug even if the admin typed spaces or accents
         payload.slug = payload.slug
@@ -268,20 +275,15 @@ export function PropertyForm({ initial, isNew }: { initial?: Listing; isNew?: bo
           onUploaded={(urls) =>
             setListing((prev) => ({
               ...prev,
-              images: [
-                ...prev.images,
-                ...urls.map((url, index) => ({
-                  id: crypto.randomUUID(),
-                  url,
-                  isCover: prev.images.length === 0 && index === 0,
-                  sortOrder: prev.images.length + index,
-                })),
-              ],
+              images: appendListingImages(prev.images, urls),
             }))
           }
         />
         {listing.images.length > 0 && (
           <div className="mt-3 flex flex-wrap items-center gap-3 text-xs text-sand-deep">
+            <p className="w-full">
+              Drag to reorder photos. The cover stays first; use Set cover to change it.
+            </p>
             <button type="button" onClick={() => setSelectedIds(listing.images.map((image) => image.id))}>
               Select all
             </button>
@@ -317,7 +319,24 @@ export function PropertyForm({ initial, isNew }: { initial?: Listing; isNew?: bo
           {listing.images.map((image) => {
             const selected = selectedIds.includes(image.id);
             return (
-              <div key={image.id} className="relative">
+              <div
+                key={image.id}
+                className={`relative ${draggingId === image.id ? "opacity-60" : ""}`}
+                onDragOver={(e) => {
+                  e.preventDefault();
+                  e.dataTransfer.dropEffect = "move";
+                  const dragId = draggingIdRef.current;
+                  if (!dragId || dragId === image.id || image.isCover || overId === image.id) {
+                    return;
+                  }
+                  setOverId(image.id);
+                  setListing((prev) => ({
+                    ...prev,
+                    images: moveListingImages(prev.images, dragId, image.id),
+                  }));
+                }}
+                onDrop={(e) => e.preventDefault()}
+              >
                 <label className="absolute left-2 top-2 z-10 flex h-5 w-5 items-center justify-center bg-cream/90">
                   <input
                     type="checkbox"
@@ -326,6 +345,29 @@ export function PropertyForm({ initial, isNew }: { initial?: Listing; isNew?: bo
                     aria-label="Select photo"
                   />
                 </label>
+                {!image.isCover && (
+                  <div
+                    draggable
+                    role="button"
+                    tabIndex={0}
+                    aria-label="Reorder photo"
+                    className="absolute right-2 top-2 z-10 cursor-grab bg-cream/90 px-1.5 py-1 text-ink/35 hover:text-ink active:cursor-grabbing"
+                    onDragStart={(e) => {
+                      e.dataTransfer.effectAllowed = "move";
+                      e.dataTransfer.setData("text/plain", image.id);
+                      draggingIdRef.current = image.id;
+                      setDraggingId(image.id);
+                      setOverId(null);
+                    }}
+                    onDragEnd={() => {
+                      draggingIdRef.current = null;
+                      setDraggingId(null);
+                      setOverId(null);
+                    }}
+                  >
+                    <DragHandleIcon />
+                  </div>
+                )}
                 <button
                   type="button"
                   onClick={() => toggleSelected(image.id)}
@@ -340,10 +382,7 @@ export function PropertyForm({ initial, isNew }: { initial?: Listing; isNew?: bo
                     onClick={() =>
                       setListing((prev) => ({
                         ...prev,
-                        images: prev.images.map((item) => ({
-                          ...item,
-                          isCover: item.id === image.id,
-                        })),
+                        images: setListingCover(prev.images, image.id),
                       }))
                     }
                   >
@@ -388,5 +427,18 @@ export function PropertyForm({ initial, isNew }: { initial?: Listing; isNew?: bo
         {status && <p className="self-center text-sm text-sand-deep">{status}</p>}
       </div>
     </form>
+  );
+}
+
+function DragHandleIcon() {
+  return (
+    <svg width="14" height="18" viewBox="0 0 14 18" fill="currentColor" aria-hidden>
+      <circle cx="4" cy="3" r="1.4" />
+      <circle cx="10" cy="3" r="1.4" />
+      <circle cx="4" cy="9" r="1.4" />
+      <circle cx="10" cy="9" r="1.4" />
+      <circle cx="4" cy="15" r="1.4" />
+      <circle cx="10" cy="15" r="1.4" />
+    </svg>
   );
 }
