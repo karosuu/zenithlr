@@ -109,7 +109,7 @@ export function ListingGallery({
         )}
         <div className="absolute inset-x-0 bottom-0 z-20 mx-auto flex max-w-7xl items-end justify-between gap-6 px-5 pb-12 lg:px-8">
           <div>
-            <p className="text-[11px] tracking-[0.24em] uppercase text-sand">{location}</p>
+            <p className="text-sm tracking-[0.16em] uppercase text-sand md:text-base">{location}</p>
             <h1 className="font-serif mt-2 text-5xl text-white md:text-6xl">{title}</h1>
             <p className="mt-4 text-2xl text-sand">{price}</p>
           </div>

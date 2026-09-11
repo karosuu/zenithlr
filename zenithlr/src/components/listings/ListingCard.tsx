@@ -46,11 +46,11 @@ export async function ListingCard({
           </div>
         </div>
         <div className="border border-t-0 border-sand-soft px-5 py-5">
-          <p className="text-[11px] tracking-[0.2em] uppercase text-sand-deep">
+          <p className="text-sm tracking-[0.12em] uppercase text-sand-deep">
             {listing.location}
           </p>
-          <h3 className="font-serif mt-1 text-2xl">{tx(listing.title, locale)}</h3>
-          <p className="mt-3 text-sm text-ink/70">
+          <h3 className="font-serif mt-1 text-[1.75rem] leading-tight">{tx(listing.title, locale)}</h3>
+          <p className="mt-3 text-[15px] text-ink/70">
             {listing.lotArea
               ? formatArea(listing.lotArea, locale)
               : listing.bedrooms || listing.bathrooms
@@ -61,7 +61,7 @@ export async function ListingCard({
                   }`
                 : tx(listing.propertyType, locale)}
           </p>
-          <p className="mt-4 text-lg tracking-wide">
+          <p className="mt-4 text-xl tracking-wide">
             {listing.price > 0
               ? formatPrice(listing.price, locale, listing.pricePeriod)
               : t("priceOnRequest")}
