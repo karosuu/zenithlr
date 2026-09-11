@@ -42,7 +42,7 @@ export async function ListingExplorer({
       {filtered.length === 0 ? (
         <p className="py-20 text-center text-ink/60">{t("empty")}</p>
       ) : (
-        <div className="mt-10 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-10 grid auto-rows-fr gap-8 md:grid-cols-2 xl:grid-cols-3">
           {filtered.map((listing) => (
             <ListingCard key={listing.id} listing={listing} locale={locale} />
           ))}

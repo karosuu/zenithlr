@@ -5,6 +5,7 @@ import { LeadForm } from "@/components/forms/LeadForm";
 import { FeatureList, ListingCopy } from "@/components/listings/ListingCopy";
 import { ListingGallery } from "@/components/listings/ListingGallery";
 import { formatArea, formatPrice, tx } from "@/lib/i18n-text";
+import { sortListingImages } from "@/lib/listing-images";
 import { getAgents, getListingBySlug } from "@/lib/store";
 import type { Locale } from "@/lib/types";
 
@@ -22,10 +23,7 @@ export default async function ListingPage({
   const tf = await getTranslations("filters");
   const agents = await getAgents();
   const agent = agents.find((item) => item.id === listing.agentId) ?? agents[0];
-  const images = [...listing.images].sort((a, b) => {
-    if (a.isCover !== b.isCover) return a.isCover ? -1 : 1;
-    return a.sortOrder - b.sortOrder;
-  });
+  const images = sortListingImages(listing.images);
 
   const specs = [
     listing.propertyId ? [t("id"), listing.propertyId] : null,

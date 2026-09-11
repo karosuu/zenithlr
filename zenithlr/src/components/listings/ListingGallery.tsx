@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useState } from "react";
 import { useTranslations } from "next-intl";
 
 const PREVIEW_COUNT = 4;
@@ -23,10 +23,8 @@ export function ListingGallery({
   price: string;
 }) {
   const t = useTranslations("listing");
-  const heroRef = useRef<HTMLDivElement>(null);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [touchX, setTouchX] = useState<number | null>(null);
-  const [heroFit, setHeroFit] = useState<"cover" | "contain">("contain");
 
   const active = images[selectedIndex] ?? images[0];
   const thumbStart = Math.max(
@@ -34,23 +32,6 @@ export function ListingGallery({
     Math.min(selectedIndex - PREVIEW_COUNT + 1, Math.max(0, images.length - PREVIEW_COUNT)),
   );
   const thumbs = images.slice(thumbStart, thumbStart + PREVIEW_COUNT);
-
-  const updateFit = useCallback(() => {
-    const box = heroRef.current;
-    const img = box?.querySelector<HTMLImageElement>("[data-hero-photo]");
-    if (!box || !img?.naturalWidth) return;
-    const scale = Math.max(
-      box.clientWidth / img.naturalWidth,
-      box.clientHeight / img.naturalHeight,
-    );
-    setHeroFit(scale > 1.2 ? "contain" : "cover");
-  }, []);
-
-  useEffect(() => {
-    updateFit();
-    window.addEventListener("resize", updateFit);
-    return () => window.removeEventListener("resize", updateFit);
-  }, [active?.id, updateFit]);
 
   const go = useCallback(
     (dir: number) => {
@@ -60,11 +41,22 @@ export function ListingGallery({
     [images.length],
   );
 
+  const heading = (
+    <>
+      <p className="text-[11px] tracking-[0.16em] uppercase text-sand sm:text-sm md:text-base">
+        {location}
+      </p>
+      <h1 className="font-serif mt-1 text-3xl text-white sm:mt-2 sm:text-5xl md:text-6xl">
+        {title}
+      </h1>
+      <p className="mt-2 text-lg text-sand sm:mt-4 sm:text-2xl">{price}</p>
+    </>
+  );
+
   return (
-    <section>
+    <section className="bg-ink">
       <div
-        ref={heroRef}
-        className="relative h-[70vh] min-h-[480px] bg-ink"
+        className="relative mx-auto aspect-[4/3] w-full max-h-[80vh] max-w-[min(100%,calc(80vh*4/3))]"
         onTouchStart={(event) => setTouchX(event.changedTouches[0]?.clientX ?? null)}
         onTouchEnd={(event) => {
           if (touchX === null) return;
@@ -77,22 +69,18 @@ export function ListingGallery({
         {active && (
           <img
             key={active.id}
-            data-hero-photo
             src={active.url}
             alt={title}
-            onLoad={updateFit}
-            className={`absolute inset-0 h-full w-full ${
-              heroFit === "cover" ? "object-cover" : "object-contain"
-            }`}
+            className="absolute inset-0 h-full w-full object-contain"
           />
         )}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-ink/35" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-ink/35 max-sm:hidden" />
         {images.length > 1 && (
           <>
             <button
               type="button"
               onClick={() => go(-1)}
-              className="absolute left-4 top-1/2 z-20 -translate-y-1/2 text-sand hover:text-white lg:left-6"
+              className="absolute left-3 top-1/2 z-20 -translate-y-1/2 text-sand hover:text-white sm:left-4 lg:left-6"
               aria-label={t("prevPhoto")}
             >
               <Chevron dir="left" />
@@ -100,26 +88,28 @@ export function ListingGallery({
             <button
               type="button"
               onClick={() => go(1)}
-              className="absolute right-4 top-1/2 z-20 -translate-y-1/2 text-sand hover:text-white lg:right-6"
+              className="absolute right-3 top-1/2 z-20 -translate-y-1/2 text-sand hover:text-white sm:right-4 lg:right-6"
               aria-label={t("nextPhoto")}
             >
               <Chevron dir="right" />
             </button>
           </>
         )}
-        <div className="absolute inset-x-0 bottom-0 z-20 mx-auto flex max-w-7xl items-end justify-between gap-6 px-5 pb-12 lg:px-8">
-          <div>
-            <p className="text-sm tracking-[0.16em] uppercase text-sand md:text-base">{location}</p>
-            <h1 className="font-serif mt-2 text-5xl text-white md:text-6xl">{title}</h1>
-            <p className="mt-4 text-2xl text-sand">{price}</p>
-          </div>
+        {images.length > 0 && (
+          <p className="absolute bottom-3 right-4 z-20 text-[11px] tracking-[0.22em] uppercase text-sand sm:hidden">
+            {selectedIndex + 1} / {images.length}
+          </p>
+        )}
+        <div className="absolute inset-x-0 bottom-0 z-20 flex items-end justify-between gap-6 px-5 pb-10 max-sm:hidden lg:px-8">
+          <div>{heading}</div>
           {images.length > 0 && (
-            <p className="mb-1 hidden text-[11px] tracking-[0.22em] uppercase text-sand sm:block">
+            <p className="mb-1 shrink-0 text-[11px] tracking-[0.22em] uppercase text-sand">
               {selectedIndex + 1} / {images.length}
             </p>
           )}
         </div>
       </div>
+      <div className="px-5 py-5 sm:hidden">{heading}</div>
 
       {thumbs.length > 1 && (
         <div className="mx-auto grid max-w-7xl grid-cols-2 gap-3 px-5 py-6 lg:grid-cols-4 lg:px-8">

@@ -65,7 +65,7 @@ export default async function HomePage({
             {t("viewAll")}
           </Link>
         </div>
-        <div className="mt-12 grid gap-8 md:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-12 grid auto-rows-fr gap-8 md:grid-cols-2 xl:grid-cols-4">
           {featured.map((listing) => (
             <ListingCard key={listing.id} listing={listing} locale={loc} />
           ))}
