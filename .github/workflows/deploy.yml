@@ -37,6 +37,8 @@ jobs:
         run: npm run build
 
       - name: Pack production artifact
+        env:
+          GITHUB_SHA: ${{ github.sha }}
         run: npm run deploy:pack
 
       # appleboy/scp-action (golang SSH) often dies on this host with
@@ -125,6 +127,17 @@ jobs:
 
           cd "$DEPLOY_PATH"
 
+          echo "Stopping Node/Passenger before replacing .next"
+          if command -v cloudlinux-selector >/dev/null 2>&1; then
+            cloudlinux-selector stop --json --interpreter nodejs --app-root "$DEPLOY_PATH" || true
+          fi
+          pkill -f "Passenger NodeApp: ${DEPLOY_PATH}" 2>/dev/null || true
+          pkill -f "${DEPLOY_PATH}/server.js" 2>/dev/null || true
+          sleep 8
+          pkill -f "Passenger NodeApp: ${DEPLOY_PATH}" 2>/dev/null || true
+          pkill -f "${DEPLOY_PATH}/server.js" 2>/dev/null || true
+          sleep 2
+
           mkdir -p data
           if [ -f data/db.json ]; then
             cp -a data/db.json data/db.json.bak
@@ -136,8 +149,8 @@ jobs:
             cp -a package-lock.json /tmp/zenith-lock.prev
           fi
 
-          # Do NOT rm -rf .next before extract. On this host Passenger often keeps the
-          # old worker alive; wiping hashed chunks makes listing/admin JS return 500.
+          echo "Replacing compiled app"
+          rm -rf .next
           tar -xzf /tmp/zenith-deploy.tar.gz
 
           if [ -f data/db.json.bak ] && [ ! -f data/db.json ]; then
@@ -171,16 +184,16 @@ jobs:
           touch server.js
           touch tmp/restart.txt
 
+          echo "Starting Node/Passenger with the new build"
           if command -v cloudlinux-selector >/dev/null 2>&1; then
-            cloudlinux-selector stop --json --interpreter nodejs --app-root "$DEPLOY_PATH" || true
+            cloudlinux-selector start --json --interpreter nodejs --app-root "$DEPLOY_PATH" || true
             sleep 5
             cloudlinux-selector start --json --interpreter nodejs --app-root "$DEPLOY_PATH" || true
-            sleep 2
-            cloudlinux-selector restart --json --interpreter nodejs --app-root "$DEPLOY_PATH" || true
           fi
 
           rm -f /tmp/zenith-deploy.tar.gz
           echo "BUILD_ID=$(cat .next/BUILD_ID 2>/dev/null || echo missing)"
+          echo "MARKER=$(tr '\n' ' ' < public/deploy-marker.txt 2>/dev/null || echo missing)"
           echo "Deploy complete at $(date -u +%Y-%m-%dT%H:%M:%SZ)"
           REMOTE
 
@@ -206,4 +219,30 @@ jobs:
             sleep $((i * 12))
           done
           echo "Remote deploy failed after retries"
+          exit 1
+
+      - name: Confirm the live site loaded this build
+        working-directory: ${{ github.workspace }}
+        run: |
+          set -euo pipefail
+          expected_id=$(awk -F= '/^BUILD_ID=/{print $2; exit}' zenithlr/public/deploy-marker.txt | tr -d '\r')
+          echo "Expected BUILD_ID=${expected_id}"
+          i=1
+          while [ "$i" -le 12 ]; do
+            echo "Live check attempt $i"
+            if live=$(curl -fsS -H "Cache-Control: no-cache" "https://zenithlr.com/deploy-marker.txt"); then
+              echo "$live"
+              live_id=$(printf '%s\n' "$live" | tr -d '\r' | awk -F= '/^BUILD_ID=/{print $2; exit}')
+              if [ -n "$expected_id" ] && [ "$live_id" = "$expected_id" ]; then
+                echo "Live site is serving this build"
+                exit 0
+              fi
+              echo "Live BUILD_ID=${live_id:-missing} does not match yet"
+            else
+              echo "deploy-marker.txt not reachable yet"
+            fi
+            i=$((i + 1))
+            sleep 8
+          done
+          echo "Live site is still serving an old (or unreachable) build"
           exit 1
