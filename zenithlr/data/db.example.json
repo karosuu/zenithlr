@@ -287,7 +287,10 @@
         "es": "Condominio 3-10"
       },
       "location": "Guachipelin de Escazú",
-      "propertyType": "Home",
+      "propertyType": {
+        "en": "Home",
+        "es": "Casa"
+      },
       "price": 370000,
       "pricePeriod": "sale",
       "currency": "USD",
@@ -497,7 +500,10 @@
         "es": "Condominio Riverside"
       },
       "location": "Escazú",
-      "propertyType": "Apartment",
+      "propertyType": {
+        "en": "Apartment",
+        "es": "Apartamento"
+      },
       "price": 285000,
       "pricePeriod": "sale",
       "currency": "USD",
@@ -722,7 +728,10 @@
         "es": "Condominio en Central Park"
       },
       "location": "Escazú",
-      "propertyType": "Apartment",
+      "propertyType": {
+        "en": "Apartment",
+        "es": "Apartamento"
+      },
       "price": 980000,
       "pricePeriod": "sale",
       "currency": "USD",
@@ -1061,7 +1070,10 @@
         "es": "Vista al Valle"
       },
       "location": "Santa Ana",
-      "propertyType": "Home",
+      "propertyType": {
+        "en": "Home",
+        "es": "Casa"
+      },
       "price": 650000,
       "pricePeriod": "sale",
       "currency": "USD",
@@ -1178,7 +1190,10 @@
         "es": "San Nicolas"
       },
       "location": "Santa Ana",
-      "propertyType": "Apartment",
+      "propertyType": {
+        "en": "Apartment",
+        "es": "Apartamento"
+      },
       "price": 230000,
       "pricePeriod": "sale",
       "currency": "USD",
@@ -1395,7 +1410,10 @@
         "es": "Parque Montaña del Sol"
       },
       "location": "Santa Ana",
-      "propertyType": "Development Land",
+      "propertyType": {
+        "en": "Development Land",
+        "es": "Terreno de desarrollo"
+      },
       "price": 125900,
       "pricePeriod": "sale",
       "currency": "USD",
@@ -1495,7 +1513,10 @@
         "es": "Jaboncillo"
       },
       "location": "Escazú",
-      "propertyType": "Apartment",
+      "propertyType": {
+        "en": "Apartment",
+        "es": "Apartamento"
+      },
       "price": 780000,
       "pricePeriod": "sale",
       "currency": "USD",
@@ -1633,7 +1654,10 @@
         "es": "Cerro Alto"
       },
       "location": "Escazú",
-      "propertyType": "Home",
+      "propertyType": {
+        "en": "Home",
+        "es": "Casa"
+      },
       "price": 1275000,
       "pricePeriod": "sale",
       "currency": "USD",
@@ -1969,7 +1993,10 @@
         "es": "Flat 21"
       },
       "location": "Santa Ana",
-      "propertyType": "Apartment",
+      "propertyType": {
+        "en": "Apartment",
+        "es": "Apartamento"
+      },
       "price": 1000000,
       "pricePeriod": "sale",
       "currency": "USD",
@@ -2589,7 +2616,10 @@
         "es": "Bebedero"
       },
       "location": "Escazú",
-      "propertyType": "Home",
+      "propertyType": {
+        "en": "Home",
+        "es": "Casa"
+      },
       "price": 1000000,
       "pricePeriod": "sale",
       "currency": "USD",
@@ -2914,7 +2944,10 @@
         "es": "Balsa"
       },
       "location": "Alajuela",
-      "propertyType": "Apartment",
+      "propertyType": {
+        "en": "Apartment",
+        "es": "Apartamento"
+      },
       "price": 435000,
       "pricePeriod": "sale",
       "currency": "USD",
@@ -3047,7 +3080,10 @@
         "es": "Bahiti"
       },
       "location": "Puntarenas",
-      "propertyType": "Casa",
+      "propertyType": {
+        "en": "Home",
+        "es": "Casa"
+      },
       "price": 985000,
       "pricePeriod": "sale",
       "currency": "USD",

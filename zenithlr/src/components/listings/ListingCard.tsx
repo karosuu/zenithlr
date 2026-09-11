@@ -59,7 +59,7 @@ export async function ListingCard({
                       ? ` · ${formatArea(listing.constructionArea, locale)}`
                       : ""
                   }`
-                : listing.propertyType}
+                : tx(listing.propertyType, locale)}
           </p>
           <p className="mt-4 text-lg tracking-wide">
             {listing.price > 0

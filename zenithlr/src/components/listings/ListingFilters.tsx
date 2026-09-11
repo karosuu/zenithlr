@@ -1,15 +1,18 @@
 "use client";
 
 import { useMemo, useTransition } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/routing";
 import type { ListingQuery } from "@/lib/filters";
+import { tx } from "@/lib/i18n-text";
+import { propertyTypeKey } from "@/lib/property-type";
+import type { Locale, Localized } from "@/lib/types";
 
 const TABS = ["all", "rent", "sell", "investment"] as const;
 
 type Props = {
   query: ListingQuery;
-  types: string[];
+  types: Localized[];
   locations: string[];
   rooms: number[];
   bounds: { min: number; max: number };
@@ -17,6 +20,7 @@ type Props = {
 
 export function ListingFilters({ query, types, locations, rooms, bounds }: Props) {
   const t = useTranslations("filters");
+  const locale = useLocale() as Locale;
   const router = useRouter();
   const pathname = usePathname();
   const [pending, start] = useTransition();
@@ -106,11 +110,14 @@ export function ListingFilters({ query, types, locations, rooms, bounds }: Props
             }
           >
             <option value="all">{t("type")}</option>
-            {types.map((type) => (
-              <option key={type} value={type}>
-                {type}
-              </option>
-            ))}
+            {types.map((type) => {
+              const key = propertyTypeKey(type);
+              return (
+                <option key={key} value={key}>
+                  {tx(type, locale)}
+                </option>
+              );
+            })}
           </select>
         </label>
 

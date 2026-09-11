@@ -1,3 +1,4 @@
+import { propertyTypeKey, propertyTypeMatches } from "./property-type";
 import type { Listing, ListingGoal } from "./types";
 
 export type ListingQuery = {
@@ -29,7 +30,7 @@ export function parseListingQuery(
       goal === "rent" || goal === "sell" || goal === "investment" || goal === "all"
         ? goal
         : "all",
-    type: one("type") || undefined,
+    type: one("type") ? propertyTypeKey(one("type")) : undefined,
     location: one("location") || undefined,
     rooms: rooms ? Number(rooms) : undefined,
     min: min ? Number(min) : undefined,
@@ -48,7 +49,7 @@ export function filterListings(listings: Listing[], query: ListingQuery) {
     result = result.filter((listing) => listing.goals.includes(query.goal as ListingGoal));
   }
   if (query.type && query.type !== "all") {
-    result = result.filter((listing) => listing.propertyType === query.type);
+    result = result.filter((listing) => propertyTypeMatches(listing.propertyType, query.type!));
   }
   if (query.location && query.location !== "all") {
     result = result.filter((listing) => listing.location === query.location);
