@@ -24,52 +24,92 @@ export function ListingGallery({
   const t = useTranslations("listing");
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
+  const heroRef = useRef<HTMLDivElement>(null);
   const stripRef = useRef<HTMLDivElement>(null);
-  const swipeX = useRef<number | null>(null);
-  const didSwipe = useRef(false);
+  const lightboxRef = useRef<HTMLDivElement>(null);
+  const selectedRef = useRef(0);
+  const suppressThumbClick = useRef(false);
+  const heroPressX = useRef<number | null>(null);
+  const heroMoved = useRef(false);
+  const heroStartScroll = useRef(0);
+
+  selectedRef.current = selectedIndex;
 
   const active = images[selectedIndex] ?? images[0];
+
+  const scrollHeroTo = useCallback((index: number, behavior: ScrollBehavior = "smooth") => {
+    const hero = heroRef.current;
+    if (!hero || hero.clientWidth === 0) return;
+    hero.scrollTo({ left: index * hero.clientWidth, behavior });
+  }, []);
+
+  const scrollLightboxTo = useCallback((index: number, behavior: ScrollBehavior = "smooth") => {
+    const box = lightboxRef.current;
+    if (!box || box.clientWidth === 0) return;
+    box.scrollTo({ left: index * box.clientWidth, behavior });
+  }, []);
 
   const go = useCallback(
     (dir: number) => {
       if (images.length < 2) return;
-      setSelectedIndex((current) => (current + dir + images.length) % images.length);
+      const current = selectedRef.current;
+      const next = (current + dir + images.length) % images.length;
+      const wrapping =
+        (current === 0 && next === images.length - 1) ||
+        (current === images.length - 1 && next === 0);
+      selectedRef.current = next;
+      setSelectedIndex(next);
+      scrollHeroTo(next, wrapping ? "auto" : "smooth");
+      if (lightboxOpen) scrollLightboxTo(next, wrapping ? "auto" : "smooth");
     },
-    [images.length],
+    [images.length, lightboxOpen, scrollHeroTo, scrollLightboxTo],
   );
 
   const openAt = useCallback((index: number) => {
+    selectedRef.current = index;
     setSelectedIndex(index);
     setLightboxOpen(true);
   }, []);
 
   const closeLightbox = useCallback(() => setLightboxOpen(false), []);
 
-  const onSwipeStart = (event: React.TouchEvent) => {
-    swipeX.current = event.changedTouches[0]?.clientX ?? null;
-    didSwipe.current = false;
+  const onHeroScroll = () => {
+    const hero = heroRef.current;
+    if (!hero || hero.clientWidth === 0) return;
+    const next = Math.round(hero.scrollLeft / hero.clientWidth);
+    if (next < 0 || next >= images.length || next === selectedRef.current) return;
+    selectedRef.current = next;
+    setSelectedIndex(next);
   };
 
-  const onSwipeEnd = (event: React.TouchEvent) => {
-    if (swipeX.current === null) return;
-    const dx = (event.changedTouches[0]?.clientX ?? swipeX.current) - swipeX.current;
-    swipeX.current = null;
-    if (dx > 50) {
-      didSwipe.current = true;
-      go(-1);
-    } else if (dx < -50) {
-      didSwipe.current = true;
-      go(1);
-    }
+  const onLightboxScroll = () => {
+    const box = lightboxRef.current;
+    if (!box || box.clientWidth === 0) return;
+    const next = Math.round(box.scrollLeft / box.clientWidth);
+    if (next < 0 || next >= images.length || next === selectedRef.current) return;
+    selectedRef.current = next;
+    setSelectedIndex(next);
+  };
+
+  const onHeroPointerDown = (event: React.PointerEvent) => {
+    heroPressX.current = event.clientX;
+    heroMoved.current = false;
+    heroStartScroll.current = heroRef.current?.scrollLeft ?? 0;
+  };
+
+  const onHeroPointerMove = (event: React.PointerEvent) => {
+    if (heroPressX.current === null) return;
+    if (Math.abs(event.clientX - heroPressX.current) > 10) heroMoved.current = true;
   };
 
   const onHeroClick = () => {
-    if (didSwipe.current) {
-      didSwipe.current = false;
+    const scrolled = Math.abs((heroRef.current?.scrollLeft ?? 0) - heroStartScroll.current) > 10;
+    if (heroMoved.current || scrolled) {
+      heroMoved.current = false;
       return;
     }
     if (!active) return;
-    openAt(selectedIndex);
+    openAt(selectedRef.current);
   };
 
   const scrollStrip = useCallback((dir: number) => {
@@ -100,6 +140,10 @@ export function ListingGallery({
 
   useEffect(() => {
     if (!lightboxOpen) return;
+    const frame = window.requestAnimationFrame(() => {
+      scrollLightboxTo(selectedRef.current, "auto");
+      scrollHeroTo(selectedRef.current, "auto");
+    });
     const onKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") closeLightbox();
       if (event.key === "ArrowLeft") go(-1);
@@ -109,10 +153,73 @@ export function ListingGallery({
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
+      window.cancelAnimationFrame(frame);
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = previousOverflow;
     };
-  }, [lightboxOpen, closeLightbox, go]);
+  }, [lightboxOpen, closeLightbox, go, scrollHeroTo, scrollLightboxTo]);
+
+  useEffect(() => {
+    const strip = stripRef.current;
+    if (!strip || images.length < 2) return;
+
+    let pointerId: number | null = null;
+    let startX = 0;
+    let startScroll = 0;
+    let dragging = false;
+
+    const onPointerDown = (event: PointerEvent) => {
+      startScroll = strip.scrollLeft;
+      suppressThumbClick.current = false;
+      if (event.pointerType !== "mouse" || event.button !== 0) return;
+      pointerId = event.pointerId;
+      startX = event.clientX;
+      dragging = false;
+    };
+
+    const onPointerMove = (event: PointerEvent) => {
+      if (pointerId !== event.pointerId) return;
+      const dx = event.clientX - startX;
+      if (!dragging) {
+        if (Math.abs(dx) < 8) return;
+        dragging = true;
+        suppressThumbClick.current = true;
+        strip.style.scrollSnapType = "none";
+        strip.setPointerCapture(event.pointerId);
+      }
+      strip.scrollLeft = startScroll - dx;
+    };
+
+    const onPointerUp = (event: PointerEvent) => {
+      if (pointerId !== event.pointerId) return;
+      pointerId = null;
+      if (!dragging) return;
+      dragging = false;
+      strip.style.scrollSnapType = "";
+      window.setTimeout(() => {
+        suppressThumbClick.current = false;
+      }, 80);
+    };
+
+    const onScroll = () => {
+      if (Math.abs(strip.scrollLeft - startScroll) > 8) {
+        suppressThumbClick.current = true;
+      }
+    };
+
+    strip.addEventListener("pointerdown", onPointerDown);
+    strip.addEventListener("pointermove", onPointerMove);
+    strip.addEventListener("pointerup", onPointerUp);
+    strip.addEventListener("pointercancel", onPointerUp);
+    strip.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      strip.removeEventListener("pointerdown", onPointerDown);
+      strip.removeEventListener("pointermove", onPointerMove);
+      strip.removeEventListener("pointerup", onPointerUp);
+      strip.removeEventListener("pointercancel", onPointerUp);
+      strip.removeEventListener("scroll", onScroll);
+    };
+  }, [images.length]);
 
   const heading = (
     <>
@@ -127,21 +234,32 @@ export function ListingGallery({
   );
 
   return (
-    <section className="bg-ink">
-      <div
-        className="relative mx-auto aspect-[4/3] w-full max-h-[80vh] max-w-[min(100%,calc(80vh*4/3))]"
-        onTouchStart={onSwipeStart}
-        onTouchEnd={onSwipeEnd}
-      >
-        {active && (
-          <img
-            key={active.id}
-            src={active.url}
-            alt={title}
-            onClick={onHeroClick}
-            className="absolute inset-0 h-full w-full cursor-zoom-in object-contain"
-          />
-        )}
+    <section className="min-w-0 bg-ink">
+      <div className="relative mx-auto aspect-[4/3] w-full min-w-0 max-h-[80vh] max-w-[min(100%,calc(80vh*4/3))]">
+        <div
+          ref={heroRef}
+          className="listing-h-scroll absolute inset-0 flex cursor-zoom-in snap-x snap-mandatory"
+          onScroll={onHeroScroll}
+          onPointerDown={onHeroPointerDown}
+          onPointerMove={onHeroPointerMove}
+          onClick={onHeroClick}
+        >
+          {images.map((image, index) => (
+            <div
+              key={image.id}
+              className="relative h-full min-w-full shrink-0 snap-center"
+              style={{ flex: "0 0 100%" }}
+            >
+              <img
+                src={image.url}
+                alt={index === 0 ? title : ""}
+                draggable={false}
+                loading={index === 0 ? "eager" : "lazy"}
+                className="pointer-events-none h-full w-full cursor-zoom-in object-contain"
+              />
+            </div>
+          ))}
+        </div>
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-ink/35 max-sm:hidden" />
         {images.length > 1 && (
           <>
@@ -182,40 +300,54 @@ export function ListingGallery({
       <div className="px-5 py-5 sm:hidden">{heading}</div>
 
       {images.length > 1 && (
-        <div className="relative mx-auto max-w-7xl px-5 py-6 lg:px-8">
-          {images.length > 4 && (
-            <>
-              <button
-                type="button"
-                onClick={() => scrollStrip(-1)}
-                className="absolute left-2 top-1/2 z-10 hidden -translate-y-1/2 text-sand hover:text-white lg:block lg:left-0"
-                aria-label={t("prevPhoto")}
-              >
-                <Chevron dir="left" />
-              </button>
-              <button
-                type="button"
-                onClick={() => scrollStrip(1)}
-                className="absolute right-2 top-1/2 z-10 hidden -translate-y-1/2 text-sand hover:text-white lg:block lg:right-0"
-                aria-label={t("nextPhoto")}
-              >
-                <Chevron dir="right" />
-              </button>
-            </>
-          )}
+        <div className="relative mx-auto min-w-0 max-w-7xl px-5 py-6 lg:px-8">
+          <button
+            type="button"
+            onClick={() => scrollStrip(-1)}
+            className={`absolute left-1 top-1/2 z-10 -translate-y-1/2 text-sand hover:text-white sm:left-2 lg:left-0 ${
+              images.length > 4 ? "" : "lg:hidden"
+            }`}
+            aria-label={t("prevPhoto")}
+          >
+            <Chevron dir="left" />
+          </button>
+          <button
+            type="button"
+            onClick={() => scrollStrip(1)}
+            className={`absolute right-1 top-1/2 z-10 -translate-y-1/2 text-sand hover:text-white sm:right-2 lg:right-0 ${
+              images.length > 4 ? "" : "lg:hidden"
+            }`}
+            aria-label={t("nextPhoto")}
+          >
+            <Chevron dir="right" />
+          </button>
           <div
             ref={stripRef}
-            className="flex snap-x snap-mandatory gap-3 overflow-x-auto overscroll-x-contain scroll-smooth pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            className="listing-h-scroll flex cursor-grab snap-x snap-mandatory gap-3 pb-1 active:cursor-grabbing"
           >
             {images.map((image, index) => {
               const selected = index === selectedIndex;
+              const selectThumb = () => {
+                if (suppressThumbClick.current) {
+                  suppressThumbClick.current = false;
+                  return;
+                }
+                openAt(index);
+              };
               return (
-                <button
+                <div
                   key={image.id}
-                  type="button"
+                  role="button"
+                  tabIndex={0}
                   data-thumb-index={index}
-                  onClick={() => openAt(index)}
-                  className={`group relative aspect-[4/3] w-[min(70vw,18rem)] shrink-0 snap-start overflow-hidden bg-sand-soft lg:w-[calc((100%-2.25rem)/4)] ${
+                  onClick={selectThumb}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                      event.preventDefault();
+                      selectThumb();
+                    }
+                  }}
+                  className={`group relative aspect-[4/3] w-[min(70vw,18rem)] shrink-0 cursor-pointer snap-start overflow-hidden bg-sand-soft select-none lg:w-[calc((100%-2.25rem)/4)] ${
                     selected ? "ring-1 ring-sand" : "opacity-80 hover:opacity-100"
                   }`}
                   aria-label={`${title} ${index + 1}`}
@@ -226,10 +358,11 @@ export function ListingGallery({
                     alt=""
                     fill
                     unoptimized
-                    className="object-cover transition duration-700 group-hover:scale-105"
+                    draggable={false}
+                    className="pointer-events-none object-cover transition duration-700 group-hover:scale-105"
                     sizes="(min-width: 1024px) 25vw, 70vw"
                   />
-                </button>
+                </div>
               );
             })}
           </div>
@@ -246,23 +379,11 @@ export function ListingGallery({
             role="dialog"
             aria-modal="true"
             aria-label={title}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-ink/95"
-            onClick={() => {
-              if (didSwipe.current) {
-                didSwipe.current = false;
-                return;
-              }
-              closeLightbox();
-            }}
-            onTouchStart={onSwipeStart}
-            onTouchEnd={onSwipeEnd}
+            className="fixed inset-0 z-[100] bg-ink/95"
           >
             <button
               type="button"
-              onClick={(event) => {
-                event.stopPropagation();
-                closeLightbox();
-              }}
+              onClick={closeLightbox}
               className="absolute right-4 top-4 z-10 text-sand hover:text-white sm:right-6 sm:top-6"
               aria-label={t("closeGallery")}
             >
@@ -272,10 +393,7 @@ export function ListingGallery({
               <>
                 <button
                   type="button"
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    go(-1);
-                  }}
+                  onClick={() => go(-1)}
                   className="absolute left-3 top-1/2 z-10 -translate-y-1/2 text-sand hover:text-white sm:left-6"
                   aria-label={t("prevPhoto")}
                 >
@@ -283,10 +401,7 @@ export function ListingGallery({
                 </button>
                 <button
                   type="button"
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    go(1);
-                  }}
+                  onClick={() => go(1)}
                   className="absolute right-3 top-1/2 z-10 -translate-y-1/2 text-sand hover:text-white sm:right-6"
                   aria-label={t("nextPhoto")}
                 >
@@ -294,13 +409,28 @@ export function ListingGallery({
                 </button>
               </>
             )}
-            <img
-              key={active.id}
-              src={active.url}
-              alt={title}
-              onClick={(event) => event.stopPropagation()}
-              className="max-h-[90vh] max-w-[min(100%-2rem,90vw)] object-contain"
-            />
+            <div
+              ref={lightboxRef}
+              className="listing-h-scroll flex h-full w-full snap-x snap-mandatory"
+              onScroll={onLightboxScroll}
+            >
+              {images.map((image) => (
+                <div
+                  key={image.id}
+                  className="flex h-full min-w-full shrink-0 snap-center items-center justify-center px-4"
+                  style={{ flex: "0 0 100%" }}
+                  onClick={closeLightbox}
+                >
+                  <img
+                    src={image.url}
+                    alt={title}
+                    draggable={false}
+                    onClick={(event) => event.stopPropagation()}
+                    className="max-h-[90vh] max-w-[min(100%,90vw)] object-contain"
+                  />
+                </div>
+              ))}
+            </div>
             <p className="pointer-events-none absolute bottom-5 left-1/2 -translate-x-1/2 text-[11px] tracking-[0.22em] uppercase text-sand">
               {selectedIndex + 1} / {images.length}
             </p>

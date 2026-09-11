@@ -97,6 +97,29 @@ button {
   animation: page-fade 0.35s ease-out both;
 }
 
+.listing-h-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scroll-behavior: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.listing-h-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.listing-h-scroll > *,
+.listing-h-scroll img,
+.listing-h-scroll button {
+  touch-action: pan-x;
+}
+
 .hero-yt-frame iframe {
   position: absolute;
   inset: 0;
