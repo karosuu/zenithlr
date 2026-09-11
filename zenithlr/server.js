@@ -221,7 +221,9 @@ function sendPublicFile(req, res) {
   const file = path.resolve(publicRoot, rel);
   if (file !== publicRoot && !file.startsWith(publicRoot + path.sep)) return false;
 
-  return sendFile(file, res, "public, max-age=86400");
+  const cacheControl =
+    rel === "deploy-marker.txt" ? "no-store" : "public, max-age=86400";
+  return sendFile(file, res, cacheControl);
 }
 
 function sendStableCss(req, res) {

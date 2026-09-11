@@ -53,6 +53,18 @@ for (const junk of ["cache", "dev"]) {
   }
 }
 
+const buildIdPath = path.join(nextDir, "BUILD_ID");
+const buildId = fs.existsSync(buildIdPath)
+  ? fs.readFileSync(buildIdPath, "utf8").trim()
+  : "missing";
+const marker = [
+  `BUILD_ID=${buildId}`,
+  `DEPLOYED_AT=${new Date().toISOString()}`,
+  `SHA=${process.env.GITHUB_SHA || "local"}`,
+].join("\n");
+fs.writeFileSync(path.join(root, "public", "deploy-marker.txt"), `${marker}\n`);
+console.log(`[pack-production] deploy-marker.txt\n${marker}`);
+
 if (fs.existsSync(outFile)) {
   fs.unlinkSync(outFile);
 }

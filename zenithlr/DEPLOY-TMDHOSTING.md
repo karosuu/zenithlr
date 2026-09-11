@@ -92,7 +92,10 @@ cp data/db.example.json data/db.json
 
 1. Commit y push a `main` (desde la raíz del repo, que incluye la carpeta `zenithlr/`).
 2. Espera el check verde de **Actions → Deploy to TMDHosting** (unos minutos).
-3. Listo: el workflow construye en Linux, sube un paquete coherente, hace `npm install` en el servidor y reinicia Passenger.
+3. Confirma el build en [https://zenithlr.com/deploy-marker.txt](https://zenithlr.com/deploy-marker.txt). Debe coincidir con el `BUILD_ID` del log de Actions.
+4. Abre el sitio en una ventana privada.
+
+El workflow **detiene** la app Node, **borra `.next`**, extrae el paquete nuevo y **vuelve a arrancar**. Así Passenger no se queda sirviendo el proceso anterior.
 
 Redeploy sin commits nuevos: en GitHub → **Actions** → **Deploy to TMDHosting** → **Run workflow**.
 

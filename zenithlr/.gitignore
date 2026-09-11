@@ -53,6 +53,9 @@ next-env.d.ts
 /data/uploads/*
 !/data/uploads/.gitkeep
 
+# generated at pack time, published with the tarball
+/public/deploy-marker.txt
+
 # Passenger restart file (cPanel)
 /tmp/*
 !/tmp/.gitkeep
