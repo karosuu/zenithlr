@@ -21,9 +21,12 @@ export async function ListingCard({
   });
 
   return (
-    <Link href={{ pathname: "/listing/[slug]", params: { slug: listing.slug } }} className="group block">
-      <article className="bg-cream">
-        <div className="relative aspect-[4/3] overflow-hidden bg-sand-soft">
+    <Link
+      href={{ pathname: "/listing/[slug]", params: { slug: listing.slug } }}
+      className="group flex h-full"
+    >
+      <article className="flex h-full w-full flex-col bg-cream">
+        <div className="relative aspect-[4/3] shrink-0 overflow-hidden bg-sand-soft">
           {cover && (
             <Image
               src={cover.url}
@@ -45,12 +48,14 @@ export async function ListingCard({
             ))}
           </div>
         </div>
-        <div className="border border-t-0 border-sand-soft px-5 py-5">
-          <p className="text-sm tracking-[0.12em] uppercase text-sand-deep">
+        <div className="flex flex-1 flex-col border border-t-0 border-sand-soft px-5 py-5">
+          <p className="truncate text-sm tracking-[0.12em] uppercase text-sand-deep">
             {listing.location}
           </p>
-          <h3 className="font-serif mt-1 text-[1.75rem] leading-tight">{tx(listing.title, locale)}</h3>
-          <p className="mt-3 text-[15px] text-ink/70">
+          <h3 className="font-serif mt-1 line-clamp-2 min-h-[2.5em] text-[1.75rem] leading-tight">
+            {tx(listing.title, locale)}
+          </h3>
+          <p className="mt-3 line-clamp-1 min-h-[1.4em] text-[15px] text-ink/70">
             {listing.lotArea
               ? formatArea(listing.lotArea, locale)
               : listing.bedrooms || listing.bathrooms
@@ -66,7 +71,7 @@ export async function ListingCard({
               ? formatPrice(listing.price, locale, listing.pricePeriod)
               : t("priceOnRequest")}
           </p>
-          <p className="mt-4 text-[11px] tracking-[0.18em] uppercase text-sand-deep group-hover:text-ink">
+          <p className="mt-auto pt-4 text-[11px] tracking-[0.18em] uppercase text-sand-deep group-hover:text-ink">
             {t("seeMore")}
           </p>
         </div>
