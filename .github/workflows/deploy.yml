@@ -231,10 +231,15 @@ jobs:
           set -euo pipefail
           expected_id=$(awk -F= '/^BUILD_ID=/{print $2; exit}' zenithlr/public/deploy-marker.txt | tr -d '\r')
           echo "Expected BUILD_ID=${expected_id}"
+          echo "Waiting for Passenger/lsnode to finish booting..."
+          sleep 25
           i=1
-          while [ "$i" -le 12 ]; do
+          while [ "$i" -le 18 ]; do
             echo "Live check attempt $i"
-            headers=$(curl -fsSI -H "Cache-Control: no-cache" "https://zenithlr.com/en" || true)
+            # GET, not HEAD: proxies often answer HEAD without hitting Node, so
+            # X-Zenith-Build is missing while the app is still starting.
+            url="https://zenithlr.com/en?cb=${expected_id}-${i}"
+            headers=$(curl -fsS -D - -o /dev/null -H "Cache-Control: no-cache" -H "Pragma: no-cache" "$url" || true)
             live_id=$(printf '%s\n' "$headers" | tr -d '\r' | awk -F': ' 'tolower($1)=="x-zenith-build"{print $2; exit}')
             echo "X-Zenith-Build=${live_id:-missing}"
             if [ -n "$expected_id" ] && [ "$live_id" = "$expected_id" ]; then
@@ -242,7 +247,7 @@ jobs:
               exit 0
             fi
             i=$((i + 1))
-            sleep 8
+            sleep 10
           done
           echo "Live HTML is still serving an old Node worker"
           echo "$headers"
