@@ -5,11 +5,13 @@ import type {
   Lead,
   Listing,
   Locale,
+  Localized,
   PageFields,
   Post,
   Review,
 } from "./types";
 import { tx } from "./i18n-text";
+import { normalizePropertyType, propertyTypeKey } from "./property-type";
 import { slugify } from "./slug";
 
 const dbPath = path.join(process.cwd(), "data", "db.json");
@@ -23,10 +25,28 @@ async function ensureDb() {
   }
 }
 
+function listingNeedsTypeMigration(listing: Listing) {
+  const raw = listing.propertyType as Localized | string;
+  const next = normalizePropertyType(raw);
+  if (typeof raw === "string") return true;
+  return !raw || raw.en !== next.en || raw.es !== next.es;
+}
+
+function withNormalizedType(listing: Listing): Listing {
+  return {
+    ...listing,
+    propertyType: normalizePropertyType(listing.propertyType),
+  };
+}
+
 async function readDb(): Promise<Database> {
   await ensureDb();
   const raw = await fs.readFile(dbPath, "utf8");
-  return JSON.parse(raw) as Database;
+  const db = JSON.parse(raw) as Database;
+  const dirty = db.listings.some(listingNeedsTypeMigration);
+  db.listings = db.listings.map(withNormalizedType);
+  if (dirty) await writeDb(db);
+  return db;
 }
 
 async function writeDb(db: Database) {
@@ -100,6 +120,7 @@ export async function saveListing(listing: Listing) {
   const db = await readDb();
   const cleaned: Listing = {
     ...listing,
+    propertyType: normalizePropertyType(listing.propertyType),
     slug:
       slugify(listing.slug) ||
       slugify(listing.title?.en || listing.title?.es || "") ||
@@ -272,7 +293,14 @@ export async function clearLeads() {
 }
 
 export function uniqueValues(listings: Listing[]) {
-  const types = [...new Set(listings.map((listing) => listing.propertyType))].sort();
+  const typesByKey = new Map<string, Localized>();
+  for (const listing of listings) {
+    const type = normalizePropertyType(listing.propertyType);
+    const key = propertyTypeKey(type);
+    if (!key || typesByKey.has(key)) continue;
+    typesByKey.set(key, type);
+  }
+  const types = [...typesByKey.values()].sort((a, b) => a.en.localeCompare(b.en));
   const locations = [...new Set(listings.map((listing) => listing.location))].sort();
   const rooms = [...new Set(listings.map((listing) => listing.bedrooms))].sort(
     (a, b) => a - b,

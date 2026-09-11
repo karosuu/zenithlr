@@ -1,17 +1,21 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/routing";
+import { tx } from "@/lib/i18n-text";
+import { propertyTypeKey } from "@/lib/property-type";
+import type { Locale, Localized } from "@/lib/types";
 
 export function HomeSearch({
   locations,
   types,
 }: {
   locations: string[];
-  types: string[];
+  types: Localized[];
 }) {
   const t = useTranslations("filters");
+  const locale = useLocale() as Locale;
   const router = useRouter();
   const [goal, setGoal] = useState("sell");
   const [location, setLocation] = useState("");
@@ -60,11 +64,14 @@ export function HomeSearch({
         onChange={(e) => setType(e.target.value)}
       >
         <option value="">{t("type")}</option>
-        {types.map((item) => (
-          <option key={item} value={item}>
-            {item}
-          </option>
-        ))}
+        {types.map((item) => {
+          const key = propertyTypeKey(item);
+          return (
+            <option key={key} value={key}>
+              {tx(item, locale)}
+            </option>
+          );
+        })}
       </select>
       <button
         type="submit"

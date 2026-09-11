@@ -37,7 +37,7 @@ export type Listing = {
   agentId: string;
   title: Localized;
   location: string;
-  propertyType: string;
+  propertyType: Localized;
   price: number;
   pricePeriod: PricePeriod;
   currency: "USD";

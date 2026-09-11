@@ -6,6 +6,7 @@ import { AmenitiesEditor, compactAmenities } from "./AmenitiesEditor";
 import { BilingualField } from "./BilingualField";
 import { DeleteListingButton } from "./DeleteListingButton";
 import { PhotoUploader } from "./PhotoUploader";
+import { normalizePropertyType } from "@/lib/property-type";
 import type { Listing, ListingImage, Localized } from "@/lib/types";
 
 const emptyLocalized = (): Localized => ({ en: "", es: "" });
@@ -21,7 +22,7 @@ export function emptyListing(): Listing {
     agentId: "bernal",
     title: emptyLocalized(),
     location: "Escazú",
-    propertyType: "Apartment",
+    propertyType: { en: "Apartment", es: "Apartamento" },
     price: 0,
     pricePeriod: "sale",
     currency: "USD",
@@ -45,7 +46,10 @@ function removeListingImages(images: ListingImage[], idsToRemove: Set<string>) {
 
 export function PropertyForm({ initial, isNew }: { initial?: Listing; isNew?: boolean }) {
   const router = useRouter();
-  const [listing, setListing] = useState(initial ?? emptyListing());
+  const [listing, setListing] = useState(() => {
+    const source = initial ?? emptyListing();
+    return { ...source, propertyType: normalizePropertyType(source.propertyType) };
+  });
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [status, setStatus] = useState("");
 
@@ -83,6 +87,7 @@ export function PropertyForm({ initial, isNew }: { initial?: Listing; isNew?: bo
           id: listing.id === "new" ? crypto.randomUUID() : listing.id,
           slug: listing.slug || listing.title.en.toLowerCase().replace(/\s+/g, "-"),
           amenities: compactAmenities(listing.amenities),
+          propertyType: normalizePropertyType(listing.propertyType),
         };
         // Keep URL-safe slug even if the admin typed spaces or accents
         payload.slug = payload.slug
@@ -170,21 +175,13 @@ export function PropertyForm({ initial, isNew }: { initial?: Listing; isNew?: bo
         </label>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-4">
+      <div className="grid gap-4 md:grid-cols-3">
         <label className="text-xs uppercase text-sand-deep">
           Location
           <input
             className="admin-input mt-2"
             value={listing.location}
             onChange={(e) => setListing({ ...listing, location: e.target.value })}
-          />
-        </label>
-        <label className="text-xs uppercase text-sand-deep">
-          Type
-          <input
-            className="admin-input mt-2"
-            value={listing.propertyType}
-            onChange={(e) => setListing({ ...listing, propertyType: e.target.value })}
           />
         </label>
         <label className="text-xs uppercase text-sand-deep">
@@ -213,6 +210,11 @@ export function PropertyForm({ initial, isNew }: { initial?: Listing; isNew?: bo
           </select>
         </label>
       </div>
+      <BilingualField
+        label="Type"
+        value={listing.propertyType}
+        onChange={(propertyType) => setListing({ ...listing, propertyType })}
+      />
 
       <div className="grid gap-4 md:grid-cols-4">
         {(
