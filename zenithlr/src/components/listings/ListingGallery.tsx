@@ -100,13 +100,15 @@ export function ListingGallery({
             {selectedIndex + 1} / {images.length}
           </p>
         )}
-        <div className="absolute inset-x-0 bottom-0 z-20 flex items-end justify-between gap-6 px-5 pb-10 max-sm:hidden lg:px-8">
-          <div>{heading}</div>
-          {images.length > 0 && (
-            <p className="mb-1 shrink-0 text-[11px] tracking-[0.22em] uppercase text-sand">
-              {selectedIndex + 1} / {images.length}
-            </p>
-          )}
+        <div className="absolute inset-x-0 bottom-0 z-20 px-5 pb-10 max-sm:hidden lg:px-8">
+          <div className="flex items-end justify-between gap-6">
+            <div>{heading}</div>
+            {images.length > 0 && (
+              <p className="mb-1 shrink-0 text-[11px] tracking-[0.22em] uppercase text-sand">
+                {selectedIndex + 1} / {images.length}
+              </p>
+            )}
+          </div>
         </div>
       </div>
       <div className="px-5 py-5 sm:hidden">{heading}</div>
