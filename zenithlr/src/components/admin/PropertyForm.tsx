@@ -86,6 +86,12 @@ export function PropertyForm({ initial, isNew }: { initial?: Listing; isNew?: bo
   return (
     <form
       className="space-y-8"
+      onDragOver={(e) => {
+        if ([...e.dataTransfer.types].includes("Files")) e.preventDefault();
+      }}
+      onDrop={(e) => {
+        if ([...e.dataTransfer.types].includes("Files")) e.preventDefault();
+      }}
       onSubmit={async (e) => {
         e.preventDefault();
         const payload = {
