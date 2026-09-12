@@ -19,6 +19,15 @@ export async function ListingCard({
     if (goal === "sell") return t("sell");
     return t("investment");
   });
+  const area = listing.constructionArea || listing.lotArea;
+  const hasRooms = listing.bedrooms || listing.bathrooms;
+  const details = hasRooms
+    ? `${listing.bedrooms} ${t("bed")} · ${listing.bathrooms} ${t("bath")}${
+        area ? ` · ${formatArea(area, locale)}` : ""
+      }`
+    : area
+      ? formatArea(area, locale)
+      : tx(listing.propertyType, locale);
 
   return (
     <Link
@@ -56,15 +65,7 @@ export async function ListingCard({
             {tx(listing.title, locale)}
           </h3>
           <p className="mt-3 line-clamp-1 min-h-[1.4em] text-[15px] text-ink/70">
-            {listing.lotArea
-              ? formatArea(listing.lotArea, locale)
-              : listing.bedrooms || listing.bathrooms
-                ? `${listing.bedrooms} ${t("bed")} · ${listing.bathrooms} ${t("bath")}${
-                    listing.constructionArea
-                      ? ` · ${formatArea(listing.constructionArea, locale)}`
-                      : ""
-                  }`
-                : tx(listing.propertyType, locale)}
+            {details}
           </p>
           <p className="mt-4 text-xl tracking-wide">
             {listing.price > 0
