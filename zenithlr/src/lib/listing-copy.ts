@@ -73,7 +73,7 @@ function isListItem(text: string) {
   if (/[!?]$/.test(text)) return false;
   const colon = text.indexOf(":");
   if (colon >= 0 && text.slice(colon + 1).trim().length > 50) return false;
-  return true;
+  return looksLikeSpec(text);
 }
 
 export function parseListingCopy(text: string): ListingCopyBlock[] {
