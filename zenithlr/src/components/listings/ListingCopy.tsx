@@ -4,10 +4,7 @@ export function FeatureList({ items }: { items: string[] }) {
   return (
     <ul className="grid gap-2 sm:grid-cols-2">
       {items.map((item, index) => (
-        <li
-          key={`${item}-${index}`}
-          className="border-l border-sand pl-4 leading-7 text-ink/80"
-        >
+        <li key={`${item}-${index}`} className="leading-7 text-ink/80">
           {item}
         </li>
       ))}
@@ -21,7 +18,15 @@ function CopyBlock({
   block: ReturnType<typeof parseListingCopy>[number];
 }) {
   if (block.type === "list") {
-    return <FeatureList items={block.items} />;
+    return (
+      <div className="space-y-4">
+        {block.items.map((item, index) => (
+          <p key={`${item}-${index}`} className="leading-8 text-ink/75">
+            {item}
+          </p>
+        ))}
+      </div>
+    );
   }
   if (block.type === "heading") {
     return <h3 className="text-xl font-semibold text-ink">{block.text}</h3>;
